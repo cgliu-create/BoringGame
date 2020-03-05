@@ -7,6 +7,20 @@ public class Game extends JFrame implements Runnable{
     private static final  int width = 600;
     private static final int height = 600;
     private final String title = "Chris Game";
+    //Panels
+    private Scene1 scene1;
+
+    //Frame Constructor
+    public Game(){
+        super();
+        setTitle(title);
+        setSize(width,height);
+        setResizable(false);
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        scene1 = new Scene1(width,height);
+        getContentPane().add(scene1);
+    }
     //Running
     private boolean running = false;
     private Thread thread; // https://youtu.be/gHh_96Ss1AI?list=PLWms45O3n--6KCNAEETGiVTEFvnqA7qCi
@@ -37,7 +51,6 @@ public class Game extends JFrame implements Runnable{
         int updates = 0;
         int frames = 0;
         long timer = System.currentTimeMillis();
-
         while (running){
             long now = System.nanoTime();
             delta += (now - last)/timePerTick;
@@ -46,8 +59,8 @@ public class Game extends JFrame implements Runnable{
                 tick();
                 updates++;
                 delta--;
+                render();
             }
-            render();
             frames++;
             if (System.currentTimeMillis() - timer > 1000){
                 timer+=1000;
@@ -55,23 +68,14 @@ public class Game extends JFrame implements Runnable{
                 updates = 0;
                 frames = 0;
             }
-
         }
         stopGame();
     }
-    private void tick(){
-
+    private void tick(){ //update data
+        scene1.movePlayer();
     }
-    private void render(){
-
-    }
-    //Frame Constructor
-    public Game(){
-        super();
-        setTitle(title);
-        setSize(width,height);
-        setResizable(false);
-        setVisible(true);
+    private void render(){ //paint
+        scene1.repaint();
     }
     public static void main(String[] args) {
         Game game = new Game();
