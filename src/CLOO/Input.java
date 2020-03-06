@@ -15,19 +15,19 @@ public class Input implements KeyListener {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             //System.out.println("D");
-            scene.accelPlayerB();
+            scene.ActionDown();
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             //System.out.println("U");
-            scene.accelPlayerF();
+            scene.ActionUp();
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             //System.out.println("L");
-            scene.rotPlayerL();
+            scene.ActionLeft();
         }
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             //System.out.println("R");
-            scene.rotPlayerR();
+            scene.ActionRight();
         }
     }
     @Override

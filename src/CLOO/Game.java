@@ -18,7 +18,7 @@ public class Game extends JFrame implements Runnable{
         setResizable(false);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        scene1 = new Scene(width,height);
+        scene1 = new Scene1(width,height);
         getContentPane().add(scene1);
         addKeyListener(new Input(scene1));
     }
@@ -73,7 +73,7 @@ public class Game extends JFrame implements Runnable{
         stopGame();
     }
     private void tick(){ //update data
-        scene1.movePlayer();
+        scene1.updateSprite();
     }
     private void render(){ //paint
         scene1.repaint();
