@@ -1,26 +1,11 @@
 package CLOO;
 import javax.swing.*;
-public class Game extends JFrame implements Runnable{
-    //Main Frame
+public class Game implements Runnable{
+    //Frame
     private static final  int width = 600;
     private static final int height = 600;
     private final String title = "Chris Game";
-    //Panels
-    private Scene scene1;
-
-    //Frame Constructor
-    public Game(){
-        super();
-        setTitle(title);
-        setSize(width,height);
-        setResizable(false);
-        setVisible(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        scene1 = new Scene1(width,height);
-        //adds scene and input reader for that scene
-        getContentPane().add(scene1);
-        addKeyListener(new Input(scene1));
-    }
+    private SceneSelector sceneSelector = new SceneSelector(title,width,height);
     //Running
     private boolean running = false;
     private Thread thread; // https://youtu.be/gHh_96Ss1AI?list=PLWms45O3n--6KCNAEETGiVTEFvnqA7qCi
@@ -65,19 +50,27 @@ public class Game extends JFrame implements Runnable{
             if (System.currentTimeMillis() - timer > 1000){
                 timer+=1000;
                 System.out.println("Fps:"+updates+";"+"MaxFps" + frames);
+                test();
                 updates = 0;
                 frames = 0;
             }
         }
         stopGame();
     }
-    private void tick(){ scene1.updateSprite();
-    }
-    private void render(){ //paint
-        scene1.repaint();
+    private void tick(){ sceneSelector.sceneUpdate();}
+    private void render(){ sceneSelector.sceneRepaint();}
+    public void test(){
+        if(sceneSelector.getCurScene()==0){
+            sceneSelector.setScene(1);
+            return;
+        }
+        if(sceneSelector.getCurScene()==1){
+            sceneSelector.setScene(0);
+        }
     }
     public static void main(String[] args) {
         Game game = new Game();
         game.startGame();
+
     }
 }

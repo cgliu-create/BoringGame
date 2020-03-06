@@ -9,11 +9,13 @@ import java.io.IOException;
 public class ImageGetter {
     //list all the images
     private BufferedImage error;
-    private BufferedImage steve;
+    private BufferedImage tank;
+    private BufferedImage rtank;
     public ImageGetter(){
         //load in all the images
         try {// https://stackoverflow.com/questions/9864267/loading-image-resource/9866659#9866659
-            steve = ImageIO.read(getClass().getResource("/images/steve.png"));
+            tank = ImageIO.read(getClass().getResource("/images/tank.png"));
+            rtank = ImageIO.read(getClass().getResource("/images/enemy.png"));
             error = ImageIO.read(getClass().getResource("/images/error.png"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -22,7 +24,10 @@ public class ImageGetter {
     //method to retrieve images
     public BufferedImage getImage(int imgnum) {
         if (imgnum==0){
-            return steve;
+            return tank;
+        }
+        if (imgnum==1){
+            return rtank;
         }
         return error;
     }
