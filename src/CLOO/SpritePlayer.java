@@ -9,6 +9,7 @@ public class SpritePlayer extends Sprite{
     }
     @Override
     public void draw(Graphics window) {
-        i.DrawImage(window,getXPos(),getYPos(),0,getWidth(),getHeight());
+        i.DrawRotatedImage(window,getXPos(),getYPos(),0,
+                getWidth(),getHeight(),getDir());
     }
 }

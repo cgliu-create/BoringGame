@@ -8,7 +8,7 @@ public class Game extends JFrame implements Runnable{
     private static final int height = 600;
     private final String title = "Chris Game";
     //Panels
-    private Scene1 scene1;
+    private Scene scene1;
 
     //Frame Constructor
     public Game(){
@@ -18,8 +18,9 @@ public class Game extends JFrame implements Runnable{
         setResizable(false);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        scene1 = new Scene1(width,height);
+        scene1 = new Scene(width,height);
         getContentPane().add(scene1);
+        addKeyListener(new Input(scene1));
     }
     //Running
     private boolean running = false;

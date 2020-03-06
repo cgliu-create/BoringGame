@@ -8,8 +8,8 @@ import java.awt.image.ImageObserver;
 import java.io.IOException;
 public class ImageGetter {
     //list all the images
-    private Image error;
-    private Image snow0;
+    private BufferedImage error;
+    private BufferedImage snow0;
     public ImageGetter(){
         //load in all the images
         try {// https://stackoverflow.com/questions/9864267/loading-image-resource/9866659#9866659
@@ -20,25 +20,25 @@ public class ImageGetter {
         }
     }
     //method to retrieve images
-    public Image getImage(int imgnum, int W, int H) {
+    public BufferedImage getImage(int imgnum) {
         if (imgnum==0){
-            return snow0.getScaledInstance(W, H, Image.SCALE_SMOOTH);
+            return snow0;
         }
-        return error.getScaledInstance(W, H, Image.SCALE_SMOOTH);
+        return error;
     }
     //draw image
     public void DrawImage(Graphics window, int x, int y, int imgnum, int W, int H){
-        Image img = getImage(imgnum,W,H);
+        Image img = getImage(imgnum).getScaledInstance(W, H, Image.SCALE_SMOOTH);;
         window.drawImage(img,x,y, null);
     }
     public void DrawRotatedImage(Graphics window, int x, int y, int imgnum, int W, int H, double rot){
-        Image img = getImage(imgnum,W,H);
+        BufferedImage img = getImage(imgnum);
         double r = Math.toRadians(rot);
         double cx = W/2.0;
         double cy = H/2.0;
-        AffineTransform tx = AffineTransform.getRotateInstance(r, cx, cy);
+        AffineTransform tx = AffineTransform.getRotateInstance(r, x+cx, y+cy);
         AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
         Graphics2D g2d = (Graphics2D)window;
-        g2d.drawImage(op.filter((BufferedImage) img, null), x, y, null);
+        g2d.drawImage(op.filter(img, null).getScaledInstance(W, H, Image.SCALE_SMOOTH), x, y, null);
     } //https://stackoverflow.com/questions/8639567/java-rotating-images
 }

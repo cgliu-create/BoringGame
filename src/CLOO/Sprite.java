@@ -4,7 +4,7 @@ public abstract class Sprite {
     //instance variables
     private int xPos,yPos;
     private int width,height;
-    private double dir;
+    private int dir;
     private int speed, xSpeed, ySpeed;
     public Sprite(int x, int y, int wid, int ht) {
         xPos = x;
@@ -19,15 +19,15 @@ public abstract class Sprite {
     //set and get methods
     public void setWidth(int w) { width = w; }
     public void setHeight(int h) { height = h; }
-    public void setXPos( int xp) { xPos = xp; }
-    public void setYPos( int yp) { yPos = yp; }
-    public void setSpeed( int s) { speed = s; }
-    public void setDir(double theta) { dir = theta; setxSpeed(); setySpeed();}
+    public void setXPos(int xp) { xPos = xp; }
+    public void setYPos(int yp) { yPos = yp; }
+    public void setSpeed( int s) { speed = s; setxSpeed(); setySpeed();}
+    public void setDir(int degrees) { dir = degrees; setxSpeed(); setySpeed();}
     public void setxSpeed() { xSpeed = (int)(speed * Math.cos(Math.toRadians(dir))); }
     public void setySpeed() { ySpeed = (int)(speed * Math.sin(Math.toRadians(dir))); }
     public int getxSpeed() { return xSpeed; }
     public int getySpeed() { return ySpeed; }
-    public double getDir() { return dir; }
+    public int getDir() { return dir; }
     public int getSpeed() { return speed; }
     public int getXPos() { return xPos; }
     public int getYPos() { return yPos; }
