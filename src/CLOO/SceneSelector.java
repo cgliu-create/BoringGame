@@ -36,19 +36,17 @@ public class SceneSelector extends JFrame {
         return scene1;
     }
     public void setScene(int scene){
-        this.remove(getScene());
         if (scene == 0){
             this.add(scene1);
             this.addKeyListener(scene1.getPlayerInput());
-            curScene = 0;
         }
         if (scene == 1){
             this.add(scene2);
             this.addKeyListener(scene2.getPlayerInput());
-            curScene = 1;
         }
-        this.revalidate();
+        this.remove(getScene());
         this.repaint();
+        curScene = scene;
     }
     //get scene status
     public int getStatus(){
