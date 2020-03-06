@@ -1,8 +1,6 @@
 package CLOO;
-
 import javax.swing.*;
 import java.awt.*;
-
 public abstract class Scene extends JPanel {
     public Scene(int W, int H) {
         setSize(W,H);

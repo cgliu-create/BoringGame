@@ -1,8 +1,6 @@
 package CLOO;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 public class Input implements KeyListener {
     private Scene scene;
     public Input(Scene scene){

@@ -1,7 +1,5 @@
 package CLOO;
-
 import java.awt.*;
-
 public class Scene1 extends Scene{
     public SpritePlayer player = new SpritePlayer(100,100,100,100);
     public Scene1(int W, int H) {

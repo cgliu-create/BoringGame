@@ -1,7 +1,5 @@
 package CLOO;
-
 import javax.swing.*;
-
 public class Game extends JFrame implements Runnable{
     //Main Frame
     private static final  int width = 600;
@@ -19,6 +17,7 @@ public class Game extends JFrame implements Runnable{
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         scene1 = new Scene1(width,height);
+        //adds scene and input reader for that scene
         getContentPane().add(scene1);
         addKeyListener(new Input(scene1));
     }
@@ -72,8 +71,7 @@ public class Game extends JFrame implements Runnable{
         }
         stopGame();
     }
-    private void tick(){ //update data
-        scene1.updateSprite();
+    private void tick(){ scene1.updateSprite();
     }
     private void render(){ //paint
         scene1.repaint();
@@ -82,5 +80,4 @@ public class Game extends JFrame implements Runnable{
         Game game = new Game();
         game.startGame();
     }
-
 }
