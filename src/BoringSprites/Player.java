@@ -10,21 +10,21 @@ public class Player extends AliveObject {
     }
     @Override
     public void draw(Graphics window) {
-        if(Math.abs(getDir())==0)
+        if(Math.abs(getDir())%360==0)
             img = 0;
-        if(Math.abs(getDir())==45)
+        if(Math.abs(getDir())%360==45)
             img = 1;
-        if(Math.abs(getDir())==90)
+        if(Math.abs(getDir())%360==90)
             img = 2;
-        if(Math.abs(getDir())==135)
+        if(Math.abs(getDir())%360==135)
             img = 3;
-        if(Math.abs(getDir())==180)
+        if(Math.abs(getDir())%360==180)
             img = 4;
-        if(Math.abs(getDir())==225)
+        if(Math.abs(getDir())%360==225)
             img = 5;
-        if(Math.abs(getDir())==270)
+        if(Math.abs(getDir())%360==270)
             img = 6;
-        if(Math.abs(getDir())==315)
+        if(Math.abs(getDir())%360==315)
             img = 7;
         i.DrawImage(window,getXPos(),getYPos(),img,getWidth(),getHeight());
     }

@@ -32,16 +32,10 @@ public class PlayerInput implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             int dir = player.getDir();
             player.setDir(dir - 45);
-            if(player.getDir()==-360){
-                player.setDir(0);
-            }
         }
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             int dir = player.getDir();
             player.setDir(dir + 45);
-            if(player.getDir()==360){
-                player.setDir(0);
-            }
         }
     }
     @Override

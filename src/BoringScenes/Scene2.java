@@ -10,7 +10,7 @@ public class Scene2 extends Scene {
     Player player = super.getPlayer();
     Player temp = new Player(player.getXPos(),player.getYPos(),player.getWidth(),player.getHeight(),0,0);
     private Enemy enemy = new Enemy(300,100,100,100, 100, 100);
-    private JustImage background = new JustImage(0,0, getW(), getH(),2);
+    private JustImage background = new JustImage(0,0, getW(), getH(),9);
     public Scene2(int W, int H) {
         super(W, H);
         //setBackground(Color.black);
