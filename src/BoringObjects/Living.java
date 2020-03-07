@@ -4,9 +4,6 @@ public class Living {
     //instance variables
     private int HP;
     private int MP;
-    public Living(){
-        HP = MP = 0;
-    }
     public Living(int hp, int mp){
         HP = hp;
         MP = mp;

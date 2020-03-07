@@ -4,10 +4,10 @@ public abstract class GameObject {
     //instance variables
     private int xPos,yPos;
     private int width,height;
-    public GameObject(int x, int y, int wid, int ht) {
+    public GameObject(int x, int y, int wd, int ht) {
         xPos = x;
         yPos =y;
-        width = wid;
+        width = wd;
         height = ht;
     }
     //set and get methods

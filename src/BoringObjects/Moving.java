@@ -9,11 +9,11 @@ public class Moving {
     public Moving(){
         dir = speed = Xspeed = Yspeed = 0;
     }
-    public Moving(int d, int s, int xs, int ys){
+    public Moving(int d, int s){
         dir = d;
         speed = s;
-        Xspeed = xs;
-        Yspeed = ys;
+        setXspeed();
+        setYspeed();
     }
     //set and get methods
     public void setSpeed( int s) { speed = s; setXspeed(); setYspeed();}
