@@ -1,11 +1,10 @@
-package CLOO;
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.io.IOException;
+package images;
+    import javax.imageio.ImageIO;
+    import java.awt.*;
+    import java.awt.geom.AffineTransform;
+    import java.awt.image.AffineTransformOp;
+    import java.awt.image.BufferedImage;
+    import java.io.IOException;
 public class ImageGetter {
     //list all the images
     private BufferedImage error;

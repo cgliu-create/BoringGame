@@ -1,6 +1,8 @@
 package CLOO;
+import BoringObjects.Sprite;
+import images.ImageGetter;
 import java.awt.*;
-public class SpritePlayer extends Sprite{
+public class SpritePlayer extends Sprite {
     private ImageGetter i = new ImageGetter();
     public SpritePlayer(int x, int y, int wid, int ht) {
         super(x, y, wid, ht);

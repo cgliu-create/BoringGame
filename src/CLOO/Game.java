@@ -50,7 +50,6 @@ public class Game implements Runnable{
             if (System.currentTimeMillis() - timer > 1000){
                 timer+=1000;
                 System.out.println("Fps:"+updates+";"+"MaxFps" + frames);
-                test();
                 updates = 0;
                 frames = 0;
             }
@@ -59,17 +58,9 @@ public class Game implements Runnable{
     }
     private void tick(){ sceneSelector.sceneUpdate();}
     private void render(){ sceneSelector.sceneRepaint();}
-    public void test(){
-        if(sceneSelector.getCurScene()==0){
-            sceneSelector.setScene(1);
-            return;
-        }
-        if(sceneSelector.getCurScene()==1){
-            sceneSelector.setScene(0);
-        }
-    }
     public static void main(String[] args) {
         Game game = new Game();
+        game.sceneSelector.setScene(1);
         game.startGame();
 
     }
