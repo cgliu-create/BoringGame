@@ -3,7 +3,7 @@ import BoringSprites.Player;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 public class PlayerInput implements KeyListener {
-    private Player player = new Player(100,100,100,100);
+    private Player player = new Player(100,100,100,100, 100,100);
     public Player getPlayer(){
         return player;
     }
