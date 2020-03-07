@@ -10,11 +10,13 @@ public class ImageGetter {
     private BufferedImage error;
     private BufferedImage player;
     private BufferedImage enemy;
+    private BufferedImage greenblock;
     public ImageGetter(){
         //load in all the images
         try {// https://stackoverflow.com/questions/9864267/loading-image-resource/9866659#9866659
             player = ImageIO.read(getClass().getResource("/BoringImages/Player.png"));
             enemy = ImageIO.read(getClass().getResource("/BoringImages/Enemy.png"));
+            greenblock = ImageIO.read(getClass().getResource("/BoringImages/greenblock.png"));
             error = ImageIO.read(getClass().getResource("/BoringImages/error.png"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -28,11 +30,14 @@ public class ImageGetter {
         if (imgnum==1){
             return enemy;
         }
+        if (imgnum==2){
+            return greenblock;
+        }
         return error;
     }
     //draw image
     public void DrawImage(Graphics window, int x, int y, int imgnum, int W, int H){
-        Image img = getImage(imgnum).getScaledInstance(W, H, Image.SCALE_SMOOTH);;
+        Image img = getImage(imgnum).getScaledInstance(W, H, Image.SCALE_SMOOTH);
         window.drawImage(img,x,y, null);
     }
     public void DrawRotatedImage(Graphics window, int x, int y, int imgnum, int W, int H, double rot){

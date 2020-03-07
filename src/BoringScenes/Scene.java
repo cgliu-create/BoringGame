@@ -10,6 +10,8 @@ public abstract class Scene extends JPanel {
         setSize(W,H);
         w=W;h=H;
     }
+    public int getW() { return w; }
+    public int getH() { return h; }
     public void updateSprite() {
         Player player = playerInput.getPlayer();
         int x = player.getXPos()+player.getXspeed();
