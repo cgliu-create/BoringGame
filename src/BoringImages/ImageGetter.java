@@ -8,13 +8,13 @@ package BoringImages;
 public class ImageGetter {
     //list all the images
     private BufferedImage error;
-    private BufferedImage tank;
-    private BufferedImage rtank;
+    private BufferedImage player;
+    private BufferedImage enemy;
     public ImageGetter(){
         //load in all the images
         try {// https://stackoverflow.com/questions/9864267/loading-image-resource/9866659#9866659
-            tank = ImageIO.read(getClass().getResource("/BoringImages/tank.png"));
-            rtank = ImageIO.read(getClass().getResource("/BoringImages/rtank.png"));
+            player = ImageIO.read(getClass().getResource("/BoringImages/Player.png"));
+            enemy = ImageIO.read(getClass().getResource("/BoringImages/Enemy.png"));
             error = ImageIO.read(getClass().getResource("/BoringImages/error.png"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -23,10 +23,10 @@ public class ImageGetter {
     //method to retrieve images
     public BufferedImage getImage(int imgnum) {
         if (imgnum==0){
-            return tank;
+            return player;
         }
         if (imgnum==1){
-            return rtank;
+            return enemy;
         }
         return error;
     }
