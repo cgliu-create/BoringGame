@@ -1,6 +1,6 @@
 package BoringObjects;
 
-public abstract class Colliding {
+public class Colliding {
     public boolean hitsTop(GameObject thisThing, GameObject otherThing){
         if(otherThing.getXPos()>=thisThing.getXPos()&&otherThing.getXPos()<=(thisThing.getXPos()+thisThing.getWidth())){
             if(Math.abs((otherThing.getYPos()+otherThing.getHeight()) - thisThing.getYPos())<=10){
@@ -33,4 +33,20 @@ public abstract class Colliding {
         }
         return false;
     }
+    public boolean checkAllDir(GameObject thisThing, GameObject otherThing){
+        if (hitsTop(thisThing, otherThing)){
+            return true;
+        }
+        if (hitsBottom(thisThing, otherThing)){
+            return true;
+        }
+        if (hitsLeft(thisThing, otherThing)){
+            return true;
+        }
+        if (hitsRight(thisThing, otherThing)){
+            return true;
+        }
+        return false;
+    }
+
 }

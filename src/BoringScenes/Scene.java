@@ -1,6 +1,8 @@
-package CLOO;
+package BoringScenes;
+import BoringSprites.Player;
+
 import javax.swing.*;
-import java.awt.*;
+
 public abstract class Scene extends JPanel {
     private PlayerInput playerInput = new PlayerInput();
     private int w,h;
@@ -9,18 +11,18 @@ public abstract class Scene extends JPanel {
         w=W;h=H;
     }
     public void updateSprite() {
-        SpritePlayer player = playerInput.getPlayer();
-        int x = player.getXPos()+player.getxSpeed();
-        int y = player.getYPos()+player.getySpeed();
+        Player player = playerInput.getPlayer();
+        int x = player.getXPos()+player.getXspeed();
+        int y = player.getYPos()+player.getYspeed();
         if (x>=0&&x<=w-player.getWidth()) //x bounds
             player.setXPos(x);
         if (y>=0&&y<=h-player.getHeight()) //y bounds
             player.setYPos(y);
     }
-    public SpritePlayer getPlayer(){
+    public Player getPlayer(){
         return playerInput.getPlayer();
     }
-    public void setPlayer(SpritePlayer newplayer){ playerInput.setPlayer(newplayer); }
+    public void setPlayer(Player newplayer){ playerInput.setPlayer(newplayer); }
     public PlayerInput getPlayerInput(){
         return playerInput;
     }

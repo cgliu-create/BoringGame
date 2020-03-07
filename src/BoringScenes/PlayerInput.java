@@ -1,12 +1,13 @@
-package CLOO;
+package BoringScenes;
+import BoringSprites.Player;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 public class PlayerInput implements KeyListener {
-    private SpritePlayer player = new SpritePlayer(100,100,100,100);
-    public SpritePlayer getPlayer(){
+    private Player player = new Player(100,100,100,100);
+    public Player getPlayer(){
         return player;
     }
-    public void setPlayer(SpritePlayer newplayer){
+    public void setPlayer(Player newplayer){
         player = newplayer;
     }
     @Override

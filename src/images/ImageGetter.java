@@ -46,3 +46,4 @@ public class ImageGetter {
         g2d.drawImage(op.filter(img, null).getScaledInstance(W, H, Image.SCALE_SMOOTH), x, y, null);
     } //https://stackoverflow.com/questions/8639567/java-rotating-images
 }
+//importing classes https://stackoverflow.com/questions/28651061/how-to-import-my-own-class

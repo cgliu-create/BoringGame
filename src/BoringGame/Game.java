@@ -1,5 +1,5 @@
-package CLOO;
-import javax.swing.*;
+package BoringGame;
+
 public class Game implements Runnable{
     //Frame
     private static final  int width = 600;
@@ -8,7 +8,7 @@ public class Game implements Runnable{
     private SceneSelector sceneSelector = new SceneSelector(title,width,height);
     //Running
     private boolean running = false;
-    private Thread thread; // https://youtu.be/gHh_96Ss1AI?list=PLWms45O3n--6KCNAEETGiVTEFvnqA7qCi
+    private Thread thread;
     private synchronized void startGame(){
         if(running) //already started
             return;
@@ -28,7 +28,8 @@ public class Game implements Runnable{
         System.exit(1);
     }
     //Game Loop
-    public void run() { // https://youtu.be/TNVHWROwYuM?list=PLWms45O3n--6KCNAEETGiVTEFvnqA7qCi
+    //https://youtu.be/TNVHWROwYuM?list=PLWms45O3n--6KCNAEETGiVTEFvnqA7qCi
+    public void run() {
         long last = System.nanoTime();
         final double amountOfTicks = 60.0; //Fps
         double timePerTick = 1000000000/amountOfTicks;

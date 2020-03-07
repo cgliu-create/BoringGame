@@ -1,7 +1,10 @@
-package CLOO;
+package BoringScenes;
+import BoringSprites.Enemy;
+
 import java.awt.*;
-public class Scene2 extends Scene{
-    private SpriteEnemy enemy = new SpriteEnemy(300,100,100,100);
+
+public class Scene2 extends Scene {
+    private Enemy enemy = new Enemy(300,100,100,100);
     public Scene2(int W, int H) {
         super(W, H);
         //setBackground(Color.black);

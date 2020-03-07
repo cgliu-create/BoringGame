@@ -1,6 +1,8 @@
-package CLOO;
+package BoringScenes;
+
 import java.awt.*;
-public class Scene1 extends Scene{
+
+public class Scene1 extends Scene {
     public Scene1(int W, int H) {
         super(W, H);
         //setBackground(Color.black);

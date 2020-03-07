@@ -1,6 +1,6 @@
-package CLOO;
+package BoringGame;
+import BoringScenes.*;
 import javax.swing.*;
-import java.awt.*;
 
 public class SceneSelector extends JFrame {
     private int curScene = 0;
