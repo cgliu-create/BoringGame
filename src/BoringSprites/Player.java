@@ -9,7 +9,7 @@ public class Player extends AliveObject {
     }
     @Override
     public void draw(Graphics window) {
-        i.DrawRotatedImage(window,getXPos(),getYPos(),1,
+        i.DrawRotatedImage(window,getXPos(),getYPos(),0,
                 getWidth(),getHeight(),getDir());
     }
 }
