@@ -4,12 +4,28 @@ import BoringImages.ImageGetter;
 import java.awt.*;
 public class Player extends AliveObject {
     private ImageGetter i = new ImageGetter();
+    private int img;
     public Player (int x, int y, int wd, int ht, int hp, int mp) {
         super(x, y, wd, ht, hp, mp);
     }
     @Override
     public void draw(Graphics window) {
-        i.DrawRotatedImage(window,getXPos(),getYPos(),0,
-                getWidth(),getHeight(),getDir());
+        if(Math.abs(getDir())==0)
+            img = 0;
+        if(Math.abs(getDir())==45)
+            img = 1;
+        if(Math.abs(getDir())==90)
+            img = 2;
+        if(Math.abs(getDir())==135)
+            img = 3;
+        if(Math.abs(getDir())==180)
+            img = 4;
+        if(Math.abs(getDir())==225)
+            img = 5;
+        if(Math.abs(getDir())==270)
+            img = 6;
+        if(Math.abs(getDir())==315)
+            img = 7;
+        i.DrawImage(window,getXPos(),getYPos(),img,getWidth(),getHeight());
     }
 }
