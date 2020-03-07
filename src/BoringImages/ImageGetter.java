@@ -14,7 +14,7 @@ public class ImageGetter {
         //load in all the images
         try {// https://stackoverflow.com/questions/9864267/loading-image-resource/9866659#9866659
             tank = ImageIO.read(getClass().getResource("/BoringImages/tank.png"));
-            rtank = ImageIO.read(getClass().getResource("/BoringImages/enemy.png"));
+            rtank = ImageIO.read(getClass().getResource("/BoringImages/rtank.png"));
             error = ImageIO.read(getClass().getResource("/BoringImages/error.png"));
         } catch (IOException e) {
             e.printStackTrace();

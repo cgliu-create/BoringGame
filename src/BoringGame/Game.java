@@ -57,7 +57,9 @@ public class Game implements Runnable{
         }
         stopGame();
     }
+    //update data
     private void tick(){ sceneSelector.sceneUpdate();}
+    //update graphics
     private void render(){ sceneSelector.sceneRepaint();}
     public static void main(String[] args) {
         Game game = new Game();
