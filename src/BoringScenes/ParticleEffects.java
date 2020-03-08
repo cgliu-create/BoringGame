@@ -27,22 +27,23 @@ public class ParticleEffects {
 
     }
     public void addParticle(ArrayList<Particle> particles, int x, int y, Color c){
-        int spd = (int)(Math.random()*5);
+        int spd = (int)(Math.random()*2)+2;
         int dir = (int)(Math.random()*360);
-        int size = (int) (Math.random()*12);
-        int life = (int) (Math.random()*100)+10;
+        int size = (int) (Math.random()*10)+2;
+        int life = (int) (Math.random()*50)+10;
         Particle p = new Particle(x,y,size,size,life,0, c);
         p.setDir(dir);
         p.setSpeed(spd);
         particles.add(p);
     }
     // cool stuff
-    public void KaBoom(ArrayList<Particle> particles, int x, int y, Color c){
-        addParticle(particles,x,y,c); addParticle(particles,x,y,c);
-        addParticle(particles,x,y,c); addParticle(particles,x,y,c);
-        addParticle(particles,x,y,c); addParticle(particles,x,y,c);
-        addParticle(particles,x,y,c); addParticle(particles,x,y,c);
-        addParticle(particles,x,y,c); addParticle(particles,x,y,c);
+    public void KaBoom(ArrayList<Particle> particles, int x, int y){
+        addParticle(particles,x,y,Color.RED); addParticle(particles,x,y,Color.RED);
+        addParticle(particles,x,y,Color.ORANGE); addParticle(particles,x,y,Color.ORANGE);
+        addParticle(particles,x,y,Color.YELLOW); addParticle(particles,x,y,Color.YELLOW);
+        addParticle(particles,x,y,Color.RED); addParticle(particles,x,y,Color.RED);
+        addParticle(particles,x,y,Color.ORANGE); addParticle(particles,x,y,Color.ORANGE);
+        addParticle(particles,x,y,Color.YELLOW); addParticle(particles,x,y,Color.YELLOW);
     }
     public void Shoot(ArrayList<Particle> particles, AliveObject guy){
         int dir = 0;

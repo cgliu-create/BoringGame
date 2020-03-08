@@ -1,6 +1,8 @@
 package BoringScenes;
 import BoringSprites.Particle;
 import BoringSprites.Player;
+
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -57,6 +59,27 @@ public class PlayerInput implements KeyListener {
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             if(player.getMP()>0){
+                int x = player.getXPos();
+                int y = player.getYPos();
+                int w = player.getWidth();
+                int h = player.getHeight();
+                if(Math.abs(player.getDir())%360==0)
+                    particleEffects.KaBoom(particles, x+w, y+h/2);
+                if(Math.abs(player.getDir())%360==45)
+                    particleEffects.KaBoom(particles, x+w, y+h);
+                if(Math.abs(player.getDir())%360==90)
+                    particleEffects.KaBoom(particles, x+w/2, y+h);
+                if(Math.abs(player.getDir())%360==135)
+                    particleEffects.KaBoom(particles, x, y+h);
+                if(Math.abs(player.getDir())%360==180)
+                    particleEffects.KaBoom(particles, x, y+h/2);
+                if(Math.abs(player.getDir())%360==225)
+                    particleEffects.KaBoom(particles, x, y);
+                if(Math.abs(player.getDir())%360==270)
+                    particleEffects.KaBoom(particles, x+w/2, y);
+                if(Math.abs(player.getDir())%360==315)
+                    particleEffects.KaBoom(particles, x+w, y);
+                //nice
                 particleEffects.Shoot(particles, player);
                 player.setMP(player.getMP()-1);
             }
