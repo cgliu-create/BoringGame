@@ -19,6 +19,8 @@ public abstract class GameObject {
     public int getHeight() { return height; }
     public int getXPos() { return xPos; }
     public int getYPos() { return yPos; }
+    public abstract int getRadius();
+    public abstract void setRadius(int r);
     //paint
     public abstract void draw(Graphics window);
     //toString

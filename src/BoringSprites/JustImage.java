@@ -10,6 +10,13 @@ public class JustImage extends GameObject {
         this.img = img;
     }
     @Override
+    public int getRadius() {
+        return 0;
+    }
+    @Override
+    public void setRadius(int r) {
+    }
+    @Override
     public void draw(Graphics window) {
         i.DrawImage(window, getXPos(), getYPos(), img, getWidth(), getHeight());
     }

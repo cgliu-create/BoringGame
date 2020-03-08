@@ -3,14 +3,22 @@ package BoringObjects;
 import java.awt.*;
 
 public class CollisObject extends GameObject {
-    private Colliding c = new Colliding();
+    private Colliding c = new Colliding(this);
     public CollisObject  (int x, int y, int wd, int ht) {
         super(x, y, wd, ht);
     }
     @Override
+    public int getRadius() {
+        return c.getRadius();
+    }
+    @Override
+    public void setRadius(int r) {
+        c.setRadius(r);
+    }
+    @Override
     public void draw(Graphics window) {
         window.setColor(Color.WHITE);
-        window.drawRect(getXPos(),getYPos(),getWidth(),getHeight());
+        window.drawOval(getXPos(),getYPos(),getWidth(),getHeight());
     }
     //check colliding
     public boolean checkAllDir(GameObject other){ return c.checkAllDir(this,other);}

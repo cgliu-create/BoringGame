@@ -3,7 +3,7 @@ package BoringObjects;
 import java.awt.*;
 
 public class AliveObject extends GameObject {
-    private Colliding c = new Colliding();
+    private Colliding c = new Colliding(this);
     private Moving m = new Moving();
     private Living l;
     public AliveObject (int x, int y, int wd, int ht, int hp, int mp) {
@@ -11,16 +11,20 @@ public class AliveObject extends GameObject {
         l = new Living(hp, mp);
     }
     @Override
+    public int getRadius() {
+        return c.getRadius();
+    }
+    @Override
+    public void setRadius(int r) {
+        c.setRadius(r);
+    }
+    @Override
     public void draw(Graphics window) {
         window.setColor(Color.WHITE);
-        window.drawRect(getXPos(),getYPos(),getWidth(),getHeight());
+        window.drawOval(getXPos(),getYPos(),getWidth(),getHeight());
     }
     //check colliding
     public boolean checkAllDir(GameObject other){ return c.checkAllDir(this,other);}
-    public boolean checkLeft(GameObject other){return c.hitsLeft(this,other);}
-    public boolean checkRight(GameObject other){return c.hitsRight(this,other);}
-    public boolean checkTop(GameObject other){return c.hitsTop(this,other);}
-    public boolean checkBottom(GameObject other){return c.hitsBottom(this,other);}
     //set and get moving
     public void setSpeed( int s) { m.setSpeed(s);}
     public void setDir(int degrees) { m.setDir(degrees);}
@@ -33,7 +37,6 @@ public class AliveObject extends GameObject {
     public void setMP(int mp) { l.setMP(mp); }
     public int getHP() { return l.getHP(); }
     public int getMP() { return l.getMP(); }
-
     @Override
     public String toString() {
         return "AliveObject{" + "\n" +
