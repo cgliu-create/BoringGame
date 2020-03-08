@@ -10,6 +10,10 @@ public abstract class AliveObject extends GameObject {
     }
     //check colliding
     public boolean checkAllDir(GameObject other){ return c.checkAllDir(this,other);}
+    public boolean checkLeft(GameObject other){return c.hitsLeft(this,other);}
+    public boolean checkRight(GameObject other){return c.hitsRight(this,other);}
+    public boolean checkTop(GameObject other){return c.hitsTop(this,other);}
+    public boolean checkBottom(GameObject other){return c.hitsBottom(this,other);}
     //set and get moving
     public void setSpeed( int s) { m.setSpeed(s);}
     public void setDir(int degrees) { m.setDir(degrees);}

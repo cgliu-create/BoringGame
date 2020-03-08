@@ -65,6 +65,6 @@ public class ParticleEffects {
             dir = 315;
         int x = guy.getXPos()+guy.getWidth()/2;
         int y = guy.getYPos()+guy.getHeight()/2;
-        addParticle(particles, x, y, 10, dir,10, 60);
+        addParticle(particles, x, y, 20, dir,10, 60);
     }
 }

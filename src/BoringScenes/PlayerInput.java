@@ -57,6 +57,10 @@ public class PlayerInput implements KeyListener {
                 player.setDir(360);
             }
         }
+        // for fun
+        if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+            player.setMP(100);
+        }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             if(player.getMP()>0){
                 int x = player.getXPos();
