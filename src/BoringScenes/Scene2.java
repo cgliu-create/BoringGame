@@ -4,6 +4,7 @@ import BoringSprites.Enemy;
 import BoringSprites.JustImage;
 import BoringSprites.Particle;
 import BoringSprites.Player;
+import BoringStuff.ParticleEffects;
 
 import java.awt.*;
 import java.util.ArrayList;

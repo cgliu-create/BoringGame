@@ -1,6 +1,8 @@
 package BoringScenes;
 import BoringSprites.Particle;
 import BoringSprites.Player;
+import BoringStuff.ParticleEffects;
+import BoringStuff.PlayerInput;
 import javax.swing.*;
 import java.util.ArrayList;
 

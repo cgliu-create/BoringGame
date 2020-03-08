@@ -1,11 +1,13 @@
 package BoringSprites;
 import BoringObjects.AliveObject;
 import BoringImages.ImageGetter;
+import BoringStuff.Aiming;
 
 import java.awt.*;
 public class Player extends AliveObject {
     private ImageGetter i = new ImageGetter();
     private int img;
+    private Aiming a = new Aiming(this);
     public Player (int x, int y, int wd, int ht, int hp, int mp) {
         super(x, y, wd, ht, hp, mp);
         setDir(360);
@@ -31,6 +33,7 @@ public class Player extends AliveObject {
             img = 6;
         if(Math.abs(getDir())%360==315)
             img = 7;
+        a.draw(window);
         i.DrawImage(window,getXPos(),getYPos(),img,getWidth(),getHeight());
     }
 }

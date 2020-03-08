@@ -1,9 +1,7 @@
-package BoringScenes;
+package BoringStuff;
 
 import BoringObjects.AliveObject;
-import BoringObjects.GameObject;
 import BoringSprites.Particle;
-import BoringSprites.Player;
 
 import java.awt.*;
 import java.util.ArrayList;
