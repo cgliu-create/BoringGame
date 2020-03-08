@@ -56,7 +56,10 @@ public class PlayerInput implements KeyListener {
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            particleEffects.Shoot(particles, player);
+            if(player.getMP()>0){
+                particleEffects.Shoot(particles, player);
+                player.setMP(player.getMP()-1);
+            }
         }
     }
     @Override
