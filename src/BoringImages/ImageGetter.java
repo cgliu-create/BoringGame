@@ -11,6 +11,7 @@ public class ImageGetter {
     private BufferedImage player0,player45,player90,player135,player180,player225,player270,player315;
     private BufferedImage enemy0,enemy45,enemy90,enemy135,enemy180,enemy225,enemy270,enemy315;
     private BufferedImage greenblock;
+    private BufferedImage bomb;
     public ImageGetter(){
         //load in all the images
         try {// https://stackoverflow.com/questions/9864267/loading-image-resource/9866659#9866659
@@ -32,6 +33,7 @@ public class ImageGetter {
             enemy270 = ImageIO.read(getClass().getResource("/BoringImages/Enemy270.png"));
             enemy315 = ImageIO.read(getClass().getResource("/BoringImages/Enemy315.png"));
             greenblock = ImageIO.read(getClass().getResource("/BoringImages/greenblock.png"));
+            bomb = ImageIO.read(getClass().getResource("/BoringImages/bomb.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -72,6 +74,8 @@ public class ImageGetter {
             return enemy315;
         if (imgnum==16)
             return greenblock;
+        if (imgnum==17)
+            return bomb;
         return error;
     }
     //draw image

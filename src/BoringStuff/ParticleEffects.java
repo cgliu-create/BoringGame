@@ -1,6 +1,7 @@
 package BoringStuff;
 
 import BoringObjects.AliveObject;
+import BoringSprites.Bomb;
 import BoringSprites.Particle;
 
 import java.awt.*;
@@ -18,13 +19,6 @@ public class ParticleEffects {
         for(int i = 0; i <= particles.size() - 1;i++){
             particles.get(i).draw(window); // draws/redraw all particles
         }
-    }
-    public void addParticle(ArrayList<Particle> particles, int x, int y, int size, int dir, int spd, int life){
-        Particle p = new Particle(x,y,size,size,life,0, Color.black);
-        p.setDir(dir);
-        p.setSpeed(spd);
-        particles.add(p);
-
     }
     public void addParticle(ArrayList<Particle> particles, int x, int y, Color c){
         int spd = (int)(Math.random()*2)+2;
@@ -44,6 +38,14 @@ public class ParticleEffects {
         addParticle(particles,x,y,Color.RED); addParticle(particles,x,y,Color.RED);
         addParticle(particles,x,y,Color.ORANGE); addParticle(particles,x,y,Color.ORANGE);
         addParticle(particles,x,y,Color.YELLOW); addParticle(particles,x,y,Color.YELLOW);
+    }
+    public void addParticle(ArrayList<Particle> particles, Particle thisParticle, int x, int y, int dir){
+        //shoots bombs
+        Particle p = new Bomb(x,y,thisParticle.getWidth(),thisParticle.getHeight(),thisParticle.getHP(),thisParticle.getMP(), thisParticle.getColor(), thisParticle.getSpeed());
+        p.setDir(dir);
+        p.setSpeed(thisParticle.getSpeed());
+        particles.add(p);
+
     }
     public void Shoot(ArrayList<Particle> particles, AliveObject guy){
         int dir = 0;
@@ -65,12 +67,12 @@ public class ParticleEffects {
             dir = 315;
         int x = guy.getXPos()+guy.getWidth()/2;
         int y = guy.getYPos()+guy.getHeight()/2;
-        addParticle(particles, x, y, 25, dir,10, 60);
+        addParticle(particles, guy.getParticle(), x, y, dir);
     }
     public void checkCollisionsDamage(ArrayList<Particle> particles, AliveObject guy) {
         for (int i = particles.size() - 1; i >= 0; i--) {
             Particle p = particles.get(i);
-            if (p.getColor()==Color.BLACK){
+            if (p.getColor()!=Color.RED&&p.getColor()!=Color.ORANGE&&p.getColor()!=Color.YELLOW){
                 if (p.checkAllDir(guy)){
                     KaBoom(particles,p.getXPos(),p.getYPos());
                     particles.remove(i);

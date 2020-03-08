@@ -8,6 +8,7 @@ public class Player extends AliveObject {
     private ImageGetter i = new ImageGetter();
     private int img;
     private Aiming a = new Aiming(this);
+    private Bomb b = new Bomb(0,0,25,25,100,0,Color.black, 10);
     public Player (int x, int y, int wd, int ht, int hp, int mp) {
         super(x, y, wd, ht, hp, mp);
         setDir(360);
@@ -35,5 +36,9 @@ public class Player extends AliveObject {
             img = 7;
         a.draw(window);
         i.DrawImage(window,getXPos(),getYPos(),img,getWidth(),getHeight());
+    }
+    @Override
+    public Particle getParticle() {
+        return b;
     }
 }
