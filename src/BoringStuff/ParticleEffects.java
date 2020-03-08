@@ -3,6 +3,7 @@ package BoringStuff;
 import BoringObjects.AliveObject;
 import BoringSprites.Bomb;
 import BoringSprites.Particle;
+import BoringSprites.Shooty;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class ParticleEffects {
         particles.add(p);
 
     }
-    public void Shoot(ArrayList<Particle> particles, AliveObject guy){
+    public void Shoot(ArrayList<Particle> particles, Shooty guy){
         int dir = 0;
         if(Math.abs(guy.getDir())%360==0)
             dir = 0;
@@ -75,6 +76,10 @@ public class ParticleEffects {
             if (p.getColor()!=Color.RED&&p.getColor()!=Color.ORANGE&&p.getColor()!=Color.YELLOW){
                 if (p.checkAllDir(guy)){
                     KaBoom(particles,p.getXPos(),p.getYPos());
+                    KaBoom(particles,p.getXPos(),p.getYPos()+p.getHeight()/2);
+                    KaBoom(particles,p.getXPos(),p.getYPos()-p.getHeight()/2);
+                    KaBoom(particles,p.getXPos()+p.getWidth()/2,p.getYPos());
+                    KaBoom(particles,p.getXPos()-p.getWidth()/2,p.getYPos());
                     particles.remove(i);
                 }
             }

@@ -1,8 +1,6 @@
 package BoringImages;
     import javax.imageio.ImageIO;
     import java.awt.*;
-    import java.awt.geom.AffineTransform;
-    import java.awt.image.AffineTransformOp;
     import java.awt.image.BufferedImage;
     import java.io.IOException;
 public class ImageGetter {
@@ -16,22 +14,22 @@ public class ImageGetter {
         //load in all the images
         try {// https://stackoverflow.com/questions/9864267/loading-image-resource/9866659#9866659
             error = ImageIO.read(getClass().getResource("/BoringImages/error.png"));
-            player0 = ImageIO.read(getClass().getResource("/BoringImages/Player0.png"));
-            player45 = ImageIO.read(getClass().getResource("/BoringImages/Player45.png"));
-            player90 = ImageIO.read(getClass().getResource("/BoringImages/Player90.png"));
-            player135 = ImageIO.read(getClass().getResource("/BoringImages/Player135.png"));
-            player180 = ImageIO.read(getClass().getResource("/BoringImages/Player180.png"));
-            player225 = ImageIO.read(getClass().getResource("/BoringImages/Player225.png"));
-            player270 = ImageIO.read(getClass().getResource("/BoringImages/Player270.png"));
-            player315 = ImageIO.read(getClass().getResource("/BoringImages/Player315.png"));
-            enemy0 = ImageIO.read(getClass().getResource("/BoringImages/Enemy0.png"));
-            enemy45 = ImageIO.read(getClass().getResource("/BoringImages/Enemy45.png"));
-            enemy90 = ImageIO.read(getClass().getResource("/BoringImages/Enemy90.png"));
-            enemy135 = ImageIO.read(getClass().getResource("/BoringImages/Enemy135.png"));
-            enemy180 = ImageIO.read(getClass().getResource("/BoringImages/Enemy180.png"));
-            enemy225 = ImageIO.read(getClass().getResource("/BoringImages/Enemy225.png"));
-            enemy270 = ImageIO.read(getClass().getResource("/BoringImages/Enemy270.png"));
-            enemy315 = ImageIO.read(getClass().getResource("/BoringImages/Enemy315.png"));
+            player0 = ImageIO.read(getClass().getResource("/BoringImages/Player/Player0.png"));
+            player45 = ImageIO.read(getClass().getResource("/BoringImages/Player/Player45.png"));
+            player90 = ImageIO.read(getClass().getResource("/BoringImages/Player/Player90.png"));
+            player135 = ImageIO.read(getClass().getResource("/BoringImages/Player/Player135.png"));
+            player180 = ImageIO.read(getClass().getResource("/BoringImages/Player/Player180.png"));
+            player225 = ImageIO.read(getClass().getResource("/BoringImages/Player/Player225.png"));
+            player270 = ImageIO.read(getClass().getResource("/BoringImages/Player/Player270.png"));
+            player315 = ImageIO.read(getClass().getResource("/BoringImages/Player/Player315.png"));
+            enemy0 = ImageIO.read(getClass().getResource("/BoringImages/Enemy/Enemy0.png"));
+            enemy45 = ImageIO.read(getClass().getResource("/BoringImages/Enemy/Enemy45.png"));
+            enemy90 = ImageIO.read(getClass().getResource("/BoringImages/Enemy/Enemy90.png"));
+            enemy135 = ImageIO.read(getClass().getResource("/BoringImages/Enemy/Enemy135.png"));
+            enemy180 = ImageIO.read(getClass().getResource("/BoringImages/Enemy/Enemy180.png"));
+            enemy225 = ImageIO.read(getClass().getResource("/BoringImages/Enemy/Enemy225.png"));
+            enemy270 = ImageIO.read(getClass().getResource("/BoringImages/Enemy/Enemy270.png"));
+            enemy315 = ImageIO.read(getClass().getResource("/BoringImages/Enemy/Enemy315.png"));
             greenblock = ImageIO.read(getClass().getResource("/BoringImages/greenblock.png"));
             bomb = ImageIO.read(getClass().getResource("/BoringImages/bomb.png"));
         } catch (IOException e) {

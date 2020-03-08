@@ -4,17 +4,13 @@ import BoringImages.ImageGetter;
 import BoringStuff.Aiming;
 
 import java.awt.*;
-public class Player extends AliveObject {
+public class Player extends Shooty {
     private ImageGetter i = new ImageGetter();
     private int img;
-    private Aiming a = new Aiming(this);
     private Bomb b = new Bomb(0,0,50,50,100,0,Color.black, 10);
     public Player (int x, int y, int wd, int ht, int hp, int mp) {
         super(x, y, wd, ht, hp, mp);
         setDir(360);
-    }
-    public void drawSuper(Graphics window){
-        super.draw(window);
     }
     @Override
     public void draw(Graphics window) {
@@ -34,7 +30,7 @@ public class Player extends AliveObject {
             img = 6;
         if(Math.abs(getDir())%360==315)
             img = 7;
-        a.draw(window);
+        drawAim(window);
         i.DrawImage(window,getXPos(),getYPos(),img,getWidth(),getHeight());
     }
     @Override

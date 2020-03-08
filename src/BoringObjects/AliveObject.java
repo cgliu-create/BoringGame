@@ -3,7 +3,7 @@ package BoringObjects;
 import BoringSprites.Particle;
 import java.awt.*;
 
-public abstract class AliveObject extends GameObject {
+public class AliveObject extends GameObject {
     private Colliding c = new Colliding(this);
     private Moving m = new Moving();
     private Living l;
@@ -46,5 +46,4 @@ public abstract class AliveObject extends GameObject {
                 ", l=" + l + "\n" +
                 '}';
     }
-    public abstract Particle getParticle();
 }
