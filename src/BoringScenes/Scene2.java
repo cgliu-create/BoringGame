@@ -1,7 +1,7 @@
 package BoringScenes;
 import BoringObjects.CollisObject;
 import BoringSprites.Enemy;
-import BoringSprites.JustImage;
+import BoringObjects.JustImage;
 import BoringSprites.Particle;
 import BoringSprites.Player;
 import BoringStuff.ParticleEffects;

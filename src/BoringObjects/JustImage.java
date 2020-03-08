@@ -1,4 +1,4 @@
-package BoringSprites;
+package BoringObjects;
 import BoringObjects.GameObject;
 import BoringImages.ImageGetter;
 import java.awt.*;
