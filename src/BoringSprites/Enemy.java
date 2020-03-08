@@ -4,7 +4,7 @@ import BoringImages.ImageGetter;
 import java.awt.*;
 public class Enemy extends AliveObject {
     private ImageGetter i = new ImageGetter();
-    private Particle p = new Particle(0,0,10,10,100,0,Color.black, 10);
+    private Bomb b = new Bomb(0,0,25,25,100,0,Color.black, 10);
     public Enemy (int x, int y, int wd, int ht, int hp, int mp) {
         super(x, y, wd, ht, hp, mp);
     }
@@ -18,6 +18,6 @@ public class Enemy extends AliveObject {
     }
     @Override
     public Particle getParticle() {
-        return p;
+        return b;
     }
 }
