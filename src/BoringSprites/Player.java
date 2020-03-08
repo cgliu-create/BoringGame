@@ -7,6 +7,7 @@ public class Player extends AliveObject {
     private int img;
     public Player (int x, int y, int wd, int ht, int hp, int mp) {
         super(x, y, wd, ht, hp, mp);
+        setDir(360);
     }
     @Override
     public void draw(Graphics window) {

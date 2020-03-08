@@ -45,9 +45,25 @@ public class ParticleEffects {
         addParticle(particles,x,y,c); addParticle(particles,x,y,c);
     }
     public void Shoot(ArrayList<Particle> particles, AliveObject guy){
-        int dir = guy.getDir();
+        int dir = 0;
+        if(Math.abs(guy.getDir())%360==0)
+            dir = 0;
+        if(Math.abs(guy.getDir())%360==45)
+            dir = 45;
+        if(Math.abs(guy.getDir())%360==90)
+            dir = 90;
+        if(Math.abs(guy.getDir())%360==135)
+            dir = 135;
+        if(Math.abs(guy.getDir())%360==180)
+            dir = 180;
+        if(Math.abs(guy.getDir())%360==225)
+            dir = 225;
+        if(Math.abs(guy.getDir())%360==270)
+            dir = 270;
+        if(Math.abs(guy.getDir())%360==315)
+            dir = 315;
         int x = guy.getXPos()+guy.getWidth()/2;
         int y = guy.getYPos()+guy.getHeight()/2;
-        addParticle(particles, x, y, 10, dir,10, 120);
+        addParticle(particles, x, y, 10, dir,10, 60);
     }
 }

@@ -28,5 +28,12 @@ public class Scene2 extends Scene {
         background.draw(window);
         enemy.draw(window);
         particleEffects.DrawAllParticles(particles,window);
-        super.getPlayer().draw(window);}
+        super.getPlayer().draw(window);
+        window.setFont(new Font("TAHOMA", Font.BOLD,20));
+        window.drawString("HP:"+player.getHP(),getW()-100,getH()-130);
+        window.drawString("MP:"+player.getMP(),getW()-100,getH()-100);
+        window.drawString("Dir:"+(player.getDir()-360),getW()-100,getH()-70);
+        window.drawString("Spd:"+(player.getSpeed()/2),getW()-100,getH()-40);
+
+    }
 }

@@ -34,18 +34,26 @@ public class PlayerInput implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            player.setSpeed(0);
+            if(player.getSpeed()>-4)
+                player.setSpeed(player.getSpeed()-2);
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            player.setSpeed(3);
+            if(player.getSpeed()<4)
+                player.setSpeed(player.getSpeed()+2);
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             int dir = player.getDir();
             player.setDir(dir - 45);
+            if(player.getDir()==0){
+                player.setDir(360);
+            }
         }
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             int dir = player.getDir();
             player.setDir(dir + 45);
+            if(player.getDir()==720){
+                player.setDir(360);
+            }
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             particleEffects.Shoot(particles, player);
@@ -53,5 +61,7 @@ public class PlayerInput implements KeyListener {
     }
     @Override
     public void keyReleased(KeyEvent e) {
+        //if(player.getSpeed()!=0)
+        //    player.setSpeed(0);
     }
 }
