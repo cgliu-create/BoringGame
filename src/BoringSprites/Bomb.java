@@ -11,7 +11,7 @@ public class Bomb extends Particle{
     }
     @Override
     public void draw(Graphics window) {
-        i.DrawImage(window,getXPos(),getYPos(),17,
+        i.DrawImage(window,getXPos()-getWidth()/2,getYPos()-getHeight()/2,17,
                 getWidth(),getHeight());
     }
 }
