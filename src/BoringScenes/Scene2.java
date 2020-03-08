@@ -1,5 +1,5 @@
 package BoringScenes;
-import BoringObjects.GameObject;
+import BoringObjects.CollisObject;
 import BoringSprites.Enemy;
 import BoringSprites.JustImage;
 import BoringSprites.Particle;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Scene2 extends Scene {
     private Player player = super.getPlayer();
-    private Player temp = new Player(0,0,player.getWidth(),player.getHeight(),0,0);
+    private CollisObject temp = new CollisObject(0,0,player.getWidth(),player.getHeight());
     private ArrayList<Particle> particles = super.getParticles();
     private ParticleEffects particleEffects = super.getParticleEffects();
     private Enemy enemy = new Enemy(300,300,100,100, 100, 100);
@@ -24,10 +24,12 @@ public class Scene2 extends Scene {
         int x = player.getXPos()+player.getXspeed();
         int y = player.getYPos()+player.getYspeed();
         temp.setXPos(x);temp.setYPos(y);
-        if (x>=0&&x<=getW()-player.getWidth()&& !(player.checkAllDir(enemy))) //x bounds
-            player.setXPos(x);
-        if (y>=0&&y<=getH()-player.getHeight()&& !(player.checkAllDir(enemy))) //y bounds
-            player.setYPos(y);
+        if (!(temp.checkAllDir(enemy))){
+            if (x>=0&&x<=getW()-player.getWidth()) //x bounds
+                player.setXPos(x);
+            if (y>=0&&y<=getH()-player.getHeight()) //y bounds
+                player.setYPos(y);
+        }
     }
     @Override
     public void updateOther() {
@@ -46,6 +48,7 @@ public class Scene2 extends Scene {
         window.drawRect(enemy.getXPos(),enemy.getYPos(),enemy.getWidth(),enemy.getHeight());
         particleEffects.DrawAllParticles(particles,window);
         player.draw(window);
+        temp.draw(window);
         window.drawRect(player.getXPos(),player.getYPos(),player.getWidth(),player.getHeight());
     }
 }
