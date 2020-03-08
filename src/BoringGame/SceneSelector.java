@@ -17,7 +17,7 @@ public class SceneSelector extends JFrame {
     }
     //tick and render
     public void sceneUpdate(){
-        this.getScene().updateSprite();
+        this.getScene().updatePlayer(); this.getScene().updateOther();
     }
     public void sceneRepaint(){
         this.getScene().repaint();
