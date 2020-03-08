@@ -7,6 +7,9 @@ public class Enemy extends AliveObject {
     public Enemy (int x, int y, int wd, int ht, int hp, int mp) {
         super(x, y, wd, ht, hp, mp);
     }
+    public void drawSuper(Graphics window){
+        super.draw(window);
+    }
     @Override
     public void draw(Graphics window) {
         i.DrawImage(window,getXPos(),getYPos(),14,

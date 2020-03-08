@@ -10,6 +10,9 @@ public class Player extends AliveObject {
         super(x, y, wd, ht, hp, mp);
         setDir(360);
     }
+    public void drawSuper(Graphics window){
+        super.draw(window);
+    }
     @Override
     public void draw(Graphics window) {
         if(Math.abs(getDir())%360==0)

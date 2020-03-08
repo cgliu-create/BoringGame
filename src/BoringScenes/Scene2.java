@@ -46,10 +46,11 @@ public class Scene2 extends Scene {
         window.drawString("Dir:"+(player.getDir()-360),getW()-100,getH()-70);
         window.drawString("Spd:"+(player.getSpeed()/2),getW()-100,getH()-40);
         enemy.draw(window);
-        window.drawRect(enemy.getXPos(),enemy.getYPos(),enemy.getWidth(),enemy.getHeight());
+        enemy.drawSuper(window);
         particleEffects.DrawAllParticles(particles,window);
         player.draw(window);
+        player.drawSuper(window);
         temp.draw(window);
-        window.drawRect(player.getXPos(),player.getYPos(),player.getWidth(),player.getHeight());
+
     }
 }
