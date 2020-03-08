@@ -1,7 +1,6 @@
 package BoringSprites;
 import BoringObjects.AliveObject;
 import BoringImages.ImageGetter;
-import BoringObjects.GameObject;
 
 import java.awt.*;
 public class Player extends AliveObject {

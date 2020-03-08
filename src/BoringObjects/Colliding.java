@@ -7,7 +7,7 @@ public class Colliding {
         if(otherThing.getXPos()>=thisThing.getXPos()&&otherThing.getXPos()<=(thisThing.getXPos()+thisThing.getWidth())
                 //top left
         || otherThing.getXPos()<=thisThing.getXPos()&&thisThing.getXPos()<=(otherThing.getXPos()+otherThing.getWidth())){
-            if(Math.abs((otherThing.getYPos()+otherThing.getHeight()) - thisThing.getYPos())<=1){
+            if(Math.abs(otherThing.getYPos() - (thisThing.getYPos()+thisThing.getHeight()))<=2){
                 return true;
             }
         }
@@ -18,7 +18,7 @@ public class Colliding {
         if(otherThing.getXPos()>=thisThing.getXPos()&&otherThing.getXPos()<=(thisThing.getXPos()+thisThing.getWidth())
                 //bottom left
         || otherThing.getXPos()<=thisThing.getXPos()&&thisThing.getXPos()<=(otherThing.getXPos()+otherThing.getWidth())){
-            if(Math.abs(otherThing.getYPos() - (thisThing.getYPos()+thisThing.getHeight()))<=1){
+            if(Math.abs((otherThing.getYPos()+otherThing.getHeight()) - thisThing.getYPos())<=2){
                 return true;
             }
         }
@@ -29,7 +29,7 @@ public class Colliding {
         if(otherThing.getYPos()>=thisThing.getYPos()&&otherThing.getYPos()<=(thisThing.getYPos()+thisThing.getHeight())
                 //left bottom
         || otherThing.getYPos()<=thisThing.getYPos()&&thisThing.getYPos()<=(otherThing.getYPos()+otherThing.getHeight())){
-            if(Math.abs((otherThing.getXPos() + otherThing.getWidth()) -thisThing.getXPos())<=1){
+            if(Math.abs(otherThing.getXPos() - (thisThing.getXPos() + thisThing.getWidth()))<=2){
                 return true;
             }
         }
@@ -40,7 +40,7 @@ public class Colliding {
         if(otherThing.getYPos()>=thisThing.getYPos()&&otherThing.getYPos()<=(thisThing.getYPos()+thisThing.getHeight())
                 //left bottom
         || otherThing.getYPos()<=thisThing.getYPos()&&thisThing.getYPos()<=(otherThing.getYPos()+otherThing.getHeight())){
-            if(Math.abs(otherThing.getXPos() - (thisThing.getXPos() + thisThing.getWidth()))<= 1){
+            if(Math.abs((otherThing.getXPos() + otherThing.getWidth()) -thisThing.getXPos())<=2){
                 return true;
             }
         }

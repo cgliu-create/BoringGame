@@ -1,10 +1,17 @@
 package BoringObjects;
 
-public abstract class MoveObject extends GameObject {
+import java.awt.*;
+
+public class MoveObject extends GameObject {
         private Colliding c = new Colliding();
         private Moving m = new Moving();
         public MoveObject (int x, int y, int wd, int ht) {
             super(x, y, wd, ht);
+        }
+        @Override
+        public void draw(Graphics window) {
+                window.setColor(Color.WHITE);
+                window.drawRect(getXPos(),getYPos(),getWidth(),getHeight());
         }
         //check colliding
         public boolean checkAllDir(GameObject other){ return c.checkAllDir(this,other);}

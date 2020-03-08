@@ -1,6 +1,7 @@
 package BoringSprites;
 
 import BoringObjects.AliveObject;
+import BoringObjects.GameObject;
 
 import java.awt.*;
 
@@ -10,6 +11,15 @@ public class Particle extends AliveObject {
         super(x, y, wd, ht, hp, mp);
         color = c;
     }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     public boolean update(){
         int x = getXPos() + getXspeed();
         int y = getYPos() + getYspeed();

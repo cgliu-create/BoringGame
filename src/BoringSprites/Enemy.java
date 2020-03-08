@@ -9,7 +9,7 @@ public class Enemy extends AliveObject {
     }
     @Override
     public void draw(Graphics window) {
-        i.DrawImage(window,getXPos(),getYPos(),15,
+        i.DrawImage(window,getXPos(),getYPos(),14,
                 getWidth(),getHeight());
     }
 }

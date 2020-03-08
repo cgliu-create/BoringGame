@@ -3,6 +3,8 @@ package BoringScenes;
 import BoringObjects.AliveObject;
 import BoringObjects.GameObject;
 import BoringSprites.Particle;
+import BoringSprites.Player;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -65,6 +67,17 @@ public class ParticleEffects {
             dir = 315;
         int x = guy.getXPos()+guy.getWidth()/2;
         int y = guy.getYPos()+guy.getHeight()/2;
-        addParticle(particles, x, y, 20, dir,10, 60);
+        addParticle(particles, x, y, 25, dir,10, 60);
+    }
+    public void checkCollisionsDamage(ArrayList<Particle> particles, AliveObject guy) {
+        for (int i = particles.size() - 1; i >= 0; i--) {
+            Particle p = particles.get(i);
+            if (p.getColor()==Color.BLACK){
+                if (p.checkAllDir(guy)){
+                    KaBoom(particles,p.getXPos(),p.getYPos());
+                    particles.remove(i);
+                }
+            }
+        }
     }
 }

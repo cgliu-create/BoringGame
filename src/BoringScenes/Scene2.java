@@ -33,6 +33,7 @@ public class Scene2 extends Scene {
     }
     @Override
     public void updateOther() {
+        particleEffects.checkCollisionsDamage(particles,enemy);
         particleEffects.RemoveParticles(particles);
     }
     public void update(Graphics window) { paint(window); }
