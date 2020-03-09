@@ -23,7 +23,7 @@ public abstract class Shooty extends AliveObject {
             bomb.setDir(dir);
             return bomb;
         }
-        Particle bullet = new Particle(x,y,25,25,100,0,Color.black,10+this.getSpeed());
+       Bullet bullet = new Bullet(x,y,25,25,100,0,Color.black,10+this.getSpeed());
         bullet.setDir(dir);
         return bullet;
     }

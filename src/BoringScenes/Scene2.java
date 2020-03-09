@@ -9,7 +9,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Scene2 extends Scene {
-    private JustImage background = new JustImage(0,0, getW(), getH(),16);
+    private JustImage background = new JustImage(0,0, getW(), getH(),29);
     private ParticleEffects particleEffects = new ParticleEffects();
     //player
     private Player player = super.getPlayer();

@@ -12,8 +12,17 @@ public class ParticleEffects {
     // Particle Stuff
     public void RemoveParticles(ArrayList<Particle> particles){
         for(int i = particles.size()- 1; i>=0; i--){
-            if(particles.get(i).update()) // changes particle values, removes if life = 0
+            if(particles.get(i).update()) { // changes particle values, removes if life = 0
+                Particle p = particles.get(i);
+                if (p instanceof Bomb) {
+                    KaBoom(particles, p.getXPos(), p.getYPos());
+                    KaBoom(particles, p.getXPos(), p.getYPos() + p.getHeight() / 2);
+                    KaBoom(particles, p.getXPos(), p.getYPos() - p.getHeight() / 2);
+                    KaBoom(particles, p.getXPos() + p.getWidth() / 2, p.getYPos());
+                    KaBoom(particles, p.getXPos() - p.getWidth() / 2, p.getYPos());
+                }
                 particles.remove(i);
+            }
         }
     }
     public void DrawAllParticles(ArrayList<Particle> particles, Graphics window){
@@ -40,6 +49,11 @@ public class ParticleEffects {
         addParticle(particles,x,y,Color.RED); addParticle(particles,x,y,Color.RED);
         addParticle(particles,x,y,Color.ORANGE); addParticle(particles,x,y,Color.ORANGE);
         addParticle(particles,x,y,Color.YELLOW); addParticle(particles,x,y,Color.YELLOW);
+    }
+    public void KaBoom(ArrayList<Particle> particles, int x, int y, Color color, int num){
+        for (int i = 0; i<num; i++) {
+            addParticle(particles,x,y,color);
+        }
     }
     //add specific particle
     public void addParticle(ArrayList<Particle> particles, Particle thisParticle){
@@ -71,14 +85,19 @@ public class ParticleEffects {
     public void checkCollisionsDamage(ArrayList<Particle> particles, AliveObject guy) {
         for (int i = particles.size() - 1; i >= 0; i--) {
             Particle p = particles.get(i);
-            if (p.getColor()!=Color.RED&&p.getColor()!=Color.ORANGE&&p.getColor()!=Color.YELLOW){
+            if (p.getColor()!=Color.RED&&p.getColor()!=Color.ORANGE&&p.getColor()!=Color.YELLOW&&p.getColor()!=Color.DARK_GRAY){
                 if (p.checkAllDir(guy)){
-                    KaBoom(particles,p.getXPos(),p.getYPos());
-                    KaBoom(particles,p.getXPos(),p.getYPos()+p.getHeight()/2);
-                    KaBoom(particles,p.getXPos(),p.getYPos()-p.getHeight()/2);
-                    KaBoom(particles,p.getXPos()+p.getWidth()/2,p.getYPos());
-                    KaBoom(particles,p.getXPos()-p.getWidth()/2,p.getYPos());
-                    particles.remove(i);
+                    if (p instanceof Bomb){
+                        KaBoom(particles,p.getXPos(),p.getYPos());
+                        KaBoom(particles,p.getXPos(),p.getYPos()+p.getHeight()/2);
+                        KaBoom(particles,p.getXPos(),p.getYPos()-p.getHeight()/2);
+                        KaBoom(particles,p.getXPos()+p.getWidth()/2,p.getYPos());
+                        KaBoom(particles,p.getXPos()-p.getWidth()/2,p.getYPos());
+                        particles.remove(i);
+                    } else {
+                        KaBoom(particles,p.getXPos(),p.getYPos(),Color.DARK_GRAY,6);
+                        particles.remove(i);
+                    }
                 }
             }
         }

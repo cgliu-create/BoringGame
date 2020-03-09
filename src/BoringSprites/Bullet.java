@@ -1,13 +1,11 @@
 package BoringSprites;
 
-import BoringImages.ImageGetter;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Bomb extends Particle{
-    private ImageGetter i = new ImageGetter();
+public class Bullet extends Particle{
     private ArrayList<Particle> trail = new ArrayList<>();
-    public Bomb(int x, int y, int wd, int ht, int hp, int mp, Color c, int spd) {
+    public Bullet(int x, int y, int wd, int ht, int hp, int mp, Color c, int spd) {
         super(x, y, wd, ht, hp, mp, c, spd);
     }
     @Override
@@ -21,7 +19,7 @@ public class Bomb extends Particle{
         for (Particle p:trail) {
             p.draw(window);
         }
-        i.DrawImage(window,getXPos()-getWidth()/2,getYPos()-getHeight()/2,28,
-                getWidth(),getHeight());
+        window.setColor(getColor());
+        window.fillOval(getXPos() - (getWidth() / 2), getYPos() - (getHeight() / 2), getWidth(), getHeight());
     }
 }
