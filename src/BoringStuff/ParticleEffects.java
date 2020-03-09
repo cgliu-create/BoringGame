@@ -21,6 +21,7 @@ public class ParticleEffects {
             particles.get(i).draw(window); // draws/redraw all particles
         }
     }
+    //random particle
     public void addParticle(ArrayList<Particle> particles, int x, int y, Color c){
         int spd = (int)(Math.random()*2)+2;
         int dir = (int)(Math.random()*360);
@@ -40,13 +41,10 @@ public class ParticleEffects {
         addParticle(particles,x,y,Color.ORANGE); addParticle(particles,x,y,Color.ORANGE);
         addParticle(particles,x,y,Color.YELLOW); addParticle(particles,x,y,Color.YELLOW);
     }
-    public void addParticle(ArrayList<Particle> particles, Particle thisParticle, int x, int y, int dir){
+    //add specific particle
+    public void addParticle(ArrayList<Particle> particles, Particle thisParticle){
         //shoots bombs
-        Particle p = new Bomb(x,y,thisParticle.getWidth(),thisParticle.getHeight(),thisParticle.getHP(),thisParticle.getMP(), thisParticle.getColor(), thisParticle.getSpeed());
-        p.setDir(dir);
-        p.setSpeed(thisParticle.getSpeed());
-        particles.add(p);
-
+        particles.add(thisParticle);
     }
     public void Shoot(ArrayList<Particle> particles, Shooty guy){
         int dir = 0;
@@ -68,7 +66,7 @@ public class ParticleEffects {
             dir = 315;
         int x = guy.getXPos()+guy.getWidth()/2;
         int y = guy.getYPos()+guy.getHeight()/2;
-        addParticle(particles, guy.getParticle(), x, y, dir);
+        addParticle(particles, guy.getParticle(x, y, dir));
     }
     public void checkCollisionsDamage(ArrayList<Particle> particles, AliveObject guy) {
         for (int i = particles.size() - 1; i >= 0; i--) {

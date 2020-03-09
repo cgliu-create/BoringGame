@@ -9,8 +9,8 @@ public class ImageGetter {
     private BufferedImage player0,player45,player90,player135,player180,player225,player270,player315;
     private BufferedImage enemy0,enemy45,enemy90,enemy135,enemy180,enemy225,enemy270,enemy315;
     private BufferedImage dead0,dead45,dead90,dead135,dead180,dead225,dead270,dead315;
-    private BufferedImage greenblock;
-    private BufferedImage bomb;
+    private BufferedImage greenblock,box,wall;
+    private BufferedImage bomb,mine,tnt;
     public ImageGetter(){
         //load in all the images
         try {// https://stackoverflow.com/questions/9864267/loading-image-resource/9866659#9866659
@@ -39,9 +39,12 @@ public class ImageGetter {
             dead225 = ImageIO.read(getClass().getResource("/BoringImages/Dead/Dead225.png"));
             dead270 = ImageIO.read(getClass().getResource("/BoringImages/Dead/Dead270.png"));
             dead315 = ImageIO.read(getClass().getResource("/BoringImages/Dead/Dead315.png"));
-
-            greenblock = ImageIO.read(getClass().getResource("/BoringImages/greenblock.png"));
-            bomb = ImageIO.read(getClass().getResource("/BoringImages/bomb.png"));
+            bomb = ImageIO.read(getClass().getResource("/BoringImages/Weapon/bomb.png"));
+            mine = ImageIO.read(getClass().getResource("/BoringImages/Weapon/mine.png"));
+            tnt = ImageIO.read(getClass().getResource("/BoringImages/Weapon/tnt.png"));
+            greenblock = ImageIO.read(getClass().getResource("/BoringImages/Enviro/greenblock.png"));
+            box = ImageIO.read(getClass().getResource("/BoringImages/Enviro/box.png"));
+            wall = ImageIO.read(getClass().getResource("/BoringImages/Enviro/wall.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -81,9 +84,9 @@ public class ImageGetter {
         if (imgnum==15)
             return enemy315;
         if (imgnum==16)
-            return greenblock;
+            return box;
         if (imgnum==17)
-            return bomb;
+            return wall;
         if (imgnum==18)
             return dead0;
         if (imgnum==19)
@@ -100,6 +103,14 @@ public class ImageGetter {
             return dead270;
         if (imgnum==25)
             return dead315;
+        if (imgnum==26)
+            return mine;
+        if (imgnum==27)
+            return tnt;
+        if (imgnum==28)
+            return bomb;
+        if (imgnum==29)
+            return greenblock;
         return error;
     }
     //draw image

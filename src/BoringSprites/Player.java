@@ -1,13 +1,10 @@
 package BoringSprites;
-import BoringObjects.AliveObject;
 import BoringImages.ImageGetter;
-import BoringStuff.Aiming;
 
 import java.awt.*;
 public class Player extends Shooty {
     private ImageGetter i = new ImageGetter();
     private int img;
-    private Bomb b = new Bomb(0,0,50,50,100,0,Color.black, 10);
     public Player (int x, int y, int wd, int ht, int hp, int mp) {
         super(x, y, wd, ht, hp, mp);
         setDir(360);
@@ -33,8 +30,10 @@ public class Player extends Shooty {
         drawAim(window);
         i.DrawImage(window,getXPos(),getYPos(),img,getWidth(),getHeight());
     }
-    @Override
-    public Particle getParticle() {
-        return b;
+    public void switchBullet(){
+        int b = this.getBullet()+1;
+        if (b==2)
+            setBullet(0);
+        setBullet(b);
     }
 }

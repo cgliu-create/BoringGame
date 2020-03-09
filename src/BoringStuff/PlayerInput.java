@@ -58,7 +58,7 @@ public class PlayerInput implements KeyListener {
         }
         // for fun
         if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-            player.setMP(100);
+            player.switchBullet();
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             if(player.getMP()>0){

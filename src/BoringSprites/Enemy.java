@@ -1,5 +1,4 @@
 package BoringSprites;
-import BoringObjects.AliveObject;
 import BoringImages.ImageGetter;
 import java.awt.*;
 public class Enemy extends Shooty {
@@ -30,9 +29,5 @@ public class Enemy extends Shooty {
             img = 15;
         drawAim(window);
         i.DrawImage(window,getXPos(),getYPos(),img,getWidth(),getHeight());
-    }
-    @Override
-    public Particle getParticle() {
-        return b;
     }
 }
