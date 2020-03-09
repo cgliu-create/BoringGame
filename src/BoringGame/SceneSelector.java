@@ -11,13 +11,19 @@ public class SceneSelector extends JFrame {
         setSize(width,height);
         setResizable(false);
         setVisible(true);
-        scene1 = new Scene1(width,height);
-        scene2 = new Scene2(width,height);
+        scene1 = new Scene1(width,height,0);
+        scene2 = new Scene2(width,height,1);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
     //tick and render
     public void sceneUpdate(){
-        this.getScene().updatePlayer(); this.getScene().updateOther();
+        this.getScene().updatePlayer();
+        this.getScene().updateOther();
+        int sn = this.getScene().getScenenum();
+        if(curScene!=sn){
+            this.getScene().setScenenum(curScene);
+            setScene(sn);
+        }
     }
     public void sceneRepaint(){
         this.getScene().repaint();
@@ -48,8 +54,4 @@ public class SceneSelector extends JFrame {
         this.repaint();
         curScene = scene;
     }
-    //get scene status
-    public int getStatus(){
-        return 0;
-    }
-}//moo
+}

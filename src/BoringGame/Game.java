@@ -2,8 +2,8 @@ package BoringGame;
 
 public class Game implements Runnable{
     //Frame
-    private static final  int width = 600;
-    private static final int height = 600;
+    private static final  int width = 1000;
+    private static final int height = 800;
     private final String title = "Chris Game";
     private SceneSelector sceneSelector = new SceneSelector(title,width,height);
     //Running

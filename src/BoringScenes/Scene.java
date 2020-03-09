@@ -1,7 +1,6 @@
 package BoringScenes;
 import BoringSprites.Particle;
 import BoringSprites.Player;
-import BoringStuff.ParticleEffects;
 import BoringStuff.PlayerInput;
 import javax.swing.*;
 import java.util.ArrayList;
@@ -9,21 +8,18 @@ import java.util.ArrayList;
 public abstract class Scene extends JPanel {
     private PlayerInput playerInput = new PlayerInput();
     private int w,h;
-    public Scene(int W, int H) {
+    int scenenum;
+    public Scene(int W, int H, int scenenum) {
         setSize(W,H);
         w=W;h=H;
+        this.scenenum = scenenum;
     }
+    public int getScenenum() { return scenenum; }
     public int getW() { return w; }
     public int getH() { return h; }
-    public void updatePlayer() {
-        Player player = playerInput.getPlayer();
-        int x = player.getXPos()+player.getXspeed();
-        int y = player.getYPos()+player.getYspeed();
-        if (x>=0&&x<=w-player.getWidth()) //x bounds
-            player.setXPos(x);
-        if (y>=0&&y<=h-player.getHeight()) //y bounds
-            player.setYPos(y);
-    }
+    public void setScenenum(int scenenum) { this.scenenum = scenenum; }
+    public void setW(int w) { this.w = w; }
+    public void setH(int h) { this.h = h; }
     // get and set from player input
     public Player getPlayer(){
         return playerInput.getPlayer();
@@ -35,10 +31,9 @@ public abstract class Scene extends JPanel {
     public PlayerInput getPlayerInput(){
         return playerInput;
     }
-    public ParticleEffects getParticleEffects() {
-        return playerInput.getParticleEffects();
-    }
+    //to be implemented
+    public abstract void updatePlayer();
+    public abstract void updateOther();
     //public void update(Graphics window) {}
     //public void paint(Graphics window) {}
-    public abstract void updateOther();
 }

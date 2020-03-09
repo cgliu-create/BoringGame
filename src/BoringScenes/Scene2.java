@@ -5,19 +5,20 @@ import BoringObjects.JustImage;
 import BoringSprites.Particle;
 import BoringSprites.Player;
 import BoringStuff.ParticleEffects;
-
 import java.awt.*;
 import java.util.ArrayList;
 
 public class Scene2 extends Scene {
+    private JustImage background = new JustImage(0,0, getW(), getH(),16);
+    private ParticleEffects particleEffects = new ParticleEffects();
+    //player
     private Player player = super.getPlayer();
     private CollisObject temp = new CollisObject(0,0,player.getWidth(),player.getHeight());
     private ArrayList<Particle> particles = super.getParticles();
-    private ParticleEffects particleEffects = super.getParticleEffects();
+    //Enemy
     private Enemy enemy = new Enemy(300,300,100,100, 100, 100);
-    private JustImage background = new JustImage(0,0, getW(), getH(),16);
-    public Scene2(int W, int H) {
-        super(W, H);
+    public Scene2(int W, int H, int sn) {
+        super(W, H, sn);
         //setBackground(Color.black);
         setVisible(true);
     }
@@ -52,6 +53,5 @@ public class Scene2 extends Scene {
         player.draw(window);
         player.drawSuper(window);
         temp.draw(window);
-
     }
 }

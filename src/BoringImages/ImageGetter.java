@@ -8,6 +8,7 @@ public class ImageGetter {
     private BufferedImage error;
     private BufferedImage player0,player45,player90,player135,player180,player225,player270,player315;
     private BufferedImage enemy0,enemy45,enemy90,enemy135,enemy180,enemy225,enemy270,enemy315;
+    private BufferedImage dead0,dead45,dead90,dead135,dead180,dead225,dead270,dead315;
     private BufferedImage greenblock;
     private BufferedImage bomb;
     public ImageGetter(){
@@ -30,6 +31,15 @@ public class ImageGetter {
             enemy225 = ImageIO.read(getClass().getResource("/BoringImages/Enemy/Enemy225.png"));
             enemy270 = ImageIO.read(getClass().getResource("/BoringImages/Enemy/Enemy270.png"));
             enemy315 = ImageIO.read(getClass().getResource("/BoringImages/Enemy/Enemy315.png"));
+            dead0 = ImageIO.read(getClass().getResource("/BoringImages/Dead/Dead0.png"));
+            dead45 = ImageIO.read(getClass().getResource("/BoringImages/Dead/Dead45.png"));
+            dead90 = ImageIO.read(getClass().getResource("/BoringImages/Dead/Dead90.png"));
+            dead135 = ImageIO.read(getClass().getResource("/BoringImages/Dead/Dead135.png"));
+            dead180 = ImageIO.read(getClass().getResource("/BoringImages/Dead/Dead180.png"));
+            dead225 = ImageIO.read(getClass().getResource("/BoringImages/Dead/Dead225.png"));
+            dead270 = ImageIO.read(getClass().getResource("/BoringImages/Dead/Dead270.png"));
+            dead315 = ImageIO.read(getClass().getResource("/BoringImages/Dead/Dead315.png"));
+
             greenblock = ImageIO.read(getClass().getResource("/BoringImages/greenblock.png"));
             bomb = ImageIO.read(getClass().getResource("/BoringImages/bomb.png"));
         } catch (IOException e) {
@@ -74,6 +84,22 @@ public class ImageGetter {
             return greenblock;
         if (imgnum==17)
             return bomb;
+        if (imgnum==18)
+            return dead0;
+        if (imgnum==19)
+            return dead45;
+        if (imgnum==20)
+            return dead90;
+        if (imgnum==21)
+            return dead135;
+        if (imgnum==22)
+            return dead180;
+        if (imgnum==23)
+            return dead225;
+        if (imgnum==24)
+            return dead270;
+        if (imgnum==25)
+            return dead315;
         return error;
     }
     //draw image
