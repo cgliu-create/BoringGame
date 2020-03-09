@@ -88,14 +88,14 @@ public class ParticleEffects {
             if (p.getColor()!=Color.RED&&p.getColor()!=Color.ORANGE&&p.getColor()!=Color.YELLOW&&p.getColor()!=Color.DARK_GRAY){
                 if (p.checkAllDir(guy)){
                     if (p instanceof Bomb){
-                        KaBoom(particles,p.getXPos(),p.getYPos());
+                        KaBoom(particles,p.getXPos(),p.getYPos(),Color.DARK_GRAY,10);
                         KaBoom(particles,p.getXPos(),p.getYPos()+p.getHeight()/2);
                         KaBoom(particles,p.getXPos(),p.getYPos()-p.getHeight()/2);
                         KaBoom(particles,p.getXPos()+p.getWidth()/2,p.getYPos());
                         KaBoom(particles,p.getXPos()-p.getWidth()/2,p.getYPos());
                         particles.remove(i);
                     } else {
-                        KaBoom(particles,p.getXPos(),p.getYPos(),Color.DARK_GRAY,6);
+                        KaBoom(particles,p.getXPos(),p.getYPos(),Color.DARK_GRAY,10);
                         particles.remove(i);
                     }
                 }

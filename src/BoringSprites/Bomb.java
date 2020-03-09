@@ -7,8 +7,8 @@ import java.util.ArrayList;
 public class Bomb extends Particle{
     private ImageGetter i = new ImageGetter();
     private ArrayList<Particle> trail = new ArrayList<>();
-    public Bomb(int x, int y, int wd, int ht, int hp, int mp, Color c, int spd) {
-        super(x, y, wd, ht, hp, mp, c, spd);
+    public Bomb(int x, int y, int hp, int mp, Color c, int spd) {
+        super(x, y, 50, 50, hp, mp, c, spd);
     }
     @Override
     public boolean update() {

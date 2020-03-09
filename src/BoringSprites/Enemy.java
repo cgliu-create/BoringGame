@@ -4,7 +4,7 @@ import java.awt.*;
 public class Enemy extends Shooty {
     private ImageGetter i = new ImageGetter();
     private int img;
-    private Bomb b = new Bomb(0,0,50,50,100,0,Color.black, 10);
+    private Bomb b = new Bomb(0,0,100,0,Color.black, 10);
     public Enemy(int x, int y, int wd, int ht, int hp, int mp) {
         super(x, y, wd, ht, hp, mp);
         setDir(360);

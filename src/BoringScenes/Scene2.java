@@ -1,9 +1,7 @@
 package BoringScenes;
 import BoringObjects.CollisObject;
-import BoringSprites.Enemy;
+import BoringSprites.*;
 import BoringObjects.JustImage;
-import BoringSprites.Particle;
-import BoringSprites.Player;
 import BoringStuff.ParticleEffects;
 import java.awt.*;
 import java.util.ArrayList;
@@ -17,6 +15,11 @@ public class Scene2 extends Scene {
     private ArrayList<Particle> particles = super.getParticles();
     //Enemy
     private Enemy enemy = new Enemy(300,300,100,100, 100, 100);
+    private TNT tnt = new TNT(600,600,100,100);
+    private Wall wall = new Wall(500,600,100,100);
+    private Block block = new Block(700,600,100,100);
+    private Mine mine = new Mine(700,700,0,0,Color.black);
+
     public Scene2(int W, int H, int sn) {
         super(W, H, sn);
         //setBackground(Color.black);
@@ -47,11 +50,12 @@ public class Scene2 extends Scene {
         window.drawString("MP:"+player.getMP(),getW()-100,getH()-100);
         window.drawString("Dir:"+(player.getDir()-360),getW()-100,getH()-70);
         window.drawString("Spd:"+(player.getSpeed()/2),getW()-100,getH()-40);
+        tnt.draw(window);
+        wall.draw(window);
+        block.draw(window);
+        mine.draw(window);
         enemy.draw(window);
-        enemy.drawSuper(window);
         particleEffects.DrawAllParticles(particles,window);
         player.draw(window);
-        player.drawSuper(window);
-        temp.draw(window);
     }
 }

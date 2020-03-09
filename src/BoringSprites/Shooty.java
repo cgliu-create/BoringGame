@@ -19,11 +19,11 @@ public abstract class Shooty extends AliveObject {
     public void setBullet(int bulletType) { this.bulletType = bulletType; }
     public Particle getParticle(int x, int y, int dir) {
         if (bulletType == 1) {
-            Bomb bomb = new Bomb(x, y, 50, 50, 100, 0, Color.black, 5+this.getSpeed());
+            Bomb bomb = new Bomb(x, y, 100, 0, Color.black, 5);
             bomb.setDir(dir);
             return bomb;
         }
-       Bullet bullet = new Bullet(x,y,25,25,100,0,Color.black,10+this.getSpeed());
+        Bullet bullet = new Bullet(x,y,25,25,100,0,Color.black,10);
         bullet.setDir(dir);
         return bullet;
     }
