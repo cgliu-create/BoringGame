@@ -1,44 +1,41 @@
 package BoringScenes;
-import BoringObjects.CollisObject;
-import BoringSprites.*;
+
+import BoringObjects.GameObject;
 import BoringObjects.JustImage;
+import BoringSprites.*;
+import BoringStuff.CollisionEffects;
 import BoringStuff.ParticleEffects;
+
 import java.awt.*;
 import java.util.ArrayList;
 
 public class Scene2 extends Scene {
     private JustImage background = new JustImage(0,0, getW(), getH(),29);
     private ParticleEffects particleEffects = new ParticleEffects();
+    private CollisionEffects collisionEffects = new CollisionEffects(getW(),getH());
     //player
     private Player player = super.getPlayer();
-    private CollisObject temp = new CollisObject(0,0,player.getWidth(),player.getHeight());
     private ArrayList<Particle> particles = super.getParticles();
     //Enemy
     private Enemy enemy = new Enemy(300,300,100,100, 100, 100);
     private TNT tnt = new TNT(600,600,100,100);
     private Wall wall = new Wall(500,600,100,100);
     private Block block = new Block(700,600,100,100);
-    private Mine mine = new Mine(700,700,0,0,Color.black);
-
+    private Mine mine = new Mine(400,600,0,0,Color.black);
+    //Obstructions
+    ArrayList<GameObject>Obstructions = new ArrayList<>();
     public Scene2(int W, int H, int sn) {
         super(W, H, sn);
-        //setBackground(Color.black);
+        Obstructions.add(enemy);
         setVisible(true);
     }
     public void updatePlayer() {
-        int x = player.getXPos()+player.getXspeed();
-        int y = player.getYPos()+player.getYspeed();
-        temp.setXPos(x);temp.setYPos(y);
-        if (!(temp.checkAllDir(enemy))){
-            if (x>=0&&x<=getW()-player.getWidth()) //x bounds
-                player.setXPos(x);
-            if (y>=0&&y<=getH()-player.getHeight()) //y bounds
-                player.setYPos(y);
-        }
+        //collisionEffects.checkCollisionsBullet(otherparticles, player);
+        collisionEffects.checkObstruction(Obstructions, player);
     }
     @Override
     public void updateOther() {
-        particleEffects.checkCollisionsDamage(particles,enemy);
+        collisionEffects.checkCollisionsBullet(particles, enemy);
         particleEffects.RemoveParticles(particles);
     }
     public void update(Graphics window) { paint(window); }

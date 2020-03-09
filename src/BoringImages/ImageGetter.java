@@ -9,7 +9,7 @@ public class ImageGetter {
     private BufferedImage player0,player45,player90,player135,player180,player225,player270,player315;
     private BufferedImage enemy0,enemy45,enemy90,enemy135,enemy180,enemy225,enemy270,enemy315;
     private BufferedImage dead0,dead45,dead90,dead135,dead180,dead225,dead270,dead315;
-    private BufferedImage greenblock,box,wall;
+    private BufferedImage greenblock,box,wall,ammo,medkit,crate;
     private BufferedImage bomb,mine,tnt;
     public ImageGetter(){
         //load in all the images
@@ -45,6 +45,9 @@ public class ImageGetter {
             greenblock = ImageIO.read(getClass().getResource("/BoringImages/Enviro/greenblock.png"));
             box = ImageIO.read(getClass().getResource("/BoringImages/Enviro/box.png"));
             wall = ImageIO.read(getClass().getResource("/BoringImages/Enviro/wall.png"));
+            ammo = ImageIO.read(getClass().getResource("/BoringImages/Enviro/ammo.png"));
+            medkit = ImageIO.read(getClass().getResource("/BoringImages/Enviro/medkit.png"));
+            crate = ImageIO.read(getClass().getResource("/BoringImages/Enviro/crate.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -111,6 +114,12 @@ public class ImageGetter {
             return bomb;
         if (imgnum==29)
             return greenblock;
+        if (imgnum==30)
+            return crate;
+        if (imgnum==31)
+            return ammo;
+        if (imgnum==32)
+            return medkit;
         return error;
     }
     //draw image

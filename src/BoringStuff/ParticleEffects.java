@@ -1,6 +1,5 @@
 package BoringStuff;
 
-import BoringObjects.AliveObject;
 import BoringSprites.Bomb;
 import BoringSprites.Particle;
 import BoringSprites.Shooty;
@@ -82,24 +81,4 @@ public class ParticleEffects {
         int y = guy.getYPos()+guy.getHeight()/2;
         addParticle(particles, guy.getParticle(x, y, dir));
     }
-    public void checkCollisionsDamage(ArrayList<Particle> particles, AliveObject guy) {
-        for (int i = particles.size() - 1; i >= 0; i--) {
-            Particle p = particles.get(i);
-            if (p.getColor()!=Color.RED&&p.getColor()!=Color.ORANGE&&p.getColor()!=Color.YELLOW&&p.getColor()!=Color.DARK_GRAY){
-                if (p.checkAllDir(guy)){
-                    if (p instanceof Bomb){
-                        KaBoom(particles,p.getXPos(),p.getYPos(),Color.DARK_GRAY,10);
-                        KaBoom(particles,p.getXPos(),p.getYPos()+p.getHeight()/2);
-                        KaBoom(particles,p.getXPos(),p.getYPos()-p.getHeight()/2);
-                        KaBoom(particles,p.getXPos()+p.getWidth()/2,p.getYPos());
-                        KaBoom(particles,p.getXPos()-p.getWidth()/2,p.getYPos());
-                        particles.remove(i);
-                    } else {
-                        KaBoom(particles,p.getXPos(),p.getYPos(),Color.DARK_GRAY,10);
-                        particles.remove(i);
-                    }
-                }
-            }
-        }
-    }
-}//moo
+}
