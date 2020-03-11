@@ -12,9 +12,6 @@ public abstract class Shooty extends AliveObject {
         super(x, y, wd, ht, hp, mp);
     }
     public void drawAim(Graphics window){ a.draw(window);}
-    public void drawSuper(Graphics window){
-        super.draw(window);
-    }
     public int getBullet() { return bulletType; }
     public void setBullet(int bulletType) { this.bulletType = bulletType; }
     public Particle getParticle(int x, int y, int dir) {
