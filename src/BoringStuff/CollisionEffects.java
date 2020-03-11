@@ -73,12 +73,17 @@ public class CollisionEffects {
             }
         }
     }
-    public void checkPush(MoveObject moveObject, AliveObject guy){
-        int x = moveObject.getXPos() + guy.getXspeed();
-        int y = moveObject.getDir() + guy.getYPos();
-        if(moveObject.checkAllDir(guy)){
-            moveObject.setXPos(x);
-            moveObject.setYPos(y);
+    public void checkMovePush(ArrayList<GameObject>Obstruction, GameObject thing, AliveObject guy){
+        if (thing instanceof  MoveObject){
+            int r = thing.getRadius();
+            thing.setRadius(guy.getRadius()+5);
+            if(((MoveObject)thing).checkAllDir(guy)){
+                ((MoveObject)thing).setDir(guy.getDir());
+                ((MoveObject)thing).setSpeed(guy.getSpeed());
+                checkObstruction(Obstruction,thing);
+                ((MoveObject)thing).setSpeed(0);
+            }
+            thing.setRadius(r);
         }
     }
     public void checkParticlePush(ArrayList<Particle> particles, ArrayList<GameObject>Obstructions, GameObject guy){

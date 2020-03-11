@@ -32,15 +32,13 @@ public class Scene2 extends Scene {
     //adding stuff
     public Scene2(int W, int H, int sn) {
         super(W, H, sn);
-        //Obstructions.add(b);
-       // Obstructions.add(c);
-        //Obstructions.add(t);
+        Obstructions.add(b);
+        Obstructions.add(c);
+        Obstructions.add(t);
         Obstructions.add(e1);
         allObstructions.addAll(Obstructions);
         allObstructions.add(player);
         setVisible(true);
-        System.out.println(e1);
-        System.out.println(player);
     }
     public void updatePlayer() {
         collisionEffects.checkObstruction(Obstructions, player);
@@ -52,8 +50,7 @@ public class Scene2 extends Scene {
             collisionEffects.checkObstruction(allObstructions, o);
             collisionEffects.checkCollisionsBullet(particles, o);
             collisionEffects.checkParticlePush(particles,Obstructions,o);
-            if(o instanceof MoveObject)
-                collisionEffects.checkPush((MoveObject)o,player);
+            collisionEffects.checkMovePush(allObstructions,o,player);
         }
         particleEffects.RemoveParticles(badparticles);
     }
