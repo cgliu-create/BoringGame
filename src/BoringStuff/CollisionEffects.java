@@ -51,7 +51,6 @@ public class CollisionEffects {
             x = guy.getXPos() + ((MoveObject) guy).getXspeed();
             y = guy.getYPos() + ((MoveObject) guy).getYspeed();
         }
-        if (x >= 0 && x <= W - guy.getWidth() && y >= 0 && y < H - guy.getHeight()) {
             temp.setXPos(x);
             temp.setYPos(y);
             temp.setHeight(guy.getHeight());
@@ -71,9 +70,8 @@ public class CollisionEffects {
                 guy.setXPos(x);
                 guy.setYPos(y);
             }
-        }
     }
-    public void checkMovePush(ArrayList<GameObject>Obstruction, GameObject thing, AliveObject guy){
+    public void checkMovePush(ArrayList<GameObject>Obstruction, AliveObject guy, GameObject thing){
         if (thing instanceof  MoveObject){
             int r = thing.getRadius();
             thing.setRadius(guy.getRadius()+5);
@@ -86,7 +84,7 @@ public class CollisionEffects {
             thing.setRadius(r);
         }
     }
-    public void checkParticlePush(ArrayList<Particle> particles, ArrayList<GameObject>Obstructions, GameObject guy){
+    public void checkParticlePush(ArrayList<GameObject>Obstructions, ArrayList<Particle> particles,GameObject guy){
         if (guy instanceof AliveObject || guy instanceof MoveObject){
             for (int i = particles.size() - 1; i >= 0; i--) {
                 Particle p = particles.get(i);

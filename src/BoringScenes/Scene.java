@@ -20,6 +20,7 @@ public abstract class Scene extends JPanel {
         setSize(W,H);
         w=W;h=H;
         this.scenenum = scenenum;
+        playerInput.getPlayer().setRadius(25);
     }
     //changing scenes
     public int getScenenum() { return scenenum; }
