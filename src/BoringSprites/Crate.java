@@ -12,6 +12,6 @@ public class Crate extends AliveObject {
     }
     @Override
     public void draw(Graphics window) {
-        i.DrawImage(window,getXPos(),getYPos(),16,getWidth(),getHeight());
+        i.DrawImage(window,getXPos(),getYPos(),30,getWidth(),getHeight());
     }
 }

@@ -19,8 +19,7 @@ public class BreakObject extends GameObject {
     }
     @Override
     public void draw(Graphics window) {
-        window.setColor(Color.WHITE);
-        window.drawOval(getXPos(),getYPos(),getWidth(),getHeight());
+        drawSuper(window);
     }
     //check colliding
     public boolean checkAllDir(GameObject other){ return c.checkAllDir(this,other);}

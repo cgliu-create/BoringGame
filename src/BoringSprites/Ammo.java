@@ -12,6 +12,6 @@ public class Ammo extends BreakObject {
     }
     @Override
     public void draw(Graphics window) {
-        i.DrawImage(window,getXPos(),getYPos(),16,getWidth(),getHeight());
+        i.DrawImage(window,getXPos(),getYPos(),31,getWidth(),getHeight());
     }
 }

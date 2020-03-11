@@ -1,4 +1,5 @@
 package BoringObjects;
+import BoringGame.Game;
 import BoringSprites.Particle;
 
 import java.awt.*;
@@ -25,6 +26,10 @@ public abstract class GameObject {
     public abstract void setRadius(int r);
     //paint
     public abstract void draw(Graphics window);
+    public void drawSuper(Graphics window){
+        window.setColor(Color.WHITE);
+        window.drawOval(getXPos(),getYPos(),getWidth(),getHeight());
+    }
     //toString
     @Override
     public String toString() {
@@ -34,5 +39,13 @@ public abstract class GameObject {
                 ", width=" + width +
                 ", height=" + height +
                 '}';
+    }
+    //equals
+    public boolean equals(Object o){
+        GameObject other = (GameObject)o;
+        if(     other.getXPos() == this.getXPos() && other.getYPos() == this.getYPos()
+                && other.getWidth() == this.getWidth() && other.getHeight() == this.getHeight())
+        { return  true;}
+        return false;
     }
 }
