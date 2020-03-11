@@ -21,6 +21,6 @@ public class Bomb extends Particle{
         for (Particle p:trail) {
             p.draw(window);
         }
-        i.DrawImage(window,getCenterX(),getCenterY(),28, getWidth(),getHeight());
+        i.DrawImage(window,getXPos()-getWidth()/2, getYPos()-getHeight()/2,28, getWidth(),getHeight());
     }
 }
