@@ -50,7 +50,7 @@ public class Game implements Runnable{
             frames++;
             if (System.currentTimeMillis() - timer > 1000){
                 timer+=1000;
-                System.out.println("Fps:"+updates+";"+"MaxFps" + frames);
+                //System.out.println("Fps:"+updates+";"+"MaxFps" + frames);
                 updates = 0;
                 frames = 0;
             }

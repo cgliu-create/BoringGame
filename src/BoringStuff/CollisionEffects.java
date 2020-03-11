@@ -44,18 +44,20 @@ public class CollisionEffects {
     public void checkObstruction(ArrayList<GameObject>Obstructions, GameObject guy){
         int x = 0; int y = 0;
         if (guy instanceof AliveObject) {
-            x = ((AliveObject) guy).getXPos() + ((AliveObject) guy).getXspeed();
-            y = ((AliveObject) guy).getYPos() + ((AliveObject) guy).getYspeed();
+            x = guy.getXPos() + ((AliveObject) guy).getXspeed();
+            y = guy.getYPos() + ((AliveObject) guy).getYspeed();
         }
         if (guy instanceof MoveObject) {
-            x = ((MoveObject) guy).getXPos() + ((MoveObject) guy).getXspeed();
-            y = ((MoveObject) guy).getYPos() + ((MoveObject) guy).getYspeed();
+            x = guy.getXPos() + ((MoveObject) guy).getXspeed();
+            y = guy.getYPos() + ((MoveObject) guy).getYspeed();
         }
         if (x >= 0 && x <= W - guy.getWidth() && y >= 0 && y < H - guy.getHeight()) {
             temp.setXPos(x);
             temp.setYPos(y);
             temp.setHeight(guy.getHeight());
             temp.setWidth(guy.getWidth());
+            //fix
+            temp.setRadius(guy.getRadius());
             boolean obstructionFree = true;
             for (GameObject gameObject : Obstructions) {
                 if (!(guy.equals(gameObject))){

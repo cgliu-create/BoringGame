@@ -10,14 +10,6 @@ public class BreakObject extends GameObject {
         l = new Living(hp, mp);
     }
     @Override
-    public int getRadius() {
-        return c.getRadius();
-    }
-    @Override
-    public void setRadius(int r) {
-        c.setRadius(r);
-    }
-    @Override
     public void draw(Graphics window) {
         drawSuper(window);
     }

@@ -32,13 +32,15 @@ public class Scene2 extends Scene {
     //adding stuff
     public Scene2(int W, int H, int sn) {
         super(W, H, sn);
-        Obstructions.add(b);
-        Obstructions.add(c);
-        Obstructions.add(t);
+        //Obstructions.add(b);
+       // Obstructions.add(c);
+        //Obstructions.add(t);
         Obstructions.add(e1);
         allObstructions.addAll(Obstructions);
         allObstructions.add(player);
         setVisible(true);
+        System.out.println(e1);
+        System.out.println(player);
     }
     public void updatePlayer() {
         collisionEffects.checkObstruction(Obstructions, player);

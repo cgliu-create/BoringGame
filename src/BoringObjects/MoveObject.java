@@ -9,14 +9,6 @@ public class MoveObject extends GameObject {
             super(x, y, wd, ht);
         }
         @Override
-        public int getRadius() {
-                return c.getRadius();
-        }
-        @Override
-        public void setRadius(int r) {
-                c.setRadius(r);
-        }
-        @Override
         public void draw(Graphics window) {
                 drawSuper(window);
         }

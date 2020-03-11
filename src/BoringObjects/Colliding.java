@@ -25,9 +25,6 @@ public class Colliding {
         int x = Math.abs(cox-cx);
         int y = Math.abs(coy-cy);
         int d = (int)(Math.sqrt(x*x+y*y));
-        //heh
-        if (d == 0)
-            return false;
         return d <= rr;
     }
 }
