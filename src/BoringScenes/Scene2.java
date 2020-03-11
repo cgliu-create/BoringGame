@@ -7,7 +7,6 @@ import BoringObjects.MoveObject;
 import BoringSprites.*;
 import BoringStuff.CollisionEffects;
 import BoringStuff.ParticleEffects;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;

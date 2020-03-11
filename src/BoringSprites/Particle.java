@@ -38,6 +38,6 @@ public class Particle extends AliveObject {
     }
     public void draw(Graphics window) {
         window.setColor(color);
-        window.fillRect(getXPos() - (getWidth() / 2), getYPos() - (getHeight() / 2), getWidth(), getHeight());
+        window.fillRect(getCenterX(), getCenterY(), getWidth(), getHeight());
     }
 }

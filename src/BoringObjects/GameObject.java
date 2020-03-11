@@ -26,15 +26,21 @@ public abstract class GameObject {
     public int getXPos() { return xPos; }
     public int getYPos() { return yPos; }
     public int getRadius(){return radius;}
+    public int getCenterX(){
+        return getXPos() + getWidth()/2;
+    }
+    public int getCenterY(){
+        return getYPos() + getHeight()/2;
+    }
     //paint
     public abstract void draw(Graphics window);
     public void drawSuper(Graphics window){
         window.setColor(Color.WHITE);
         window.drawOval(getXPos(),getYPos(),getWidth(),getHeight());
         //center
-        window.fillRect(getXPos()+getWidth()/2,getYPos()+getHeight()/2,2,2);
+        window.fillRect(getCenterX(),getCenterY(),2,2);
         //radius
-        window.drawLine(getXPos()+getWidth()/2,getYPos()+getHeight()/2,getXPos()+getWidth()/2+getRadius(),getYPos()+getHeight()/2);
+        window.drawLine(getCenterX(),getCenterY(),getCenterX()+getRadius(),getCenterY());
     }
     //toString
     @Override

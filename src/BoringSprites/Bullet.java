@@ -20,6 +20,6 @@ public class Bullet extends Particle{
             p.draw(window);
         }
         window.setColor(getColor());
-        window.fillOval(getXPos() - (getWidth() / 2), getYPos() - (getHeight() / 2), getWidth(), getHeight());
+        window.fillOval(getCenterX(), getCenterY(), getWidth(), getHeight());
     }
 }

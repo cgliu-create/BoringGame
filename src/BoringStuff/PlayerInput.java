@@ -10,7 +10,7 @@ public class PlayerInput implements KeyListener {
     //player
     private Player player = new Player(100,100,70,70, 100,100);
     //pew pew
-    ArrayList<Particle> particles = new ArrayList<>();
+    private ArrayList<Particle> particles = new ArrayList<>();
     private ParticleEffects particleEffects = new ParticleEffects();
     //get and set methods
     public ParticleEffects getParticleEffects() {

@@ -1,7 +1,10 @@
 package BoringObjects;
 
+import BoringStuff.MathStuff;
+
 public class Colliding {
     private int radius;
+    private MathStuff m = new MathStuff();
     public Colliding(GameObject thisThing){
         radius = thisThing.getWidth()/2;
     }
@@ -14,17 +17,9 @@ public class Colliding {
     //other = what this is hitting
     public boolean checkAllDir(GameObject thisThing, GameObject otherThing){
         //sort of like the atomic radius
-        int cx = thisThing.getXPos() + thisThing.getWidth()/2;
-        int cy = thisThing.getYPos() + thisThing.getHeight()/2;
-        int r  = thisThing.getRadius();
-        int cox = otherThing.getXPos() + otherThing.getWidth()/2;
-        int coy = otherThing.getYPos() + otherThing.getHeight()/2;
-        int ro = otherThing.getRadius();
-        int rr = r + ro;
+        int rr = thisThing.getRadius() + otherThing.getRadius();
         //distance formula
-        int x = Math.abs(cox-cx);
-        int y = Math.abs(coy-cy);
-        int d = (int)(Math.sqrt(x*x+y*y));
+        double d = m.distBtwnTwoPoints(thisThing.getCenterX(),thisThing.getCenterY(),otherThing.getCenterX(),otherThing.getCenterY());
         return d <= rr;
     }
 }
