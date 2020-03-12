@@ -10,8 +10,8 @@ public class Mine extends Bomb {
     private ImageGetter i = new ImageGetter();
     private int img;
     private GameObject enemy;
-    public Mine(int x, int y, int hp, int mp, Color c) {
-        super(x, y, hp, mp, c, 0);
+    public Mine(int x, int y, int wd, int ht, int hp, int mp, Color c) {
+        super(x, y, wd, ht, hp, mp, c, 0);
     }
     public GameObject getEnemy() { return enemy; }
     public void setEnemy(GameObject enemy) { this.enemy = enemy; }

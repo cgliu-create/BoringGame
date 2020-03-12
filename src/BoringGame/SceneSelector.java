@@ -18,6 +18,7 @@ public class SceneSelector extends JFrame {
     //tick and render
     public void sceneUpdate(){
         this.getScene().updatePlayer();
+        this.getScene().updateEnemies();
         this.getScene().updateOther();
         int sn = this.getScene().getScenenum();
         if(curScene!=sn){

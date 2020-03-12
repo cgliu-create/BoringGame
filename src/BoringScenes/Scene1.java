@@ -12,6 +12,12 @@ public class Scene1 extends Scene {
     public void updatePlayer() {
 
     }
+
+    @Override
+    public void updateEnemies() {
+
+    }
+
     @Override
     public void updateOther() {
 

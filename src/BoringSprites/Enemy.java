@@ -1,13 +1,20 @@
 package BoringSprites;
 import BoringImages.ImageGetter;
+import BoringObjects.AliveObject;
+import BoringStuff.ParticleEffects;
+
 import java.awt.*;
+import java.util.ArrayList;
+
 public class Enemy extends Shooty {
     private ImageGetter i = new ImageGetter();
     private int img;
-    private Bomb b = new Bomb(0,0,100,0,Color.black, 10);
     public Enemy(int x, int y, int wd, int ht, int hp, int mp) {
         super(x, y, wd, ht, hp, mp);
         setDir(360);
+    }
+    public void attack(ParticleEffects particleEffects, ArrayList<Particle> badparticles, AliveObject player){
+        getAiming().checkEnemyInSight(particleEffects, badparticles, player);
     }
     @Override
     public void draw(Graphics window) {

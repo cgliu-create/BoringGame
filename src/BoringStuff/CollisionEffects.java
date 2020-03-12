@@ -20,6 +20,7 @@ public class CollisionEffects {
     }
     private CollisObject temp = new CollisObject(0,0,0,0);
     private ParticleEffects pe = new ParticleEffects();
+
     // have a separate list for player particles and enemy particles
     public void checkCollisionsBullet(ArrayList<Particle> particles, GameObject guy) {
         for (int i = particles.size() - 1; i >= 0; i--) {
@@ -40,6 +41,9 @@ public class CollisionEffects {
                 }
             }
         }
+    }
+    public ArrayList<GameObject> checkNear(){
+    return null;
     }
     public void checkObstruction(ArrayList<GameObject>Obstructions, GameObject guy){
         int x = 0; int y = 0;

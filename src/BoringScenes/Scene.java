@@ -11,7 +11,6 @@ public abstract class Scene extends JPanel {
     private PlayerInput playerInput = new PlayerInput();
     //other objects
     private ArrayList<Particle> badparticles = new ArrayList<>();
-    private ArrayList<GameObject> Obstructions = new ArrayList<>();
     //panel size
     private int w,h;
     //scene number/status
@@ -37,17 +36,16 @@ public abstract class Scene extends JPanel {
     public ArrayList<Particle> getParticles(){ return playerInput.getParticles(); }
     public void setPlayer(Player newplayer){ playerInput.setPlayer(newplayer); }
     public void setParticles(ArrayList<Particle> newparticles){ playerInput.setParticles(newparticles); }
-    //get other particles and obstructions
+    //other particles
     public ArrayList<Particle> getBadparticles() { return badparticles; }
-    public ArrayList<GameObject> getObstructions() { return Obstructions; }
     public void setBadparticles(ArrayList<Particle> badparticles) { this.badparticles = badparticles; }
-    public void setObstructions(ArrayList<GameObject> obstructions) { Obstructions = obstructions; }
     //get player input
     public PlayerInput getPlayerInput(){
         return playerInput;
     }
     //to be implemented
     public abstract void updatePlayer();
+    public abstract void updateEnemies();
     public abstract void updateOther();
     //public void update(Graphics window) {}
     //public void paint(Graphics window) {}

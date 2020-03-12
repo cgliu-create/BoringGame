@@ -41,7 +41,7 @@ public class Aiming {
         double diagLimit = Math.abs(m.distBtwnTwoPoints(cx,cy,x,y));
         double diag = Math.abs(m.distBtwnTwoPoints(cx,cy,cpx,cpy));
         if(diag<=diagLimit){
-            if (m.distBtnPointNLine(cx,cy,x,y,cpx,cpy)<=10){
+            if (m.distBtnPointNLine(cx,cy,x,y,cpx,cpy)<=player.getRadius()){
                 particleEffects.Shoot(badparticles,thing);
             }
         }

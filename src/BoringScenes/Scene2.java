@@ -22,52 +22,56 @@ public class Scene2 extends Scene {
     private ArrayList<Particle> particles = super.getParticles();
     //Scene
     private ArrayList<Particle> badparticles = super.getBadparticles();
-    private ArrayList<GameObject> Obstructions = super.getObstructions();
-    private ArrayList<GameObject> allObstructions = new ArrayList<>();
-    private GameObject[] objects = {
+    private Enemy[] enemies = {
             new Enemy(300,300,70,70,100,100),
+    };
+    private MoveObject[] moveObjects = {
             new Block(400,300,50,50),
             new Crate(500,300,50,50,0,0),
             new TNT(300,400,50,50),
-            new Ammo(400,400,50,50,0,0),
-            new Medkit(500,400,50,50,0,0),
-            new Mine(300,500,50,50,Color.cyan)
     };
+
+    private ArrayList<GameObject>Obstructions = new ArrayList<>();
     //adding stuff
     public Scene2(int W, int H, int sn) {
         super(W, H, sn);
-        Obstructions.clear();
-        for (int i = 0; i < getW()/50; i++) {
-            Obstructions.add(new Wall(50*i,0,50,50));
-        }
-        for (int i = 0; i < getW()/50; i++) {
-            Obstructions.add(new Wall(50*i,getH()-50,50,50));
-        }
-        for (int i = 0; i < getH()/50; i++) {
-            Obstructions.add(new Wall(0,50*i,50,50));
-        }
-        for (int i = 0; i < getH()/50; i++) {
-            Obstructions.add(new Wall(getW()-50,50*i,50,50));
-        }
-        Obstructions.addAll(Arrays.asList(objects));
-        //no concurrent stuff
-        allObstructions.addAll(Obstructions);
-        allObstructions.add(player);
+        Obstructions.addAll(Arrays.asList(enemies));
+        Obstructions.addAll(Arrays.asList(moveObjects));
+        Obstructions.add(player);
         setVisible(true);
     }
+    @Override
     public void updatePlayer() {
+        for (GameObject entity: Obstructions) {
+            collisionEffects.checkMovePush(Obstructions, player, entity);
+        }
         collisionEffects.checkObstruction(Obstructions, player);
         particleEffects.RemoveParticles(particles);
     }
+
+    @Override
+    public void updateEnemies() {
+        for (GameObject enemy: enemies) {
+            collisionEffects.checkObstruction(Obstructions, enemy);
+            particleEffects.RemoveParticles(badparticles);
+        }
+
+    }
     @Override
     public void updateOther() {
-        for (GameObject o: Obstructions) {
-            collisionEffects.checkObstruction(allObstructions,o);
-            collisionEffects.checkCollisionsBullet(particles,o);
-            collisionEffects.checkParticlePush(Obstructions,particles,o);
-            collisionEffects.checkMovePush(allObstructions,player,o);
+        for (Enemy enemy: enemies) {
+            enemy.attack(particleEffects,badparticles,player);
+            collisionEffects.checkCollisionsBullet(particles,enemy);
+            collisionEffects.checkParticlePush(Obstructions,particles,enemy);
         }
-        particleEffects.RemoveParticles(badparticles);
+        for (MoveObject item: moveObjects) {
+            collisionEffects.checkCollisionsBullet(particles,item);
+            collisionEffects.checkParticlePush(Obstructions,particles,item);
+            collisionEffects.checkCollisionsBullet(badparticles,item);
+            collisionEffects.checkParticlePush(Obstructions,badparticles,item);
+        }
+        collisionEffects.checkCollisionsBullet(badparticles,player);
+        collisionEffects.checkParticlePush(Obstructions,badparticles,player);
     }
     public void update(Graphics window) { paint(window); }
     public void paint(Graphics window) {
@@ -77,8 +81,7 @@ public class Scene2 extends Scene {
             o.drawSuper(window);
         }
         particleEffects.DrawAllParticles(particles,window);
-        player.draw(window);
-        player.drawSuper(window);
+        particleEffects.DrawAllParticles(badparticles,window);
         window.setColor(Color.WHITE);
         window.setFont(new Font("TAHOMA", Font.BOLD,20));
         window.drawString("HP:"+player.getHP(),getW()-100,getH()-130);

@@ -12,11 +12,12 @@ public abstract class Shooty extends AliveObject {
         super(x, y, wd, ht, hp, mp);
     }
     public void drawAim(Graphics window){ a.draw(window);}
+    public Aiming getAiming(){return a;}
     public int getBullet() { return bulletType; }
     public void setBullet(int bulletType) { this.bulletType = bulletType; }
     public Particle getParticle(int x, int y, int dir) {
         if (bulletType == 1) {
-            Bomb bomb = new Bomb(x, y, 100, 0, Color.black, 5);
+            Bomb bomb = new Bomb(x, y,30,30,0,0,Color.black, 5);
             bomb.setDir(dir);
             return bomb;
         }
