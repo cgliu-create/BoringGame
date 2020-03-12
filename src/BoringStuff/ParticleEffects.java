@@ -6,6 +6,7 @@ import BoringSprites.Shooty;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ParticleEffects {
     // Particle Stuff
@@ -24,7 +25,7 @@ public class ParticleEffects {
             }
         }
     }
-    public void DrawAllParticles(ArrayList<Particle> particles, Graphics window){
+    public void DrawAllParticles(CopyOnWriteArrayList<Particle> particles, Graphics window){
         for(int i = 0; i <= particles.size() - 1;i++){
             particles.get(i).draw(window); // draws/redraw all particles
         }

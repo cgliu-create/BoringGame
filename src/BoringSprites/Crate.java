@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class Crate extends MoveObject {
     private ImageGetter i = new ImageGetter();
-    public Crate(int x, int y, int wd, int ht, int hp, int mp) {
+    public Crate(int x, int y, int wd, int ht) {
         super(x, y, wd, ht);
     }
     @Override

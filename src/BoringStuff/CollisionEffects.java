@@ -11,17 +11,11 @@ import BoringSprites.Particle;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class CollisionEffects {
-    private int W, H;
-    public CollisionEffects(int W, int H){
-        this.W = W;
-        this.H = H;
-    }
     private CollisObject temp = new CollisObject(0,0,0,0);
     private ParticleEffects pe = new ParticleEffects();
-
-    // have a separate list for player particles and enemy particles
     public void checkCollisionsBullet(ArrayList<Particle> particles, GameObject guy) {
         for (int i = particles.size() - 1; i >= 0; i--) {
             Particle p = particles.get(i);
@@ -45,7 +39,7 @@ public class CollisionEffects {
     public ArrayList<GameObject> checkNear(){
     return null;
     }
-    public void checkObstruction(ArrayList<GameObject>Obstructions, GameObject guy){
+    public void checkObstruction(CopyOnWriteArrayList<GameObject>Obstructions, GameObject guy){
         int x = 0; int y = 0;
         if (guy instanceof AliveObject) {
             x = guy.getXPos() + ((AliveObject) guy).getXspeed();
@@ -75,20 +69,20 @@ public class CollisionEffects {
                 guy.setYPos(y);
             }
     }
-    public void checkMovePush(ArrayList<GameObject>Obstruction, AliveObject guy, GameObject thing){
-        if (thing instanceof  MoveObject){
-            int r = thing.getRadius();
-            thing.setRadius(guy.getRadius()+5);
-            if(((MoveObject)thing).checkAllDir(guy)){
-                ((MoveObject)thing).setDir(guy.getDir());
-                ((MoveObject)thing).setSpeed(guy.getSpeed());
-                checkObstruction(Obstruction,thing);
-                ((MoveObject)thing).setSpeed(0);
+    public void checkMovePush(CopyOnWriteArrayList<GameObject>Obstructions, ArrayList<MoveObject>moveObjects, AliveObject guy){
+        for (MoveObject m: moveObjects) {
+            int r = m.getRadius();
+            m.setRadius(guy.getRadius()+5);
+            if((m).checkAllDir(guy)){
+                m.setDir(guy.getDir());
+                m.setSpeed(guy.getSpeed());
+                checkObstruction(Obstructions,m);
+                m.setSpeed(0);
             }
-            thing.setRadius(r);
+            m.setRadius(r);
         }
     }
-    public void checkParticlePush(ArrayList<GameObject>Obstructions, ArrayList<Particle> particles,GameObject guy){
+    public void checkParticlePush(CopyOnWriteArrayList<GameObject>Obstructions, ArrayList<Particle> particles,GameObject guy){
         if (guy instanceof AliveObject || guy instanceof MoveObject){
             for (int i = particles.size() - 1; i >= 0; i--) {
                 Particle p = particles.get(i);

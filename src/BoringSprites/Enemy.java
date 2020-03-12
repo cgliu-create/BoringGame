@@ -13,8 +13,8 @@ public class Enemy extends Shooty {
         super(x, y, wd, ht, hp, mp);
         setDir(360);
     }
-    public void attack(ParticleEffects particleEffects, ArrayList<Particle> badparticles, AliveObject player){
-        getAiming().checkEnemyInSight(particleEffects, badparticles, player);
+    public void attack(ArrayList<Particle> badparticles, AliveObject player){
+        getAiming().checkEnemyInSight(badparticles, player);
     }
     @Override
     public void draw(Graphics window) {

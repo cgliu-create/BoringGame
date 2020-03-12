@@ -1,27 +1,7 @@
 package BoringScenes;
 
-import java.awt.*;
-
-public class Scene1 extends Scene {
-    public Scene1(int W, int H, int sn) {
-        super(W, H, sn);
-        setVisible(true);
-        setBackground(Color.black);
+public class Scene1 extends Scene{
+    public Scene1(int W, int H, int scenenum) {
+        super(W, H, scenenum);
     }
-    @Override
-    public void updatePlayer() {
-
-    }
-
-    @Override
-    public void updateEnemies() {
-
-    }
-
-    @Override
-    public void updateOther() {
-
-    }
-    public void update(Graphics window) { paint(window);}
-    public void paint(Graphics window) { super.getPlayer().draw(window);}
 }

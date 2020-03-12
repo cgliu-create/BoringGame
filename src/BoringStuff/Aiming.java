@@ -8,8 +8,9 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Aiming {
-    private Shooty thing;
+    private ParticleEffects particleEffects = new ParticleEffects();
     private MathStuff m = new MathStuff();
+    private Shooty thing;
     private int dx,dy;
     private int cx, cy;
     private int x, y;
@@ -33,7 +34,7 @@ public class Aiming {
         window.setColor(Color.RED);
         window.drawLine(cx,cy,x,y);
     }
-    public void checkEnemyInSight(ParticleEffects particleEffects, ArrayList<Particle> badparticles, AliveObject player){
+    public void checkEnemyInSight(ArrayList<Particle> badparticles, AliveObject player){
         //if diag distance is less than limit
         //if dist from center point to diag is less than limit
         int cpx = player.getCenterX();
@@ -45,7 +46,7 @@ public class Aiming {
             if (a<10){
                 if (m.distBtnPointNLine(cx,cy,x,y,cpx,cpy)<=player.getRadius()){
                     particleEffects.Shoot(badparticles,thing);
-                    System.out.println(a);
+                   // System.out.println(a);
                 }
             }
         }
