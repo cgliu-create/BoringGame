@@ -1,48 +1,44 @@
 package BoringObjects;
-import BoringGame.Game;
-import BoringSprites.Particle;
 
 import java.awt.*;
+
 public abstract class GameObject {
-    //instance variables
+//Position
     private int xPos,yPos;
+//Space
     private int width,height;
+//Radius
     private int radius;
+//CONSTRUCTING
     public GameObject(int x, int y, int wd, int ht) {
-        xPos = x;
-        yPos = y;
-        width = wd;
-        height = ht;
-        radius = wd/2;
+        xPos = x; yPos = y; width = wd; height = ht; radius = wd/2;
     }
-    //set and get methods
+//CHANGING SIZE AND POSITION
     public void setWidth(int w) { width = w; }
     public void setHeight(int h) { height = h; }
     public void setXPos(int xp) { xPos = xp; }
     public void setYPos(int yp) { yPos = yp; }
     public void setRadius(int r){ radius = r; }
+//ACCESSING SIZE AND POSITION
     public int getWidth() { return width; }
     public int getHeight() { return height; }
     public int getXPos() { return xPos; }
     public int getYPos() { return yPos; }
     public int getRadius(){return radius;}
-    public int getCenterX(){
-        return getXPos() + getWidth()/2;
-    }
-    public int getCenterY(){
-        return getYPos() + getHeight()/2;
-    }
-    //paint
+//FINDING CENTER
+    public int getCenterX(){ return getXPos() + getWidth()/2;}
+    public int getCenterY(){ return getYPos() + getHeight()/2;}
+//UNDEFINED RENDERING
     public abstract void draw(Graphics window);
+//RENDERING THE DEFAULT
     public void drawSuper(Graphics window){
         window.setColor(Color.WHITE);
         window.drawOval(getXPos(),getYPos(),getWidth(),getHeight());
-        //center
-        window.fillRect(getCenterX(),getCenterY(),2,2);
         //radius
+        window.fillRect(getCenterX(),getCenterY(),2,2);
         window.drawLine(getCenterX(),getCenterY(),getCenterX()+getRadius(),getCenterY());
     }
-    //toString
+//PRINTING
     @Override
     public String toString() {
         return "GameObject{" +
@@ -53,7 +49,7 @@ public abstract class GameObject {
                 ", radius=" + radius +
                 '}';
     }
-    //equals
+//CHECKING IF EQUAL
     public boolean equals(Object o){
         GameObject other = (GameObject)o;
         return other.getXPos() == this.getXPos() && other.getYPos() == this.getYPos()

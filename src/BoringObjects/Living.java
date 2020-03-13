@@ -1,19 +1,19 @@
 package BoringObjects;
 
 public class Living {
-    //instance variables
-    private int HP;
-    private int MP;
+//Status
+    private int HP, MP;
     public Living(int hp, int mp){
         HP = hp;
         MP = mp;
     }
-    //set and get methods
+//CHANGING STATUS
     public void setHP(int hp) { HP = hp; }
     public void setMP(int mp) { MP = mp; }
+//ACCESSING STATUS
     public int getHP() { return HP; }
     public int getMP() { return MP; }
-    //toString
+//PRINTING
     @Override
     public String toString() {
         return "Living{" +
