@@ -1,4 +1,4 @@
-package BoringObjects;
+package BoringSprites;
 
 import BoringObjects.GameObject;
 import BoringImages.ImageGetter;

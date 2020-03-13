@@ -1,4 +1,4 @@
-package BoringStuff;
+package BoringEffects;
 
 import BoringSprites.Bomb;
 import BoringSprites.Particle;

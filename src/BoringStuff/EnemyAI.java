@@ -3,6 +3,8 @@ package BoringStuff;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
+
+import BoringEffects.ParticleEffects;
 import BoringObjects.AliveObject;
 import BoringSprites.Particle;
 import BoringSprites.Shooty;

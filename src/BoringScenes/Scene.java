@@ -5,13 +5,13 @@ import java.util.Arrays;
 import java.util.concurrent.CopyOnWriteArrayList;
 import BoringObjects.GameObject;
 import BoringObjects.MoveObject;
-import BoringObjects.JustImage;
+import BoringSprites.JustImage;
 import BoringSprites.Particle;
 import BoringSprites.Player;
 import BoringSprites.Enemy;
-import BoringStuff.CollisionEffects;
-import BoringStuff.ParticleEffects;
-import BoringStuff.PlayerInput;
+import BoringEffects.CollisionEffects;
+import BoringEffects.ParticleEffects;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -69,14 +69,14 @@ public abstract class Scene extends JPanel {
     public void updateAllParticles(){ AllParticles.clear(); AllParticles.addAll(badparticles); AllParticles.addAll(particles);}
 //UPDATING SCENE
     public void updatePlayer(){
-      /*  collisionEffects.checkMovePush(AllStuff,interactables,player);
-        collisionEffects.checkCollisionsBullet(badparticles,player);
-        collisionEffects.checkParticlePush(AllStuff,badparticles,player);
-       */
-        //moves player
+        //allows player to push
+        collisionEffects.checkMovePush(AllStuff,interactables,player);
+        //allows player to move
         collisionEffects.checkObstruction(AllStuff, player);
         //animates particles
         particleEffects.RemoveParticles(particles);
+        collisionEffects.checkCollisionsBullet(badparticles,player);
+        collisionEffects.checkParticlePush(AllStuff,badparticles,player);
     }
     public void updateEnemies(){
         for (Enemy enemy: enemies){

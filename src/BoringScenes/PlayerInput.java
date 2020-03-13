@@ -1,7 +1,9 @@
-package BoringStuff;
+package BoringScenes;
 
 import BoringSprites.Particle;
 import BoringSprites.Player;
+import BoringEffects.ParticleEffects;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;

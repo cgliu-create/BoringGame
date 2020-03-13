@@ -1,4 +1,4 @@
-package BoringStuff;
+package BoringEffects;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -14,24 +14,6 @@ public class CollisionEffects {
 //Effects
     private CollisObject temp = new CollisObject(0,0,0,0);
     private ParticleEffects pe = new ParticleEffects();
-//REMOVING
-    public void checkCollisionsBullet(ArrayList<Particle> particles, GameObject guy) {
-        ArrayList<Particle> toRemove = new ArrayList<>();
-        for (int i = particles.size() - 1; i >= 0; i--) {
-            Particle p = particles.get(i);
-            if (p.getColor()!=Color.RED&&p.getColor()!=Color.ORANGE&&p.getColor()!=Color.YELLOW&&p.getColor()!=Color.DARK_GRAY){
-                if (p.checkAllDir(guy)){ 
-                    pe.KaBoom(particles,p.getXPos(),p.getYPos(),Color.DARK_GRAY,10); 
-                    toRemove.add(p);
-                    if (p instanceof Bomb) { pe.BigKaBoom(particles, p.getXPos(), p.getYPos(), p.getWidth(), p.getHeight());}
-                }
-            }
-        }
-        particles.removeAll(toRemove);
-    }
-    public ArrayList<GameObject> checkNear(){
-    return null;
-    }
 //MOVING
     public void checkObstruction(CopyOnWriteArrayList<GameObject>Obstructions, GameObject guy){
         int x = 0; int y = 0;
@@ -69,6 +51,22 @@ public class CollisionEffects {
             m.setRadius(r);
         }
     }
+
+    //REMOVING BULLETS
+    public void checkCollisionsBullet(ArrayList<Particle> particles, GameObject guy) {
+        ArrayList<Particle> toRemove = new ArrayList<>();
+        for (int i = particles.size() - 1; i >= 0; i--) {
+            Particle p = particles.get(i);
+            if (p.getColor()!=Color.RED&&p.getColor()!=Color.ORANGE&&p.getColor()!=Color.YELLOW&&p.getColor()!=Color.DARK_GRAY){
+                if (p.checkAllDir(guy)){
+                    pe.KaBoom(particles,p.getXPos(),p.getYPos(),Color.DARK_GRAY,10);
+                    toRemove.add(p);
+                    if (p instanceof Bomb) { pe.BigKaBoom(particles, p.getXPos(), p.getYPos(), p.getWidth(), p.getHeight());}
+                }
+            }
+        }
+        particles.removeAll(toRemove);
+    }
 //PUSHING WITH EXPLOSIONS
     public void checkParticlePush(CopyOnWriteArrayList<GameObject>Obstructions, ArrayList<Particle> particles, AliveObject guy){
         for (int i = particles.size() - 1; i >= 0; i--){
@@ -96,4 +94,6 @@ public class CollisionEffects {
             }
         }
     }
+
+
 }
