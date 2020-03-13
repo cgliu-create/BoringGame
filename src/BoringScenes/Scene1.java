@@ -17,7 +17,6 @@ public class Scene1 extends Scene{
     private MoveObject[] moveObjects = {
         new Block(400,300,50,50),
         new Crate(500,300,50,50),
-        new TNT(300,400,50,5)
     };
 //ADDING STUFF
     public Scene1(int W, int H, int scenenum) {

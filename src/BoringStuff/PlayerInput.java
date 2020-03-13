@@ -46,7 +46,6 @@ public class PlayerInput implements KeyListener {
     //shoot
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             if(player.getMP()>0){
-                particleEffects.muzzleFlash(particles, player);
                 particleEffects.Shoot(particles, player);
                 player.setMP(player.getMP()-1);
             }

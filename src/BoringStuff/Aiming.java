@@ -1,54 +1,43 @@
 package BoringStuff;
-import BoringObjects.AliveObject;
-import BoringSprites.Particle;
-import BoringSprites.Shooty;
-import BoringStuff.MathStuff;
 
-import java.awt.*;
-import java.util.ArrayList;
+import java.awt.Color;
+import java.awt.Graphics;
+import BoringSprites.Shooty;
 
 public class Aiming {
-    private ParticleEffects particleEffects = new ParticleEffects();
-    private MathStuff m = new MathStuff();
-    private Shooty thing;
+//Shooty
+    private Shooty guy;
+//Slope
     private int dx,dy;
+//Center
     private int cx, cy;
+//End
     private int x, y;
-    public Aiming(Shooty thisThing){
-        thing = thisThing;
+//CONSTRUCTING   
+    public Aiming(Shooty thisGuy){
+        guy = thisGuy;
     }
-    public void setdx() {
-        int dir = thing.getDir();
-        dx = (int)(10 * Math.cos(Math.toRadians(dir)));
-    }
-    public void setdy() {
-        int dir = thing.getDir();
-        dy = (int)(10 * Math.sin(Math.toRadians(dir)));
-    }
-    public void draw(Graphics window) {
-        cx = thing.getCenterX();
-        cy = thing.getCenterY();
+//DETERMINING SLOPE
+    public void setdx(){ dx = (int)(10 * Math.cos(Math.toRadians(guy.getDir())));}
+    public void setdy(){ dy = (int)(10 * Math.sin(Math.toRadians(guy.getDir())));}
+//CALCULATING ENDPOINT
+    public void calcPoints(){
+        //enemy center
+        cx = guy.getCenterX(); cy = guy.getCenterY();
+        //direction
         setdx(); setdy();
-        x = cx + dx*20;
-        y = cy + dy*20;
+        //endpoint
+        x = cx + dx*20; y = cy + dy*20;
+    }
+//ACCESSING ENDPOINT AND CENTER
+    public int getX() { return x;}
+    public int getY() { return y;}
+    public int getCx() { return cx;}
+    public int getCy() { return cy;}
+//RENDERING
+    public void draw(Graphics window) {
+        calcPoints();
         window.setColor(Color.RED);
         window.drawLine(cx,cy,x,y);
-    }
-    public void checkEnemyInSight(ArrayList<Particle> badparticles, AliveObject player){
-        //if diag distance is less than limit
-        //if dist from center point to diag is less than limit
-        int cpx = player.getCenterX();
-        int cpy =player.getCenterY();
-        double diagLimit = Math.abs(m.distBtwnTwoPoints(cx,cy,x,y));
-        double diag = Math.abs(m.distBtwnTwoPoints(cx,cy,cpx,cpy));
-        if(diag<=diagLimit){
-            double a = m.angleBtwnTwoLines(cx,cy,x,y,cpx,cpy);
-            if (a<10){
-                if (m.distBtnPointNLine(cx,cy,x,y,cpx,cpy)<=player.getRadius()){
-                    particleEffects.Shoot(badparticles,thing);
-                   // System.out.println(a);
-                }
-            }
-        }
     }
 }

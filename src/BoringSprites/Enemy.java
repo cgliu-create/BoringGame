@@ -2,6 +2,7 @@ package BoringSprites;
 
 import BoringImages.ImageGetter;
 import BoringObjects.AliveObject;
+import BoringStuff.EnemyAI;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -9,13 +10,15 @@ public class Enemy extends Shooty {
 //Image
     private ImageGetter i = new ImageGetter();
     private int img;
+//Behavior
+    private EnemyAI ai;
 //CONSTRUCTING 
     public Enemy(int x, int y, int wd, int ht, int hp, int mp) {
-        super(x, y, wd, ht, hp, mp);
+        super(x, y, wd, ht, hp, mp); ai = new EnemyAI(this);
     }
-//MAKING ATTACK
+//ATTACKING
     public void attack(ArrayList<Particle> badparticles, AliveObject player){
-        getAiming().checkEnemyInSight(badparticles, player);
+        ai.checkEnemyInSight(badparticles, player);
     }
 //RENDERING 
     @Override
@@ -28,7 +31,6 @@ public class Enemy extends Shooty {
         if(Math.abs(getDir())%360==225){ img = 13;}    
         if(Math.abs(getDir())%360==270){ img = 14;} 
         if(Math.abs(getDir())%360==315){ img = 15;}
-        drawAim(window);
         i.DrawImage(window,getXPos(),getYPos(),img,getWidth(),getHeight());
     }
 }

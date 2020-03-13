@@ -69,28 +69,39 @@ public abstract class Scene extends JPanel {
     public void updateAllParticles(){ AllParticles.clear(); AllParticles.addAll(badparticles); AllParticles.addAll(particles);}
 //UPDATING SCENE
     public void updatePlayer(){
-        collisionEffects.checkMovePush(AllStuff,interactables,player);
-        collisionEffects.checkObstruction(AllStuff, player);
+      /*  collisionEffects.checkMovePush(AllStuff,interactables,player);
         collisionEffects.checkCollisionsBullet(badparticles,player);
         collisionEffects.checkParticlePush(AllStuff,badparticles,player);
+       */
+        //moves player
+        collisionEffects.checkObstruction(AllStuff, player);
+        //animates particles
         particleEffects.RemoveParticles(particles);
     }
     public void updateEnemies(){
         for (Enemy enemy: enemies){
-            enemy.attack(badparticles,player);
+            //moves enemy
             collisionEffects.checkObstruction(AllStuff, enemy);
+            //bullet impact
             collisionEffects.checkCollisionsBullet(particles,enemy);
             collisionEffects.checkParticlePush(AllStuff,particles,enemy);
+        }
+        /*
             particleEffects.RemoveParticles(badparticles);
         }
+
+         */
     }
     public void updateOther(){
+        /*
         for (MoveObject item: interactables){
             collisionEffects.checkCollisionsBullet(particles, item);
             collisionEffects.checkParticlePush(AllStuff,particles,item);
             collisionEffects.checkCollisionsBullet(badparticles, item);
             collisionEffects.checkParticlePush(AllStuff,badparticles,item);
         }
+
+         */
     }
 //RENDERING EVERYTHING
     public void update(Graphics window){ paint(window);}
