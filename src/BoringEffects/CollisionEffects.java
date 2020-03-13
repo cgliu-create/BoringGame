@@ -51,8 +51,7 @@ public class CollisionEffects {
             m.setRadius(r);
         }
     }
-
-    //REMOVING BULLETS
+//REMOVING BULLETS
     public void checkCollisionsBullet(ArrayList<Particle> particles, GameObject guy) {
         ArrayList<Particle> toRemove = new ArrayList<>();
         for (int i = particles.size() - 1; i >= 0; i--) {
@@ -68,19 +67,6 @@ public class CollisionEffects {
         particles.removeAll(toRemove);
     }
 //PUSHING WITH EXPLOSIONS
-    public void checkParticlePush(CopyOnWriteArrayList<GameObject>Obstructions, ArrayList<Particle> particles, AliveObject guy){
-        for (int i = particles.size() - 1; i >= 0; i--){
-            Particle p = particles.get(i);
-            if (p.getColor()==Color.RED||p.getColor()==Color.ORANGE||p.getColor()==Color.YELLOW) {
-                if (p.checkAllDir(guy)) { // collision
-                    int dir = guy.getDir();
-                    guy.setDir(p.getDir());  guy.setSpeed(5); //move away from particle
-                    checkObstruction(Obstructions, guy);
-                    guy.setDir(dir); guy.setSpeed(0); // reset dir and spd
-                }
-            }
-        }
-    }
     public void checkParticlePush(CopyOnWriteArrayList<GameObject>Obstructions, ArrayList<Particle> particles, MoveObject guy){
         for (int i = particles.size() - 1; i >= 0; i--){
             Particle p = particles.get(i);
@@ -93,6 +79,11 @@ public class CollisionEffects {
                 }
             }
         }
+    }
+//CHECKING PARTICLE INTERACTION
+    public void checkParticleInteraction(CopyOnWriteArrayList<GameObject>Obstructions, ArrayList<Particle> particles, MoveObject guy){
+        checkCollisionsBullet(particles, guy);
+        checkParticlePush(Obstructions,particles,guy);
     }
 
 

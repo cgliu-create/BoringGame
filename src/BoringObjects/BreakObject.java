@@ -25,7 +25,7 @@ public class BreakObject extends CollisObject {
     @Override
     public String toString() {
         return "BreakObject{" + "\n" +
-                "g=" + super.toString() + "\n" +
+                super.toString() + "\n" +
                 ", l=" + l + "\n" +
                 '}';
     }

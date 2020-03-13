@@ -2,9 +2,8 @@ package BoringObjects;
 
 import java.awt.*;
 
-public class MoveObject extends GameObject {
-//Qualities      
-    private Colliding c = new Colliding(this);
+public class MoveObject extends CollisObject {
+//Qualities
     private Moving m = new Moving();
 //CONSTRUCTING  
     public MoveObject (int x, int y, int wd, int ht) {
@@ -15,8 +14,6 @@ public class MoveObject extends GameObject {
     public void draw(Graphics window) {
         drawSuper(window);
     }
-//CHECKING COLLISION
-    public boolean checkAllDir(GameObject other){ return c.checkAllDir(this,other);}
 //CHANGING SPEED AND DIRECTION
     public void setSpeed( int s) { m.setSpeed(s);}
     public void setDir(int degrees) { m.setDir(degrees);}
@@ -29,7 +26,7 @@ public class MoveObject extends GameObject {
     @Override
     public String toString() {
         return "MoveObject{" + "\n" +
-                "g=" + super.toString() + "\n" +
+                super.toString() + "\n" +
                 ", m=" + m + "\n" +
                 '}';
     }

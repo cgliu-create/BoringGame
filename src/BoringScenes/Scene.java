@@ -11,7 +11,6 @@ import BoringSprites.Player;
 import BoringSprites.Enemy;
 import BoringEffects.CollisionEffects;
 import BoringEffects.ParticleEffects;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -75,33 +74,24 @@ public abstract class Scene extends JPanel {
         collisionEffects.checkObstruction(AllStuff, player);
         //animates particles
         particleEffects.RemoveParticles(particles);
-        collisionEffects.checkCollisionsBullet(badparticles,player);
-        collisionEffects.checkParticlePush(AllStuff,badparticles,player);
+        //particle collisions
+        collisionEffects.checkParticleInteraction(AllStuff,badparticles,player);
     }
     public void updateEnemies(){
         for (Enemy enemy: enemies){
             //moves enemy
             collisionEffects.checkObstruction(AllStuff, enemy);
-            //bullet impact
-            collisionEffects.checkCollisionsBullet(particles,enemy);
-            collisionEffects.checkParticlePush(AllStuff,particles,enemy);
+            //particle collisions
+            collisionEffects.checkParticleInteraction(AllStuff,particles,enemy);
         }
-        /*
-            particleEffects.RemoveParticles(badparticles);
-        }
-
-         */
+        //animates particles
+        particleEffects.RemoveParticles(badparticles);
     }
     public void updateOther(){
-        /*
         for (MoveObject item: interactables){
-            collisionEffects.checkCollisionsBullet(particles, item);
-            collisionEffects.checkParticlePush(AllStuff,particles,item);
-            collisionEffects.checkCollisionsBullet(badparticles, item);
-            collisionEffects.checkParticlePush(AllStuff,badparticles,item);
+            collisionEffects.checkParticleInteraction(AllStuff,particles,item);
+            collisionEffects.checkParticleInteraction(AllStuff,badparticles,item);
         }
-
-         */
     }
 //RENDERING EVERYTHING
     public void update(Graphics window){ paint(window);}
