@@ -103,5 +103,6 @@ public abstract class Scene extends JPanel {
             thing.draw(window);
             thing.drawSuper(window);
         }
+        player.drawStatus(window,W-100,H-200,Color.WHITE);
     }
 }
