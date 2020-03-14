@@ -11,6 +11,7 @@ public class ImageGetter {
     private BufferedImage dead0,dead45,dead90,dead135,dead180,dead225,dead270,dead315;
     private BufferedImage greenblock,box,wall,ammo,medkit,crate;
     private BufferedImage bomb,mine,tnt;
+    private BufferedImage yes, no;
 //CONSTRUCTING
     public ImageGetter(){
         try { //load in all the images   https://stackoverflow.com/questions/9864267/loading-image-resource/9866659#9866659
@@ -48,6 +49,8 @@ public class ImageGetter {
             ammo = ImageIO.read(getClass().getResource("/BoringImages/Enviro/ammo.png"));
             medkit = ImageIO.read(getClass().getResource("/BoringImages/Enviro/medkit.png"));
             crate = ImageIO.read(getClass().getResource("/BoringImages/Enviro/crate.png"));
+            yes = ImageIO.read(getClass().getResource("/BoringImages/Signs/yes.png"));
+            no = ImageIO.read(getClass().getResource("/BoringImages/Signs/no.png"));
         } catch (IOException e) { e.printStackTrace();}
     }
 //RETRIEVING IMAGES
@@ -85,6 +88,8 @@ public class ImageGetter {
         if (imgnum==30){ return crate;}
         if (imgnum==31){ return ammo;}
         if (imgnum==32){ return medkit;}
+        if (imgnum==33){ return yes;}
+        if (imgnum==34){ return no;}
         return error;
     }
 //DRAWING IMAGE
