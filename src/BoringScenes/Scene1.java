@@ -22,7 +22,7 @@ public class Scene1 extends Scene{
 //ADDING STUFF
     public Scene1(int W, int H, int scenenum) {
         super(W, H, scenenum);
-        setBackground(BoringImage.green.getImgLoc());
+        setBackground(BoringImage.brown.getImgLoc());
         setEnemies(enemies);
         setInteractables(moveObjects);
         updateStuff();
