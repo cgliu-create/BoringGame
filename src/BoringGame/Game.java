@@ -49,7 +49,6 @@ public class Game implements Runnable{
 //RUNNER
     public static void main(String[] args) {
         Game game = new Game();
-        game.sceneSelector.setScene(1);
         game.startGame();
     }
 }

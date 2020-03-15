@@ -1,12 +1,13 @@
 package BoringGame;
 import BoringScenes.*;
 import javax.swing.*;
+import java.awt.*;
 
 public class SceneSelector extends JFrame {
 //Current scene number
-    private int curScene = 0;
+    private int curScene;
 //All the panels
-    private Scene scene0,scene1;
+    private Scene scene1,scene2;
 //CONSTRUCTING
     public SceneSelector(String title, int width, int height){
         super(title);
@@ -14,21 +15,26 @@ public class SceneSelector extends JFrame {
         setVisible(true);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        scene0 = new Scene0(width,height,0);
         scene1 = new Scene1(width,height,1);
+        scene2 = new Scene2(width,height,2);
+        //default scene
+        add(scene1);
+        addKeyListener(scene1.getPlayerInput());
+        repaint();
+        curScene = 1;
     }
 //GETTING CURRENT SCENE NUMBER
     public int getCurScene() { return curScene;}
 //ACCESSING SCENE
     public Scene getScene(){
-        if (curScene == 0){ return scene0;}
         if (curScene == 1){ return scene1;}
-        return scene0;
+        if (curScene == 2){ return scene2;}
+        return null;
     }
 //MAKING SCENE CHANGE
     public void setScene(int scene){
-        if (scene == 0){ this.add(scene0); this.addKeyListener(scene0.getPlayerInput());}
         if (scene == 1){ this.add(scene1); this.addKeyListener(scene1.getPlayerInput());}
+        if (scene == 2){ this.add(scene2); this.addKeyListener(scene2.getPlayerInput());}
         this.remove(getScene());
         this.repaint();
         curScene = scene;
