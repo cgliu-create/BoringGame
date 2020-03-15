@@ -1,15 +1,17 @@
 package BoringSprites;
 
+import BoringImages.BoringImage;
 import BoringImages.ImageGetter;
 import BoringObjects.AliveObject;
 import BoringStuff.EnemyAI;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Enemy extends Shooty {
 //Image
     private ImageGetter i = new ImageGetter();
-    private int img;
+    private String img;
 //Behavior
     private EnemyAI ai;
 //CONSTRUCTING 
@@ -22,15 +24,15 @@ public class Enemy extends Shooty {
     }
 //RENDERING 
     @Override
-    public void draw(Graphics window) {
-        if(Math.abs(getDir())%360==0){ img = 8;}
-        if(Math.abs(getDir())%360==45){ img = 9;}
-        if(Math.abs(getDir())%360==90){ img = 10;}
-        if(Math.abs(getDir())%360==135){ img = 11;}
-        if(Math.abs(getDir())%360==180){ img = 12;} 
-        if(Math.abs(getDir())%360==225){ img = 13;}    
-        if(Math.abs(getDir())%360==270){ img = 14;} 
-        if(Math.abs(getDir())%360==315){ img = 15;}
-        i.DrawImage(window,getXPos(),getYPos(),img,getWidth(),getHeight());
+    public void draw(Graphics window) throws IOException {
+        if(Math.abs(getDir())%360==0){ img = BoringImage.enemy0.getImgLoc();}
+        if(Math.abs(getDir())%360==45){ img = BoringImage.enemy45.getImgLoc();}
+        if(Math.abs(getDir())%360==90){ img = BoringImage.enemy90.getImgLoc();}
+        if(Math.abs(getDir())%360==135){ img = BoringImage.enemy135.getImgLoc();}
+        if(Math.abs(getDir())%360==180){ img = BoringImage.enemy180.getImgLoc();}
+        if(Math.abs(getDir())%360==225){ img = BoringImage.enemy225.getImgLoc();}
+        if(Math.abs(getDir())%360==270){ img = BoringImage.enemy270.getImgLoc();}
+        if(Math.abs(getDir())%360==315){ img = BoringImage.enemy315.getImgLoc();}
+        i.DrawImage(window,getXPos(),getYPos(),getWidth(),getHeight(),img);
     }
 }

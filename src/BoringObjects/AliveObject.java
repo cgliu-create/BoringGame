@@ -1,6 +1,7 @@
 package BoringObjects;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class AliveObject extends MoveObject {
 //Qualities
@@ -12,7 +13,7 @@ public class AliveObject extends MoveObject {
     }
 //RENDERING DEFAULT
     @Override
-    public void draw(Graphics window) {
+    public void draw(Graphics window) throws IOException {
         drawSuper(window);
     }
 //CHANGING STATUS

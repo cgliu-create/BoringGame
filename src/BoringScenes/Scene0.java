@@ -22,7 +22,6 @@ public class Scene0 extends Scene{
 //ADDING STUFF
     public Scene0(int W, int H, int scenenum) {
         super(W, H, scenenum);
-        setBackground(29);
         setEnemies(enemies);
         setInteractables(moveObjects);
         updateStuff();

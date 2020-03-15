@@ -1,6 +1,7 @@
 package BoringObjects;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class CollisObject extends GameObject {
 //Quality
@@ -11,7 +12,7 @@ public class CollisObject extends GameObject {
     }
 //RENDERING DEFAULT
     @Override
-    public void draw(Graphics window) {
+    public void draw(Graphics window) throws IOException {
         drawSuper(window);
     }
 //CHECKING COLLISION

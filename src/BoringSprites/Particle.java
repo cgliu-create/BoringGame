@@ -2,6 +2,7 @@ package BoringSprites;
 
 import BoringObjects.AliveObject;
 import java.awt.*;
+import java.io.IOException;
 
 public class Particle extends AliveObject {
 //Color
@@ -29,7 +30,7 @@ public class Particle extends AliveObject {
         return getHP() == 0;
     }
 //RENDERING
-    public void draw(Graphics window) {
+    public void draw(Graphics window) throws IOException {
         window.setColor(color);
         window.fillRect(getXPos(), getYPos(), getWidth(), getHeight());
     }

@@ -1,29 +1,31 @@
 package BoringSprites;
 
+import BoringImages.BoringImage;
 import BoringImages.ImageGetter;
 import java.awt.*;
+import java.io.IOException;
 
 public class Player extends Shooty {
 //Image
     private ImageGetter i = new ImageGetter();
-    private int img;
+    private String img;
 //CONSTRUCTING 
     public Player (int x, int y, int wd, int ht, int hp, int mp) {
         super(x, y, wd, ht, hp, mp);
     }
 //RENDERING 
     @Override
-    public void draw(Graphics window) {
-        if(Math.abs(getDir())%360==0){ img = 0;}      
-        if(Math.abs(getDir())%360==45){ img = 1;}         
-        if(Math.abs(getDir())%360==90){ img = 2;}        
-        if(Math.abs(getDir())%360==135){ img = 3;}          
-        if(Math.abs(getDir())%360==180){ img = 4;}         
-        if(Math.abs(getDir())%360==225){ img = 5;}        
-        if(Math.abs(getDir())%360==270){ img = 6;}         
-        if(Math.abs(getDir())%360==315){ img = 7;}
+    public void draw(Graphics window) throws IOException {
+        if(Math.abs(getDir())%360==0){ img = BoringImage.player0.getImgLoc();}
+        if(Math.abs(getDir())%360==45){ img = BoringImage.player45.getImgLoc();}
+        if(Math.abs(getDir())%360==90){ img = BoringImage.player90.getImgLoc();}
+        if(Math.abs(getDir())%360==135){ img = BoringImage.player135.getImgLoc();}
+        if(Math.abs(getDir())%360==180){ img = BoringImage.player180.getImgLoc();}
+        if(Math.abs(getDir())%360==225){ img = BoringImage.player225.getImgLoc();}
+        if(Math.abs(getDir())%360==270){ img = BoringImage.player270.getImgLoc();}
+        if(Math.abs(getDir())%360==315){ img = BoringImage.player315.getImgLoc();}
         drawAim(window);
-        i.DrawImage(window,getXPos(),getYPos(),img,getWidth(),getHeight());
+        i.DrawImage(window, getXPos(), getYPos(), getWidth(), getHeight(), img);
     }
 //CHANGING BULLET
     public void switchBullet(){

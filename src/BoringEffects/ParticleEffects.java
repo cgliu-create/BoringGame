@@ -4,6 +4,7 @@ import BoringSprites.Bomb;
 import BoringSprites.Particle;
 import BoringSprites.Shooty;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -80,7 +81,7 @@ public class ParticleEffects {
         if(Math.abs(guy.getDir())%360==315){ KaBoom(particles, x+w, y);}   
     }
 //RENDERING
-    public void DrawAllParticles(CopyOnWriteArrayList<Particle> particles, Graphics window){
+    public void DrawAllParticles(CopyOnWriteArrayList<Particle> particles, Graphics window) throws IOException {
         for(int i = 0; i <= particles.size() - 1;i++){ particles.get(i).draw(window);}
     }
 }

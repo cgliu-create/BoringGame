@@ -1,5 +1,6 @@
 package BoringScenes;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -13,6 +14,7 @@ import BoringEffects.CollisionEffects;
 import BoringEffects.ParticleEffects;
 import javax.swing.*;
 import java.awt.*;
+//importing classes     https://stackoverflow.com/questions/28651061/how-to-import-my-own-class
 
 public abstract class Scene extends JPanel {
 //Panel size
@@ -47,7 +49,7 @@ public abstract class Scene extends JPanel {
         this.scenenum = scenenum;
     }
 //CHOOSING BACKGROUND
-    public void setBackground(int img){
+    public void setBackground(String img){
         background= new JustImage(0,0,getW(),getH(),img);
     }
 //CHANGING SCENES
@@ -96,11 +98,23 @@ public abstract class Scene extends JPanel {
 //RENDERING EVERYTHING
     public void update(Graphics window){ paint(window);}
     public void paint(Graphics window){
-        background.draw(window);
+        try {
+            background.draw(window);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         updateAllParticles();
-        particleEffects.DrawAllParticles(AllParticles, window);
+        try {
+            particleEffects.DrawAllParticles(AllParticles, window);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         for (GameObject thing: AllStuff){
-            thing.draw(window);
+            try {
+                thing.draw(window);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             thing.drawSuper(window);
         }
         player.drawStatus(window,W-100,H-200,Color.WHITE);

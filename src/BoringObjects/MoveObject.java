@@ -1,6 +1,7 @@
 package BoringObjects;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class MoveObject extends CollisObject {
 //Qualities
@@ -11,7 +12,7 @@ public class MoveObject extends CollisObject {
     }
 //RENDERING DEFAULT    
     @Override
-    public void draw(Graphics window) {
+    public void draw(Graphics window) throws IOException {
         drawSuper(window);
     }
 //CHANGING SPEED AND DIRECTION

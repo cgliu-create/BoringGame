@@ -1,6 +1,7 @@
 package BoringObjects;
 
 import java.awt.*;
+import java.io.IOException;
 
 public abstract class GameObject {
 //Position
@@ -29,7 +30,7 @@ public abstract class GameObject {
     public int getCenterX(){ return getXPos() + getWidth()/2;}
     public int getCenterY(){ return getYPos() + getHeight()/2;}
 //UNDEFINED RENDERING
-    public abstract void draw(Graphics window);
+    public abstract void draw(Graphics window) throws IOException;
 //RENDERING THE DEFAULT
     public void drawSuper(Graphics window){
         window.setColor(Color.WHITE);

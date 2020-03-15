@@ -1,8 +1,10 @@
 package BoringSprites;
 
+import BoringImages.BoringImage;
 import BoringImages.ImageGetter;
 import BoringObjects.CollisObject;
 import java.awt.*;
+import java.io.IOException;
 
 public class Wall extends CollisObject {
 //Image
@@ -13,7 +15,7 @@ public class Wall extends CollisObject {
     }
 //RENDERING
     @Override
-    public void draw(Graphics window) {
-        i.DrawImage(window,getXPos(),getYPos(),17,getWidth(),getHeight());
+    public void draw(Graphics window) throws IOException {
+        i.DrawImage(window,getXPos(),getYPos(),getWidth(),getHeight(), BoringImage.wall.getImgLoc());
     }
 }

@@ -1,5 +1,6 @@
 package BoringScenes;
 
+import BoringImages.BoringImage;
 import BoringObjects.MoveObject;
 import BoringSprites.Block;
 import BoringSprites.Crate;
@@ -21,7 +22,7 @@ public class Scene1 extends Scene{
 //ADDING STUFF
     public Scene1(int W, int H, int scenenum) {
         super(W, H, scenenum);
-        setBackground(29);
+        setBackground(BoringImage.green.getImgLoc());
         setEnemies(enemies);
         setInteractables(moveObjects);
         updateStuff();

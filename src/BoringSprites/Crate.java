@@ -1,8 +1,10 @@
 package BoringSprites;
 
+import BoringImages.BoringImage;
 import BoringImages.ImageGetter;
 import BoringObjects.MoveObject;
 import java.awt.*;
+import java.io.IOException;
 
 public class Crate extends MoveObject {
 //Image
@@ -13,7 +15,7 @@ public class Crate extends MoveObject {
     }
 //RENDERING 
     @Override
-    public void draw(Graphics window) {
-        i.DrawImage(window,getXPos(),getYPos(),30,getWidth(),getHeight());
+    public void draw(Graphics window) throws IOException {
+        i.DrawImage(window,getXPos(),getYPos(),getWidth(),getHeight(),BoringImage.crate.getImgLoc());
     }
 }

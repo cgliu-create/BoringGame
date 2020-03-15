@@ -1,8 +1,10 @@
 package BoringSprites;
 
+import BoringImages.BoringImage;
 import BoringImages.ImageGetter;
 import BoringObjects.GameObject;
 import java.awt.*;
+import java.io.IOException;
 
 public class Mine extends Bomb {
 //Image
@@ -21,7 +23,7 @@ public class Mine extends Bomb {
     }
 //RENDERING
     @Override
-    public void draw(Graphics window) {
-        i.DrawImage(window,getXPos(),getYPos(),26,getWidth(),getHeight());
+    public void draw(Graphics window) throws IOException {
+        i.DrawImage(window,getXPos(),getYPos(),getWidth(),getHeight(), BoringImage.mine.getImgLoc());
     }
 }

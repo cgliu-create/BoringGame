@@ -1,8 +1,10 @@
 package BoringSprites;
 
+import BoringImages.BoringImage;
 import BoringImages.ImageGetter;
 import BoringObjects.BreakObject;
 import java.awt.*;
+import java.io.IOException;
 
 public class Ammo extends BreakObject {
 //Image
@@ -13,7 +15,7 @@ public class Ammo extends BreakObject {
     }
 //RENDERING
     @Override
-    public void draw(Graphics window) {
-        i.DrawImage(window,getXPos(),getYPos(),31,getWidth(),getHeight());
+    public void draw(Graphics window) throws IOException {
+        i.DrawImage(window,getXPos(),getYPos(),getWidth(),getHeight(), BoringImage.ammo.getImgLoc());
     }
 }
