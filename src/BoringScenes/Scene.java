@@ -30,6 +30,10 @@ public abstract class Scene extends JPanel {
     private ArrayList<Particle> badparticles = new ArrayList<>();
 //Misc
     private ArrayList<MoveObject> interactables = new ArrayList<>();
+    private ArrayList<JustImage> someimages = new ArrayList<>();
+
+
+
 //List of things to draw    https://www.javacodegeeks.com/2011/05/avoid-concurrentmodificationexception.html
     private CopyOnWriteArrayList<Particle> AllParticles = new CopyOnWriteArrayList<>();
     private CopyOnWriteArrayList<GameObject> AllStuff = new CopyOnWriteArrayList<>();
@@ -50,7 +54,12 @@ public abstract class Scene extends JPanel {
     }
 //CHOOSING BACKGROUND
     public void setBackground(String img){
+        someimages.clear();
         background= new JustImage(0,0,getW(),getH(),img);
+        someimages.add(background);
+    }
+    public void setAdditionalImages(JustImage[] imgs){
+        someimages.addAll(Arrays.asList(imgs));
     }
 //CHANGING SCENES
     public int getScenenum(){return scenenum;}
@@ -66,7 +75,13 @@ public abstract class Scene extends JPanel {
     public void setEnemies(Enemy[] myEnemies){ enemies.clear(); enemies.addAll(Arrays.asList(myEnemies));}
     public void setInteractables(MoveObject[] moveObjects){ interactables.clear(); interactables.addAll(Arrays.asList(moveObjects));}
 //UPDATING ITEMS
-    public void updateStuff(){ AllStuff.clear(); AllStuff.add(player); AllStuff.addAll(enemies); AllStuff.addAll(interactables);}
+    public void updateStuff(){
+        AllStuff.clear();
+        AllStuff.add(player);
+        AllStuff.addAll(enemies);
+        AllStuff.addAll(interactables);
+        AllStuff.addAll(someimages);
+    }
     public void updateAllParticles(){ AllParticles.clear(); AllParticles.addAll(badparticles); AllParticles.addAll(particles);}
 //UPDATING SCENE
     public void updatePlayer(){
@@ -95,14 +110,9 @@ public abstract class Scene extends JPanel {
             collisionEffects.checkParticleInteraction(AllStuff,badparticles,item);
         }
     }
-//RENDERING EVERYTHING
+    //RENDERING EVERYTHING
     public void update(Graphics window){ paint(window);}
     public void paint(Graphics window){
-        try {
-            background.draw(window);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         updateAllParticles();
         try {
             particleEffects.DrawAllParticles(AllParticles, window);

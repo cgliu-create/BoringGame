@@ -12,7 +12,6 @@ public class SceneSelector extends JFrame {
     public SceneSelector(String title, int width, int height){
         super(title);
         setSize(width,height);
-        setVisible(true);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         scene1 = new Scene1(width,height,1);
@@ -22,6 +21,7 @@ public class SceneSelector extends JFrame {
         addKeyListener(scene1.getPlayerInput());
         repaint();
         curScene = 1;
+        setVisible(true);
     }
 //GETTING CURRENT SCENE NUMBER
     public int getCurScene() { return curScene;}
