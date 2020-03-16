@@ -6,10 +6,7 @@ import java.util.Arrays;
 import java.util.concurrent.CopyOnWriteArrayList;
 import BoringObjects.GameObject;
 import BoringObjects.MoveObject;
-import BoringSprites.JustImage;
-import BoringSprites.Particle;
-import BoringSprites.Player;
-import BoringSprites.Enemy;
+import BoringSprites.*;
 import BoringEffects.CollisionEffects;
 import BoringEffects.ParticleEffects;
 import javax.swing.*;
@@ -31,9 +28,7 @@ public abstract class Scene extends JPanel {
 //Misc
     private ArrayList<MoveObject> interactables = new ArrayList<>();
     private ArrayList<JustImage> someimages = new ArrayList<>();
-
-
-
+    private ArrayList<Message> somemessages= new ArrayList<>();
 //List of things to draw    https://www.javacodegeeks.com/2011/05/avoid-concurrentmodificationexception.html
     private CopyOnWriteArrayList<Particle> AllParticles = new CopyOnWriteArrayList<>();
     private CopyOnWriteArrayList<GameObject> AllStuff = new CopyOnWriteArrayList<>();
@@ -52,15 +47,6 @@ public abstract class Scene extends JPanel {
         this.H = H;
         this.scenenum = scenenum;
     }
-//CHOOSING BACKGROUND
-    public void setBackground(String img){
-        someimages.clear();
-        background= new JustImage(0,0,getW(),getH(),img);
-        someimages.add(background);
-    }
-    public void setAdditionalImages(JustImage[] imgs){
-        someimages.addAll(Arrays.asList(imgs));
-    }
 //CHANGING SCENES
     public int getScenenum(){return scenenum;}
     public void setScenenum(int scenenum){this.scenenum = scenenum;}
@@ -71,18 +57,31 @@ public abstract class Scene extends JPanel {
     public int getW() { return W; }
     public void setH(int h) { H = h; }
     public void setW(int w) { W = w; }
+    //CHOOSING BACKGROUND
+    public void setBackground(String img){
+        someimages.clear();
+        background= new JustImage(0,0,getW(),getH(),img);
+        someimages.add(background);
+    }
 //CREATING A SPECIFIC SCENE
+    public void setAdditionalImages(JustImage[] imgs){ someimages.addAll(Arrays.asList(imgs)); }
     public void setEnemies(Enemy[] myEnemies){ enemies.clear(); enemies.addAll(Arrays.asList(myEnemies));}
     public void setInteractables(MoveObject[] moveObjects){ interactables.clear(); interactables.addAll(Arrays.asList(moveObjects));}
-//UPDATING ITEMS
+    public void setMessages(Message[] msgs){ somemessages.clear(); somemessages.addAll(Arrays.asList(msgs));}
+    //UPDATING ITEMS
     public void updateStuff(){
         AllStuff.clear();
         AllStuff.add(player);
         AllStuff.addAll(enemies);
         AllStuff.addAll(interactables);
         AllStuff.addAll(someimages);
+        AllStuff.addAll(somemessages);
     }
-    public void updateAllParticles(){ AllParticles.clear(); AllParticles.addAll(badparticles); AllParticles.addAll(particles);}
+    public void updateAllParticles(){
+        AllParticles.clear();
+        AllParticles.addAll(badparticles);
+        AllParticles.addAll(particles);
+    }
 //UPDATING SCENE
     public void updatePlayer(){
         //allows player to push
