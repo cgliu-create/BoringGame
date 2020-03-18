@@ -20,6 +20,8 @@ public class Scene1 extends Scene {
             new Message(50,320,20,"accelerate",Color.WHITE),
             new Message(50,420,20,"turn",Color.WHITE),
             new Message(300,200,30,"SPACE = FIRE",Color.WHITE),
+            new Message(300,300,20,"0           1           2",Color.WHITE),
+            new Message(300,400,20,"3           4           5",Color.WHITE),
 
     };
     private JustImage[] images = {
@@ -27,6 +29,12 @@ public class Scene1 extends Scene {
             new JustImage(150,200,100,100,BoringImage.downsign.getImgLoc()),
             new JustImage(50,300,100,100,BoringImage.leftsign.getImgLoc()),
             new JustImage(150,300,100,100,BoringImage.rightsign.getImgLoc()),
+            new JustImage(150,300,50,50,BoringImage.cannonball.getImgLoc()),
+            new JustImage(150,300,50,50,BoringImage.bomb.getImgLoc()),
+            new JustImage(150,300,50,50,BoringImage.grenade.getImgLoc()),
+            new JustImage(150,300,50,50,BoringImage.mine.getImgLoc()),
+            new JustImage(150,300,50,50,BoringImage.lavaball.getImgLoc()),
+            new JustImage(150,300,50,50,BoringImage.bombA.getImgLoc())
     };
     public Scene1(int W, int H, int scenenum) {
         super(W, H, scenenum);
