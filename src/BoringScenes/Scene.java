@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import BoringObjects.CollisObject;
 import BoringObjects.GameObject;
 import BoringObjects.MoveObject;
 import BoringSprites.*;
@@ -27,6 +29,7 @@ public abstract class Scene extends JPanel {
     private ArrayList<Particle> badparticles = new ArrayList<>();
 //Misc
     private ArrayList<MoveObject> interactables = new ArrayList<>();
+    private ArrayList<CollisObject> environment = new ArrayList<>();
     private ArrayList<JustImage> someimages = new ArrayList<>();
     private ArrayList<Message> somemessages= new ArrayList<>();
 //List of things to draw    https://www.javacodegeeks.com/2011/05/avoid-concurrentmodificationexception.html
@@ -67,6 +70,7 @@ public abstract class Scene extends JPanel {
     public void setAdditionalImages(JustImage[] imgs){ someimages.addAll(Arrays.asList(imgs)); }
     public void setEnemies(Enemy[] myEnemies){ enemies.clear(); enemies.addAll(Arrays.asList(myEnemies));}
     public void setInteractables(MoveObject[] moveObjects){ interactables.clear(); interactables.addAll(Arrays.asList(moveObjects));}
+    public void setEnvironment(ArrayList<CollisObject> enviro){ environment.clear(); environment.addAll(enviro);}
     public void setMessages(Message[] msgs){ somemessages.clear(); somemessages.addAll(Arrays.asList(msgs));}
     //UPDATING ITEMS
     public void updateStuff(){
@@ -74,8 +78,7 @@ public abstract class Scene extends JPanel {
         AllStuff.add(player);
         AllStuff.addAll(enemies);
         AllStuff.addAll(interactables);
-        AllStuff.addAll(someimages);
-        AllStuff.addAll(somemessages);
+        AllStuff.addAll(environment);
     }
     public void updateAllParticles(){
         AllParticles.clear();
@@ -112,6 +115,17 @@ public abstract class Scene extends JPanel {
     //RENDERING EVERYTHING
     public void update(Graphics window){ paint(window);}
     public void paint(Graphics window){
+        for (JustImage img: someimages) {
+            try {
+                img.draw(window);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        for (Message message: somemessages){
+            message.draw(window);
+            message.drawSuper(window);
+        }
         updateAllParticles();
         try {
             particleEffects.DrawAllParticles(AllParticles, window);
@@ -126,6 +140,5 @@ public abstract class Scene extends JPanel {
             }
             thing.drawSuper(window);
         }
-        player.drawStatus(window,W-100,H-200,Color.WHITE);
     }
 }
