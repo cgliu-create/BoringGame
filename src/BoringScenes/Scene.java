@@ -53,6 +53,7 @@ public abstract class Scene extends JPanel {
 //CHANGING SCENES
     public int getScenenum(){return scenenum;}
     public void setScenenum(int scenenum){this.scenenum = scenenum;}
+    public abstract void updateStatus();
 //ADDING PLAYER INPUT
     public PlayerInput getPlayerInput(){ return playerInput;}
     //EDITING PLAYER

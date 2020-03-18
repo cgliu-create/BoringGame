@@ -52,6 +52,7 @@ public class SceneSelector extends JFrame {
         this.getScene().updatePlayer();
         this.getScene().updateEnemies();
         this.getScene().updateOther();
+        this.getScene().updateStatus();
         this.checkScene();
     }
 //RENDERING EVERYTHING

@@ -2,6 +2,7 @@ package BoringScenes;
 
 import BoringImages.BoringImage;
 import BoringObjects.CollisObject;
+import BoringSprites.Flag;
 import BoringSprites.JustImage;
 import BoringSprites.Message;
 import BoringSprites.Wall;
@@ -43,6 +44,7 @@ public class Scene1 extends Scene {
             new JustImage(getW()/2+100, 250, 50,50, BoringImage.enemy0.getImgLoc()),
             new JustImage(getW()/2+300, 250, 50,50, BoringImage.redflag.getImgLoc())
     };
+    private Flag playbutton = new Flag(getW()/2-100,500,50,50,0);
     public Scene1(int W, int H, int scenenum) {
         super(W, H, scenenum);
         setBackground(BoringImage.green.getImgLoc());
@@ -60,6 +62,7 @@ public class Scene1 extends Scene {
         for (int i = 1; i < getW()/50-1; i++) {
             temp.add(new Wall(i*50,getH()-50,50,50));
         }
+        temp.add(playbutton);
         getPlayer().setXPos(getW()/2-350);
         getPlayer().setYPos(500);
         setAdditionalImages(images);
@@ -67,4 +70,15 @@ public class Scene1 extends Scene {
         setEnvironment(temp);
         updateStuff();
     }
+
+    @Override
+    public void updateStatus() {
+        int r = playbutton.getRadius();
+        playbutton.setRadius(getPlayer().getRadius()+5);
+        if((playbutton).checkAllDir(getPlayer())){
+            setScenenum(2);
+        }
+        playbutton.setRadius(r);
+    }
 }
+

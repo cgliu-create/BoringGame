@@ -27,4 +27,8 @@ public class Scene2 extends Scene{
         setInteractables(moveObjects);
         updateStuff();
     }
+
+    @Override
+    public void updateStatus() {
+    }
 }
