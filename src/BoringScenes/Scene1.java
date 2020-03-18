@@ -28,7 +28,7 @@ public class Scene1 extends Scene {
             new Message(getW()/2-200,400,20,"4             5              6",Color.WHITE),
             new Message(getW()/2+100,200,30,"ENEMY",Color.WHITE),
             new Message(getW()/2+300,200,30,"TARGET", Color.WHITE),
-            new Message(getW()/2-100,500,80,"PLAY",Color.WHITE),
+            new Message(getW()/2,500,80,"PLAY",Color.WHITE),
     };
     private JustImage[] images = {
             new JustImage(getW()/2-450,220,100,100,BoringImage.upsign.getImgLoc()),
@@ -44,24 +44,13 @@ public class Scene1 extends Scene {
             new JustImage(getW()/2+100, 250, 50,50, BoringImage.enemy0.getImgLoc()),
             new JustImage(getW()/2+300, 250, 50,50, BoringImage.redflag.getImgLoc())
     };
-    private Flag playbutton = new Flag(getW()/2-100,500,50,50,0);
+    private Flag playbutton = new Flag(getW()/2-60,450,50,50,0);
     public Scene1(int W, int H, int scenenum) {
         super(W, H, scenenum);
         setBackground(BoringImage.green.getImgLoc());
         //4 walls
         ArrayList<CollisObject> temp = new ArrayList<>();
-        for (int i = 0; i < getW()/50; i++) {
-            temp.add(new Wall(i*50,0,50,50));
-        }
-        for (int i = 1; i < getH()/50; i++) {
-            temp.add(new Wall(0,i*50,50,50));
-        }
-        for (int i = 1; i < getH()/50; i++) {
-            temp.add(new Wall(getW()-50,i*50,50,50));
-        }
-        for (int i = 1; i < getW()/50-1; i++) {
-            temp.add(new Wall(i*50,getH()-50,50,50));
-        }
+        addWallT(temp); addWallB(temp); addWallL(temp); addWallR(temp);
         temp.add(playbutton);
         getPlayer().setXPos(getW()/2-350);
         getPlayer().setYPos(500);
@@ -73,12 +62,9 @@ public class Scene1 extends Scene {
 
     @Override
     public void updateStatus() {
-        int r = playbutton.getRadius();
-        playbutton.setRadius(getPlayer().getRadius()+5);
-        if((playbutton).checkAllDir(getPlayer())){
-            setScenenum(2);
-        }
-        playbutton.setRadius(r);
+       if (flagCheck(playbutton)){
+           setScenenum(2);
+       }
     }
 }
 

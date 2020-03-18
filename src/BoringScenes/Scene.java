@@ -54,6 +54,13 @@ public abstract class Scene extends JPanel {
     public int getScenenum(){return scenenum;}
     public void setScenenum(int scenenum){this.scenenum = scenenum;}
     public abstract void updateStatus();
+    public boolean flagCheck(Flag button){
+        int r = button.getRadius();
+        button.setRadius(getPlayer().getRadius()+5);
+        if((button).checkAllDir(getPlayer())){ return true; }
+        button.setRadius(r);
+        return false;
+    }
 //ADDING PLAYER INPUT
     public PlayerInput getPlayerInput(){ return playerInput;}
     //EDITING PLAYER
@@ -131,7 +138,6 @@ public abstract class Scene extends JPanel {
         }
         for (Message message: somemessages){
             message.draw(window);
-            message.drawSuper(window);
         }
         updateAllParticles();
         try {
@@ -145,7 +151,19 @@ public abstract class Scene extends JPanel {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            thing.drawSuper(window);
+           // thing.drawSuper(window);
         }
+    }
+    public  void addWallT(ArrayList<CollisObject> temp ){
+        for (int i = 0; i < getW()/50; i++) { temp.add(new Wall(i*50,0,50,50)); }
+    }
+    public  void addWallB(ArrayList<CollisObject> temp ){
+        for (int i = 1; i < getW()/50-1; i++) { temp.add(new Wall(i*50,getH()-50,50,50)); }
+    }
+    public  void addWallL(ArrayList<CollisObject> temp ){
+        for (int i = 1; i < getH()/50; i++) { temp.add(new Wall(0,i*50,50,50)); }
+    }
+    public  void addWallR(ArrayList<CollisObject> temp ){
+        for (int i = 1; i < getH()/50; i++) { temp.add(new Wall(getW()-50,i*50,50,50)); }
     }
 }
