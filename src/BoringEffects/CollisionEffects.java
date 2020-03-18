@@ -85,6 +85,4 @@ public class CollisionEffects {
         checkCollisionsBullet(particles, guy);
         checkParticlePush(Obstructions,particles,guy);
     }
-
-
 }

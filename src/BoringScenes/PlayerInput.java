@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class PlayerInput implements KeyListener {
 //Player
-    private Player player = new Player(100,100,70,70, 100,100);
+    private Player player = new Player(100,100,50,50, 100,100);
 //Pew pew
     private ArrayList<Particle> particles = new ArrayList<>();
     private ParticleEffects particleEffects = new ParticleEffects();

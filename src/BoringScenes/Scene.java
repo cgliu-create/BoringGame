@@ -55,6 +55,8 @@ public abstract class Scene extends JPanel {
     public void setScenenum(int scenenum){this.scenenum = scenenum;}
 //ADDING PLAYER INPUT
     public PlayerInput getPlayerInput(){ return playerInput;}
+    //EDITING PLAYER
+    public Player getPlayer(){ return player; }
 //SIZING
     public int getH() { return H; }
     public int getW() { return W; }
@@ -110,6 +112,10 @@ public abstract class Scene extends JPanel {
         for (MoveObject item: interactables){
             collisionEffects.checkParticleInteraction(AllStuff,particles,item);
             collisionEffects.checkParticleInteraction(AllStuff,badparticles,item);
+        }
+        for (GameObject thing: environment) {
+            collisionEffects.checkCollisionsBullet(particles,thing);
+            collisionEffects.checkCollisionsBullet(badparticles,thing);
         }
     }
     //RENDERING EVERYTHING
