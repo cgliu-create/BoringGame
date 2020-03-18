@@ -61,7 +61,8 @@ public enum BoringImage {
     boxTurret180("/BoringImages/Weapon/boxTurret180.png"),
     boxTurret270("/BoringImages/Weapon/boxTurret270.png"),
     redflag("/BoringImages/Signs/redflag.png"),
-    greenflag("/BoringImages/Signs/greenflag.png");
+    greenflag("/BoringImages/Signs/greenflag.png"),
+    whiteflag("/BoringImages/Signs/whiteflag.png");
     //location
     private String imgLoc;
     //CONSTRUCTING
