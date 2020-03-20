@@ -53,13 +53,10 @@ public abstract class Scene extends JPanel {
 //CHANGING SCENES
     public int getScenenum(){return scenenum;}
     public void setScenenum(int scenenum){this.scenenum = scenenum;}
-    public abstract void updateStatus();
+    public abstract void updateStatus( );
     public boolean flagCheck(Flag button){
-        int r = button.getRadius();
-        button.setRadius(getPlayer().getRadius()+5);
-        if((button).checkAllDir(getPlayer())){ return true; }
-        button.setRadius(r);
-        return false;
+        collisionEffects.checkCollisionsBullet(particles,button);
+        return button.getType() == 2;
     }
 //ADDING PLAYER INPUT
     public PlayerInput getPlayerInput(){ return playerInput;}
@@ -82,6 +79,8 @@ public abstract class Scene extends JPanel {
     public void setInteractables(MoveObject[] moveObjects){ interactables.clear(); interactables.addAll(Arrays.asList(moveObjects));}
     public void setEnvironment(ArrayList<CollisObject> enviro){ environment.clear(); environment.addAll(enviro);}
     public void setMessages(Message[] msgs){ somemessages.clear(); somemessages.addAll(Arrays.asList(msgs));}
+
+    public abstract void makeScene();
     //UPDATING ITEMS
     public void updateStuff(){
         AllStuff.clear();
@@ -151,19 +150,19 @@ public abstract class Scene extends JPanel {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-           // thing.drawSuper(window);
+           thing.drawSuper(window);
         }
     }
-    public  void addWallT(ArrayList<CollisObject> temp ){
+    public  void addWallH(ArrayList<CollisObject> temp , int x, int y, int n){
+        for (int i = 0; i < n; i++) { temp.add(new Wall(x+i*50,y,50,50)); }
+    }
+    public  void addWallV(ArrayList<CollisObject> temp , int x, int y, int n){
+        for (int i = 0; i < n; i++) { temp.add(new Wall(x,y+i*50,50,50)); }
+    }
+    public void addFourWalls(ArrayList<CollisObject> temp){
         for (int i = 0; i < getW()/50; i++) { temp.add(new Wall(i*50,0,50,50)); }
-    }
-    public  void addWallB(ArrayList<CollisObject> temp ){
-        for (int i = 1; i < getW()/50-1; i++) { temp.add(new Wall(i*50,getH()-50,50,50)); }
-    }
-    public  void addWallL(ArrayList<CollisObject> temp ){
-        for (int i = 1; i < getH()/50; i++) { temp.add(new Wall(0,i*50,50,50)); }
-    }
-    public  void addWallR(ArrayList<CollisObject> temp ){
-        for (int i = 1; i < getH()/50; i++) { temp.add(new Wall(getW()-50,i*50,50,50)); }
+        for (int i = 0; i < getW()/50; i++) { temp.add(new Wall(i*50,getH()-50,50,50)); }
+        for (int i = 0; i < getH()/50; i++) { temp.add(new Wall(0,i*50,50,50)); }
+        for (int i = 0; i < getH()/50; i++) { temp.add(new Wall(getW()-50,i*50,50,50)); }
     }
 }

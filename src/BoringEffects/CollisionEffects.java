@@ -8,6 +8,7 @@ import BoringObjects.CollisObject;
 import BoringObjects.GameObject;
 import BoringObjects.MoveObject;
 import BoringSprites.Bomb;
+import BoringSprites.Flag;
 import BoringSprites.Particle;
 
 public class CollisionEffects {
@@ -61,11 +62,13 @@ public class CollisionEffects {
                     pe.KaBoom(particles,p.getXPos(),p.getYPos(),Color.DARK_GRAY,10);
                     toRemove.add(p);
                     if (p instanceof Bomb) { pe.BigKaBoom(particles, p.getXPos(), p.getYPos(), p.getWidth(), p.getHeight());}
+                    if (guy instanceof Flag){ ((Flag) guy).setType(2);}
                 }
             }
         }
         particles.removeAll(toRemove);
     }
+
 //PUSHING WITH EXPLOSIONS
     public void checkParticlePush(CopyOnWriteArrayList<GameObject>Obstructions, ArrayList<Particle> particles, MoveObject guy){
         for (int i = particles.size() - 1; i >= 0; i--){

@@ -36,8 +36,9 @@ public class Game implements Runnable{
             last = now;
             if (change>=1){ tick();render(); updates++; change--;}
             frames++;
-            if (System.currentTimeMillis() - timer > 1000){ timer+=1000; updates = 0; frames = 0;
-                //System.out.println("Fps:"+updates+";"+"MaxFps" + frames);
+            if (System.currentTimeMillis() - timer > 1000){
+               // System.out.println("Fps:"+updates+";"+"MaxFps" + frames);
+                timer+=1000; updates = 0; frames = 0;
             }
         }
         stopGame();

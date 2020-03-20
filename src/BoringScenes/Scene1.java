@@ -26,8 +26,10 @@ public class Scene1 extends Scene {
             new Message(getW()/2-200,240,20,"bullets",Color.WHITE),
             new Message(getW()/2-200,300,20,"1             2              3",Color.WHITE),
             new Message(getW()/2-200,400,20,"4             5              6",Color.WHITE),
-            new Message(getW()/2+100,200,30,"ENEMY",Color.WHITE),
-            new Message(getW()/2+300,200,30,"TARGET", Color.WHITE),
+            new Message(getW()/2+100,200,30,"DEFEAT",Color.WHITE),
+            new Message(getW()/2+100,240,30,"ENEMIES", Color.WHITE),
+            new Message(getW()/2+300,200,30,"SHOOT", Color.WHITE),
+            new Message(getW()/2+300,240,30,"TARGETS", Color.WHITE),
             new Message(getW()/2,500,80,"PLAY",Color.WHITE),
     };
     private JustImage[] images = {
@@ -47,24 +49,29 @@ public class Scene1 extends Scene {
     private Flag playbutton = new Flag(getW()/2-60,450,50,50,0);
     public Scene1(int W, int H, int scenenum) {
         super(W, H, scenenum);
-        setBackground(BoringImage.green.getImgLoc());
-        //4 walls
-        ArrayList<CollisObject> temp = new ArrayList<>();
-        addWallT(temp); addWallB(temp); addWallL(temp); addWallR(temp);
-        temp.add(playbutton);
-        getPlayer().setXPos(getW()/2-350);
+        makeScene();
+        getPlayer().setXPos(200);
         getPlayer().setYPos(500);
-        setAdditionalImages(images);
-        setMessages(messages);
-        setEnvironment(temp);
-        updateStuff();
     }
 
     @Override
     public void updateStatus() {
        if (flagCheck(playbutton)){
            setScenenum(2);
+           playbutton.setType(0);
        }
+    }
+
+    @Override
+    public void makeScene() {
+        setBackground(BoringImage.green.getImgLoc());
+        ArrayList<CollisObject> temp = new ArrayList<>();
+        addFourWalls(temp);
+        temp.add(playbutton);
+        setAdditionalImages(images);
+        setMessages(messages);
+        setEnvironment(temp);
+        updateStuff();
     }
 }
 

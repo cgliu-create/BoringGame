@@ -19,6 +19,12 @@ public class PlayerInput implements KeyListener {
 //CHANGING PLAYER AND PARTICLES
     public void setPlayer(Player newplayer){ player = newplayer;}
     public void setParticles(ArrayList<Particle> newparticles){ particles = newparticles;}
+    public void resetPlayer(){
+        player.setXPos(100);
+        player.setYPos(100);
+        player.setDir(0);
+        player.setSpeed(0);
+    }
 //KEYLISTENING
     @Override
     public void keyTyped(KeyEvent e) {}
@@ -53,5 +59,6 @@ public class PlayerInput implements KeyListener {
         }
     }
     @Override
-    public void keyReleased(KeyEvent e) {}
+    public void keyReleased(KeyEvent e) {
+    }
 }
