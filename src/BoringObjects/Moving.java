@@ -15,13 +15,9 @@ public class Moving {
     public void setDir(int degrees) { dir = degrees; setXspeed(); setYspeed();}
     public void setXspeed() {
         Xspeed = (int)(speed * Math.cos(Math.toRadians(dir)));
-        if(Math.abs(getDir())%360==45 || Math.abs(getDir())%360==135 || Math.abs(getDir())%360==225 || Math.abs(getDir())%360==315)
-            Xspeed = (int)(Xspeed * 1.5);
     }
     public void setYspeed() {
         Yspeed = (int)(speed * Math.sin(Math.toRadians(dir)));
-        if(Math.abs(getDir())%360==45 || Math.abs(getDir())%360==135 || Math.abs(getDir())%360==225 || Math.abs(getDir())%360==315)
-            Yspeed = (int)(Yspeed * 1.5);
     }
 //ACCESSING SPEED AND DIRECTION
     public int getSpeed() { return speed; }

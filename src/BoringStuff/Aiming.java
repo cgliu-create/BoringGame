@@ -18,8 +18,8 @@ public class Aiming {
         guy = thisGuy;
     }
 //DETERMINING SLOPE
-    public void setdx(){ dx = (int)(10 * Math.cos(Math.toRadians(guy.getDir())));}
-    public void setdy(){ dy = (int)(10 * Math.sin(Math.toRadians(guy.getDir())));}
+    public void setdx(){ dx = (int)(250* Math.cos(Math.toRadians(guy.getDir())));}
+    public void setdy(){ dy = (int)(250 * Math.sin(Math.toRadians(guy.getDir())));}
 //CALCULATING ENDPOINT
     public void calcPoints(){
         //enemy center
@@ -27,7 +27,7 @@ public class Aiming {
         //direction
         setdx(); setdy();
         //endpoint
-        x = cx + dx*20; y = cy + dy*20;
+        x = cx + dx; y = cy + dy;
     }
 //ACCESSING ENDPOINT AND CENTER
     public int getX() { return x;}

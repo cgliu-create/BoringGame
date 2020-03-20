@@ -111,6 +111,7 @@ public abstract class Scene extends JPanel {
             collisionEffects.checkObstruction(AllStuff, enemy);
             //particle collisions
             collisionEffects.checkParticleInteraction(AllStuff,particles,enemy);
+            enemy.attack(badparticles,player);
         }
         //animates particles
         particleEffects.RemoveParticles(badparticles);
@@ -136,7 +137,11 @@ public abstract class Scene extends JPanel {
             }
         }
         for (Message message: somemessages){
-            message.draw(window);
+            try {
+                message.draw(window);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         updateAllParticles();
         try {

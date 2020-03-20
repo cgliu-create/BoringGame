@@ -2,6 +2,7 @@ package BoringSprites;
 
 import BoringObjects.GameObject;
 import java.awt.*;
+import java.io.IOException;
 
 public class Message extends GameObject {
     private String msg;
@@ -14,11 +15,16 @@ public class Message extends GameObject {
         this.size = size;
         this.color = color;
     }
+
+    public Color getColor() { return color; }
+    public int getSize() { return size; }
+    public String getMsg() { return msg; }
+
     //RENDERING
     @Override
-    public void draw(Graphics window){
-        window.setColor(color);
-        window.setFont(new Font("TAHOMA",Font.BOLD,this.size));
-        window.drawString(msg,getXPos(),getYPos());
+    public void draw(Graphics window) throws IOException {
+        window.setColor(getColor());
+        window.setFont(new Font("TAHOMA",Font.BOLD,getSize()));
+        window.drawString(getMsg(),getXPos(),getYPos());
     }
 }
