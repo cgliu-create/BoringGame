@@ -2,7 +2,8 @@ package BoringObjects;
 
 public class Moving {
 //Direction and speed
-    private int dir, speed, Xspeed, Yspeed;
+    private int dir = 360;
+    private int speed, Xspeed, Yspeed;
 //CONSTRUCTING  
     public Moving(){
         dir = speed = Xspeed = Yspeed = 0;

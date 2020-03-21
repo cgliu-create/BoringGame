@@ -18,8 +18,8 @@ public class Aiming {
         guy = thisGuy;
     }
 //DETERMINING SLOPE
-    public void setdx(){ dx = (int)(250* Math.cos(Math.toRadians(guy.getDir())));}
-    public void setdy(){ dy = (int)(250 * Math.sin(Math.toRadians(guy.getDir())));}
+    public void setdx(){ dx = (int)(250* Math.cos(Math.toRadians(guy.getDir())));} //250 = radius of concern
+    public void setdy(){ dy = (int)(250* Math.sin(Math.toRadians(guy.getDir())));}
 //CALCULATING ENDPOINT
     public void calcPoints(){
         //enemy center

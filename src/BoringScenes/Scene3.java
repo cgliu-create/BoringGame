@@ -38,6 +38,7 @@ public class Scene3 extends Scene{
         addFourWalls(temp);
         setEnvironment(temp);
         setMessages(messages);
+        enemies[0].setDir(enemies[0].getDir()-45);
         setEnemies(enemies);
         updateStuff();
     }

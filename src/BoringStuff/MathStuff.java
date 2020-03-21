@@ -8,19 +8,13 @@ public class MathStuff {
         return Math.sqrt(x*x+y*y); //distance formula
     }
 //CALCULATING ANGLE
-    public int angleBtwnTwoLines(int x1, int y1, int x2, int y2, int x3, int y3){
-        int dXa = Math.abs(x2 - x1);
-        int dYa = Math.abs(y2 - y1);
-        int dXb = Math.abs(x3 - x1);
-        int dYb = Math.abs(y3 - y1);
-        double angA = Math.toDegrees(Math.atan(dYa*1.0/dXa));
-        double angB = Math.toDegrees(Math.atan(dYb*1.0/dXb));
-        return (int)(Math.abs(angA-angB)); //angle dif of two triangles
-    }
-//CALCULATING DISTANCE BTWN POINT AND LINE
-    public int distBtnPointNLine(int xOrig, int yOrig, int xL, int yL, int xP, int yP){
-        double theta = angleBtwnTwoLines(xOrig, yOrig, xL, yL, xP, yP);
-        double diag = distBtwnTwoPoints(xOrig,yOrig,xP,yP);
-        return (int)(diag * Math.sin(Math.toRadians(theta)));
+    public double angleBtwnTwoLines(int xc, int yc, int xe1, int ye1, int xe2, int ye2){
+        int da1 = xe1 - xc;
+        int do1 = ye1 - yc;
+        int da2 = xe2 - xc;
+        int do2 = ye2 - yc;
+        double ang1 = Math.toDegrees(Math.atan(do1*1.0/da1));
+        double ang2 = Math.toDegrees(Math.atan(do2*1.0/da2));
+        return Math.abs(ang1-ang2); //angle dif of two triangles
     }
 }
