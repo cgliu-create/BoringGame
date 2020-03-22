@@ -1,5 +1,6 @@
 package BoringScenes;
 
+import BoringSprites.Enemy;
 import BoringSprites.Particle;
 import BoringSprites.Player;
 import BoringEffects.ParticleEffects;
@@ -39,12 +40,10 @@ public class PlayerInput implements KeyListener {
         }
     //turn
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            player.setDir(player.getDir() - 45);
-            if(player.getDir()==0){ player.setDir(360);}
+            player.turnLeft();
         }
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            player.setDir(player.getDir() + 45);
-            if(player.getDir()==720){ player.setDir(360);}
+            player.turnRight();
         }
     //change bullet type
         if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
@@ -57,8 +56,16 @@ public class PlayerInput implements KeyListener {
                 player.setMP(player.getMP()-1);
             }
         }
+        if (e.getKeyCode() == KeyEvent.VK_T) {
+            testenemy.turnRight();
+        }
     }
     @Override
     public void keyReleased(KeyEvent e) {
+    }
+    //testing
+    private Enemy testenemy = new Enemy(400,400,50,50,100,100);
+    public Enemy getTestenemy() {
+        return testenemy;
     }
 }

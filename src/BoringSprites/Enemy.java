@@ -23,10 +23,8 @@ public class Enemy extends Shooty {
         setDir(360);
     }
 //ATTACKING
-    public void attack(ArrayList<Particle> badparticles, Shooty player){
-        if(ai.checkEnemyInSight(badparticles, player)){
-            particleEffects.Shoot(badparticles, this);
-        }
+    public void attack(ArrayList<Particle> badparticles, Player player){
+           ai.checktargeting(badparticles,player);
     }
 //RENDERING 
     @Override

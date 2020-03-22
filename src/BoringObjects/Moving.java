@@ -25,6 +25,14 @@ public class Moving {
     public int getDir() { return dir; }
     public int getXspeed() { return Xspeed; }
     public int getYspeed() { return Yspeed; }
+    public void turnRight(){
+        setDir(getDir()+45);
+        if(getDir()==0){ setDir(360);}
+    }
+    public void turnLeft(){
+        setDir(getDir()-45);
+        if(getDir()==720){ setDir(360);}
+    }
 //PRINTING
     @Override
     public String toString() {

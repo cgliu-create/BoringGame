@@ -19,9 +19,6 @@ public class Scene3 extends Scene{
         super(W, H, scenenum);
         makeScene();
     }
-    private Enemy[] enemies = {
-            new Enemy(400,400,50,50,100,100)
-    };
     @Override
     public void updateStatus() {
         if (flagCheck(target)){
@@ -38,8 +35,7 @@ public class Scene3 extends Scene{
         addFourWalls(temp);
         setEnvironment(temp);
         setMessages(messages);
-        enemies[0].setDir(enemies[0].getDir()-45);
-        setEnemies(enemies);
+        setEnemies(getTestEnemy());
         updateStuff();
     }
 }

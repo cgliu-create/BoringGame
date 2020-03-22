@@ -170,4 +170,9 @@ public abstract class Scene extends JPanel {
         for (int i = 0; i < getH()/50; i++) { temp.add(new Wall(0,i*50,50,50)); }
         for (int i = 0; i < getH()/50; i++) { temp.add(new Wall(getW()-50,i*50,50,50)); }
     }
+    public Enemy[] getTestEnemy(){
+        Enemy[] out = new Enemy[1];
+        out[0] = playerInput.getTestenemy();
+        return out;
+    }
 }

@@ -23,6 +23,9 @@ public class MoveObject extends CollisObject {
     public int getSpeed() { return m.getSpeed(); }
     public int getXspeed() { return m.getXspeed(); }
     public int getYspeed() { return m.getYspeed(); }
+    //TURNING
+    public void turnRight(){ m.turnRight();}
+    public void turnLeft(){ m.turnLeft();}
 //PRINTING   
     @Override
     public String toString() {
