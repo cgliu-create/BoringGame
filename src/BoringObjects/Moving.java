@@ -25,12 +25,12 @@ public class Moving {
     public int getXspeed() { return Xspeed; }
     public int getYspeed() { return Yspeed; }
     public void turnRight(){
-        setDir(getDir()+45);
         if(getDir()==720){ setDir(360);} //fix
+        setDir(getDir()+45);
     }
     public void turnLeft(){
-        setDir(getDir()-45);
         if(getDir()==0){ setDir(360);}
+        setDir(getDir()-45);
     }
 //PRINTING
     @Override
