@@ -37,7 +37,7 @@ public class MathStuff {
         }
         double angbtwn = Math.abs(ANG1-ANG2);
         if(angbtwn>180){
-            angbtwn = 360 - angbtwn;
+            angbtwn = 360 - angbtwn; //fix
         }
         return angbtwn;
     }
