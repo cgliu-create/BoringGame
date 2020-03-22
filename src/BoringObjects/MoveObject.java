@@ -9,6 +9,7 @@ public class MoveObject extends CollisObject {
 //CONSTRUCTING  
     public MoveObject (int x, int y, int wd, int ht) {
         super(x, y, wd, ht);
+        setDir(360);
     }
 //RENDERING DEFAULT    
     @Override

@@ -2,8 +2,7 @@ package BoringObjects;
 
 public class Moving {
 //Direction and speed
-    private int dir = 360;
-    private int speed, Xspeed, Yspeed;
+    private int dir, speed, Xspeed, Yspeed;
 //CONSTRUCTING  
     public Moving(){
         dir = speed = Xspeed = Yspeed = 0;
@@ -27,11 +26,11 @@ public class Moving {
     public int getYspeed() { return Yspeed; }
     public void turnRight(){
         setDir(getDir()+45);
-        if(getDir()==0){ setDir(360);}
+        if(getDir()==720){ setDir(360);} //fix
     }
     public void turnLeft(){
         setDir(getDir()-45);
-        if(getDir()==720){ setDir(360);}
+        if(getDir()==0){ setDir(360);}
     }
 //PRINTING
     @Override

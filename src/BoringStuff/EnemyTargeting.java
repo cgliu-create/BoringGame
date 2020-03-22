@@ -13,6 +13,7 @@ public class EnemyTargeting {
     private MathStuff m = new MathStuff();
     //Enemy
     private Enemy enemy;
+    private EnemyTurning t;
     //Aim
     private Aiming a;
     private int cx, cy;
@@ -26,6 +27,7 @@ public class EnemyTargeting {
     public EnemyTargeting(Enemy thisGuy) {
        enemy = thisGuy;
        a = new Aiming(thisGuy);
+       t = new EnemyTurning(thisGuy);
     }
     public void calcPoints(AliveObject player){
         a.calcPoints();
@@ -42,7 +44,13 @@ public class EnemyTargeting {
         angBtwn = m.angleBtwnTwoLines(cx,cy,cpx,cpy,x,y);
         dAP = Math.sin(Math.toRadians(angBtwn))*dEP;
         //in line with shot
-        return dAP <= player.getRadius();
+        return dAP <= player.getRadius()&&angBtwn<45&&dEP<=250; //can hit and is not behind and in range
+    }
+    public void lineUpShot(AliveObject player){
+        if (angBtwn!=0&&dEP<=250){
+            t.turnToPlayer(player);
+        }
+
     }
     //RENDERING
     public void draw(Graphics window) {

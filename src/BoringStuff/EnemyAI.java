@@ -15,13 +15,18 @@ import BoringSprites.Shooty;
 public class EnemyAI {
     private Enemy enemy;
     private EnemyTargeting enemyTargeting;
+    //Effect
+    private ParticleEffects particleEffects = new ParticleEffects();
     //CONSTRUCTING
     public EnemyAI(Enemy thisGuy) {
         enemy = thisGuy;
         enemyTargeting = new EnemyTargeting(thisGuy);
     }
     public void checktargeting(ArrayList<Particle> badparticles, Player player){
-        enemyTargeting.checkEnemyInSight(badparticles,player);
+        enemyTargeting.lineUpShot(player);
+        if (enemyTargeting.checkEnemyInSight(badparticles,player)){
+            particleEffects.Shoot(badparticles,enemy);
+        }
     }
     //RENDERING
     public void draw(Graphics window) {
