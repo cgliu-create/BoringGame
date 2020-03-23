@@ -16,6 +16,11 @@ public class CollisionEffects {
     private CollisObject temp = new CollisObject(0,0,0,0);
     private ParticleEffects pe = new ParticleEffects();
 //MOVING
+public void setTemp(int x, int y, GameObject guy){
+    temp.setXPos(x);temp.setYPos(y);
+    temp.setHeight(guy.getHeight());temp.setWidth(guy.getWidth());
+    temp.setRadius(guy.getRadius());
+}
     public void checkObstruction(CopyOnWriteArrayList<GameObject>Obstructions, GameObject guy){
         int x = 0; int y = 0;
         if (guy instanceof AliveObject) {
@@ -32,11 +37,6 @@ public class CollisionEffects {
             if (!(guy.equals(gameObject))&&temp.checkAllDir(gameObject)) { obstructionFree = false; break;}
         }
         if (obstructionFree) {guy.setXPos(x); guy.setYPos(y);}
-    }
-    public void setTemp(int x, int y, GameObject guy){
-        temp.setXPos(x);temp.setYPos(y);
-        temp.setHeight(guy.getHeight());temp.setWidth(guy.getWidth());
-        temp.setRadius(guy.getRadius());
     }
 //PUSHING FROM PLAYER
     public void checkMovePush(CopyOnWriteArrayList<GameObject>Obstructions, ArrayList<MoveObject>moveObjects, AliveObject guy){

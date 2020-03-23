@@ -30,7 +30,8 @@ public class EnemyAI {
     }
     //RENDERING
     public void draw(Graphics window) {
-       enemyTargeting.draw(window);
+        enemyTargeting.draw(window);
+
     }
 }
 

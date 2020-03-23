@@ -26,7 +26,7 @@ public class Player extends Shooty {
         if(Math.abs(getDir())%360==315){ img = BoringImage.player315.getImgLoc();}
         drawAim(window);
         i.DrawImage(window, getXPos(), getYPos(), getWidth(), getHeight(), img);
-        window.drawString(""+getDir(),600,100);
+       // window.drawString(""+getDir(),600,100);
     }
 //CHANGING BULLET
     public void switchBullet(){
