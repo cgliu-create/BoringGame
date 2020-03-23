@@ -18,7 +18,7 @@ public class EnemyTargeting {
        enemy = thisGuy;
        enemySeeing = new EnemySeeing(thisGuy);
     }
-    public boolean checkEnemyInSight(ArrayList<Particle> badparticles, AliveObject player){
+    public boolean checkEnemyInSight(AliveObject player){
         enemySeeing.calcPoints(player);
         enemySeeing.calcAngBtwnAP();
         enemySeeing.calcDistBtwnEP();
@@ -28,7 +28,7 @@ public class EnemyTargeting {
         //in line with shot
         return dAP <= player.getRadius()+10&&angBtwn<45&&dEP<=250; //can hit and is not behind and in range
     }
-    public void lineUpShot(AliveObject player){
+    public void lineUpShot(){
         double angBtwn = enemySeeing.getAngBtwn();
         double dEP = enemySeeing.getdEP();
         double angPlayer = enemySeeing.getAngPlayer();

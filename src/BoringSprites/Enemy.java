@@ -16,12 +16,13 @@ public class Enemy extends Shooty {
 //Behavior
     private EnemyAI ai;
 //CONSTRUCTING 
-    public Enemy(int x, int y, int wd, int ht, int hp, int mp) {
-        super(x, y, wd, ht, hp, mp); ai = new EnemyAI(this);
+    public Enemy(int x, int y, int wd, int ht, int hp, int mp, int scoutDir, int scoutDistance) {
+        super(x, y, wd, ht, hp, mp);
+        ai = new EnemyAI(this, scoutDir, scoutDistance);
     }
 //ATTACKING
-    public void attack(ArrayList<Particle> badparticles, Player player){
-           ai.checktargeting(badparticles,player);
+    public void aiAction(ArrayList<Particle> badparticles, Player player){
+           ai.scoutTarget(badparticles,player);
     }
 //RENDERING 
     @Override

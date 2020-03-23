@@ -111,7 +111,7 @@ public abstract class Scene extends JPanel {
             collisionEffects.checkObstruction(AllStuff, enemy);
             //particle collisions
             collisionEffects.checkParticleInteraction(AllStuff,particles,enemy);
-            enemy.attack(badparticles,player);
+            enemy.aiAction(badparticles,player);
         }
         //animates particles
         particleEffects.RemoveParticles(badparticles);

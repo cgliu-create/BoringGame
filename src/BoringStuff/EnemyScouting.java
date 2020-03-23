@@ -16,18 +16,21 @@ public class EnemyScouting {
     private int x2, y2;
     //Turning
     private int dirA,dirB;
+    public void calcPointsAndDirections(int scoutDir, int scoutDistance){
+        //starting pos
+        x1 = enemy.getXPos(); y1 = enemy.getYPos();
+        if(scoutDir%45==0){ enemy.setDir(scoutDir); } //valid 8 dir movement
+        else {enemy.setDir(360);}
+        //other end pos
+        x2 = (int)(scoutDistance * Math.cos(Math.toRadians(enemy.getDir())));
+        y2 = (int)(scoutDistance * Math.sin(Math.toRadians(enemy.getDir())));
+        dirA = enemy.getDir();
+        dirB = enemy.getDir()+180;
+    }
     //CONSTRUCTING
     public EnemyScouting(Enemy thisGuy, int scoutDir, int scoutDistance) {
         enemy = thisGuy;
-        //starting pos
-        x1 = thisGuy.getXPos(); y1 = thisGuy.getYPos();
-        if(scoutDir%45==0){ thisGuy.setDir(scoutDir); } //valid 8 dir movement
-        else {thisGuy.setDir(360);}
-        //other end pos
-        x2 = (int)(scoutDistance * Math.cos(Math.toRadians(thisGuy.getDir())));
-        y2 = (int)(scoutDistance * Math.sin(Math.toRadians(thisGuy.getDir())));
-        dirA = thisGuy.getDir();
-        dirB = thisGuy.getDir()+180;
+        calcPointsAndDirections(scoutDir,scoutDistance);
         enemySeeing = new EnemySeeing(thisGuy);
     }
     public boolean checkEnemySpotted(AliveObject player) {

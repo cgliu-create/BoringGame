@@ -67,7 +67,7 @@ public class PlayerInput implements KeyListener {
     public void keyReleased(KeyEvent e) {
     }
     //testing
-    private Enemy testenemy = new Enemy(400,400,50,50,100,100);
+    private Enemy testenemy = new Enemy(400,400,50,50,100,100,45,300);
     public Enemy getTestenemy() {
         return testenemy;
     }
