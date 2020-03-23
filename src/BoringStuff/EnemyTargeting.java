@@ -51,8 +51,11 @@ public class EnemyTargeting {
         return dAP <= player.getRadius()+10&&angBtwn<45&&dEP<=250; //can hit and is not behind and in range
     }
     public void lineUpShot(AliveObject player){
-        if (dAP> player.getRadius()+10&&dEP<=250){
-           //enemy.turnLeft();
+        if (angBtwn>=45&&dEP<=250){
+            if(angPlayer>angAim)
+                enemy.turnLeft();
+            if(angPlayer<angAim)
+                enemy.turnRight();
         }
 
     }
