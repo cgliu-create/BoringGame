@@ -12,14 +12,24 @@ public class MathStuff {
         int do1 = yc - ye; //player
         double ang1 = Math.toDegrees(Math.atan(do1*1.0/da1));
         double ANG1 = ang1; //Q1
-        if(da1<=0&&do1>=0){ //Q2
+        if(da1<0&&do1>0){ //Q2
             ANG1 = 180 + ang1;
         }
-        if(da1<=0&&do1<=0){ //Q3
+        if(da1<0&&do1<0){ //Q3
             ANG1 = 180 + ang1;
         }
-        if(da1>=0&&do1<=0){ //Q4
+        if(da1>0&&do1<0){ //Q4
             ANG1 = 360 + ang1;
+        }
+        //just in case
+        if(da1==0&&do1>0){
+            ANG1 = 90;
+        }
+        if(do1==0&&da1<0){
+            ANG1 = 180;
+        }
+        if(da1==0&&do1<0){
+            ANG1 = 270;
         }
         return ANG1;
     }

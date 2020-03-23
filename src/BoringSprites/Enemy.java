@@ -36,5 +36,6 @@ public class Enemy extends Shooty {
         if(Math.abs(getDir())%360==315){ img = BoringImage.enemy315.getImgLoc();}
         i.DrawImage(window,getXPos(),getYPos(),getWidth(),getHeight(),img);
         ai.draw(window);
+        window.drawString(""+getDir(),600,200);
     }
 }

@@ -56,6 +56,9 @@ public class PlayerInput implements KeyListener {
                 player.setMP(player.getMP()-1);
             }
         }
+        if (e.getKeyCode() == KeyEvent.VK_R) {
+            testenemy.turnLeft();
+        }
         if (e.getKeyCode() == KeyEvent.VK_T) {
             testenemy.turnRight();
         }

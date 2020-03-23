@@ -13,7 +13,6 @@ public class EnemyTargeting {
     private MathStuff m = new MathStuff();
     //Enemy
     private Enemy enemy;
-    private EnemyTurning t;
     //Aim
     private Aiming a;
     private int cx, cy;
@@ -21,13 +20,13 @@ public class EnemyTargeting {
     private int cpx, cpy;
     //In sight
     double dEP;
+    double angPlayer, angAim;
     double angBtwn;
     double dAP;
     //CONSTRUCTING
     public EnemyTargeting(Enemy thisGuy) {
        enemy = thisGuy;
        a = new Aiming(thisGuy);
-       t = new EnemyTurning(thisGuy);
     }
     public void calcPoints(AliveObject player){
         a.calcPoints();
@@ -41,14 +40,19 @@ public class EnemyTargeting {
     public boolean checkEnemyInSight(ArrayList<Particle> badparticles, AliveObject player){
         calcPoints(player);
         dEP = m.distBtwnTwoPoints(cx,cy,cpx,cpy);
-        angBtwn = m.angleBtwnTwoLines(cx,cy,cpx,cpy,x,y);
+        angPlayer = m.angleOfALine(cx,cy,cpx,cpy);
+        angAim = m.angleOfALine(cx,cy,x,y);
+        angBtwn = Math.abs(angPlayer-angAim);
+        if(angBtwn>180){
+            angBtwn = 360 - angBtwn;
+        }
         dAP = Math.sin(Math.toRadians(angBtwn))*dEP;
         //in line with shot
-        return dAP <= player.getRadius()&&angBtwn<45&&dEP<=250; //can hit and is not behind and in range
+        return dAP <= player.getRadius()+10&&angBtwn<45&&dEP<=250; //can hit and is not behind and in range
     }
     public void lineUpShot(AliveObject player){
-        if (angBtwn!=0&&dEP<=250){
-            t.turnToPlayer(player);
+        if (dAP> player.getRadius()+10&&dEP<=250){
+           //enemy.turnLeft();
         }
 
     }
@@ -58,6 +62,7 @@ public class EnemyTargeting {
         window.setColor(Color.RED);
         window.setFont(new Font("TAHOMA",Font.BOLD,20));
         window.drawString("DistEP:"+(int)dEP+"/Ang:"+(int)angBtwn+"/DistAP:"+(int)dAP,100,100);
+        window.drawString("/AngPlayer:"+(int)angPlayer+"/AngAim:"+(int)angAim,100,150);
         window.drawLine(cx,cy,x,y);
         window.drawOval(cx-250,cy-250,500,500);
         window.setColor(Color.CYAN);
