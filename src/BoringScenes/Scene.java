@@ -84,7 +84,6 @@ public abstract class Scene extends JPanel {
     //UPDATING ITEMS
     public void updateStuff(){
         AllStuff.clear();
-        AllStuff.add(player);
         AllStuff.addAll(enemies);
         AllStuff.addAll(interactables);
         AllStuff.addAll(environment);
@@ -108,7 +107,9 @@ public abstract class Scene extends JPanel {
     public void updateEnemies(){
         for (Enemy enemy: enemies){
             //moves enemy
-            collisionEffects.checkObstruction(AllStuff, enemy);
+            if(collisionEffects.checkObstruction(AllStuff, enemy)){
+                enemy.turn(180);
+            }
             //particle collisions
             collisionEffects.checkParticleInteraction(AllStuff,particles,enemy);
             enemy.aiAction(badparticles,player);
@@ -155,7 +156,11 @@ public abstract class Scene extends JPanel {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-           thing.drawSuper(window);
+        }
+        try {
+            player.draw(window);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     public  void addWallH(ArrayList<CollisObject> temp , int x, int y, int n){

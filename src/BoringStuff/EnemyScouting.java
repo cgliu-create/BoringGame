@@ -4,6 +4,7 @@ import BoringObjects.AliveObject;
 import BoringSprites.Enemy;
 import BoringSprites.Particle;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class EnemyScouting {
@@ -16,9 +17,9 @@ public class EnemyScouting {
     private int x2, y2;
     //Turning
     private int dirA,dirB;
-    public void calcPointsAndDirections(int scoutDir, int scoutDistance){
+    public void calcPointsAndDirections(int scoutDir, int scoutDistance, int x , int y){
         //starting pos
-        x1 = enemy.getXPos(); y1 = enemy.getYPos();
+        x1 = x; y1 = y;
         if(scoutDir%45==0){ enemy.setDir(scoutDir); } //valid 8 dir movement
         else {enemy.setDir(360);}
         //other end pos
@@ -30,25 +31,24 @@ public class EnemyScouting {
     //CONSTRUCTING
     public EnemyScouting(Enemy thisGuy, int scoutDir, int scoutDistance) {
         enemy = thisGuy;
-        calcPointsAndDirections(scoutDir,scoutDistance);
+        calcPointsAndDirections(scoutDir,scoutDistance,thisGuy.getXPos(),thisGuy.getYPos());
         enemySeeing = new EnemySeeing(thisGuy);
     }
     public boolean checkEnemySpotted(AliveObject player) {
-        enemySeeing.calcPoints(player);
-        enemySeeing.calcAngBtwnAP();
-        enemySeeing.calcDistBtwnEP();
+        calcSeeing(player);
         double angBtwn = enemySeeing.getAngBtwn();
         double dEP = enemySeeing.getdEP();
         return angBtwn<=45 &&dEP<=300;
         //within 90degree vision and at least slightly farther than shooting range
     }
+    public void calcSeeing(AliveObject player){
+        enemySeeing.calcSeeing(player);
+    }
     public boolean lookAround(AliveObject player){
         int enemyDir = enemy.getDir();
         enemy.setDir(enemyDir+45);
         if (checkEnemySpotted(player)){return true;}
-        enemy.setDir(enemyDir+90);
-        if (checkEnemySpotted(player)){return true;}
-        enemy.setDir(enemyDir+45);
+        enemy.setDir(enemyDir-45);
         if (checkEnemySpotted(player)){return true;}
         enemy.setDir(enemyDir);
         if (checkEnemySpotted(player)){return true;}
@@ -68,20 +68,22 @@ public class EnemyScouting {
     public boolean atCheckpointTwo(){
         return enemy.getXPos()==x2&&enemy.getYPos()==y2;
     }
-    public boolean patrol(AliveObject player){
+    public boolean checkAndPatrol(AliveObject player){
+        if(lookAround(player)){return true;}
         if (atCheckpointOne()){
             enemy.setSpeed(0);
-            if(lookAround(player)){return true;}
             enemy.setDir(dirB);
             enemy.setSpeed(2);
         }
         if (atCheckpointTwo()){
             enemy.setSpeed(0);
-            if(lookAround(player)){return true;};
             enemy.setDir(dirA);
             enemy.setSpeed(2);
         }
         return false;
     }
-
+    //RENDERING
+    public void draw(Graphics window) {
+        enemySeeing.draw(window);
+    }
 }

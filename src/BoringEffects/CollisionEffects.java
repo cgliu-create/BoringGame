@@ -21,7 +21,7 @@ public void setTemp(int x, int y, GameObject guy){
     temp.setHeight(guy.getHeight());temp.setWidth(guy.getWidth());
     temp.setRadius(guy.getRadius());
 }
-    public void checkObstruction(CopyOnWriteArrayList<GameObject>Obstructions, GameObject guy){
+    public boolean checkObstruction(CopyOnWriteArrayList<GameObject>Obstructions, GameObject guy){
         int x = 0; int y = 0;
         if (guy instanceof AliveObject) {
             x = guy.getXPos() + ((AliveObject)guy).getXspeed();
@@ -32,11 +32,14 @@ public void setTemp(int x, int y, GameObject guy){
             y = guy.getYPos() + ((MoveObject)guy).getYspeed();
         }
         setTemp(x, y, guy);
-        boolean obstructionFree = true;
+        boolean obstruction = false;
         for (GameObject gameObject : Obstructions) {
-            if (!(guy.equals(gameObject))&&temp.checkAllDir(gameObject)) { obstructionFree = false; break;}
+            if (!(guy.equals(gameObject))&&temp.checkAllDir(gameObject)) { obstruction = true; break;}
         }
-        if (obstructionFree) {guy.setXPos(x); guy.setYPos(y);}
+        if (!obstruction) {
+            guy.setXPos(x); guy.setYPos(y);
+        }
+        return obstruction;
     }
 //PUSHING FROM PLAYER
     public void checkMovePush(CopyOnWriteArrayList<GameObject>Obstructions, ArrayList<MoveObject>moveObjects, AliveObject guy){

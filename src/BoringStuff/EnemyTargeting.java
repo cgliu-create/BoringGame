@@ -19,14 +19,15 @@ public class EnemyTargeting {
        enemySeeing = new EnemySeeing(thisGuy);
     }
     public boolean checkEnemyInSight(AliveObject player){
-        enemySeeing.calcPoints(player);
-        enemySeeing.calcAngBtwnAP();
-        enemySeeing.calcDistBtwnEP();
+        calcSeeing(player);
         double angBtwn = enemySeeing.getAngBtwn();
         double dEP = enemySeeing.getdEP();
         dAP = Math.sin(Math.toRadians(angBtwn))*dEP;
         //in line with shot
         return dAP <= player.getRadius()+10&&angBtwn<45&&dEP<=250; //can hit and is not behind and in range
+    }
+    public void calcSeeing(AliveObject player){
+        enemySeeing.calcSeeing(player);
     }
     public void lineUpShot(){
         double angBtwn = enemySeeing.getAngBtwn();
@@ -39,6 +40,12 @@ public class EnemyTargeting {
             if(angPlayer<angAim)
                 enemy.turnRight();
         }
+    }
+    public boolean checkOutOfRange(){
+        return enemySeeing.getdEP() > 250;
+    }
+    public int getAimDir(){
+        return (int)(enemySeeing.getAngAim());
     }
     //RENDERING
     public void draw(Graphics window) {

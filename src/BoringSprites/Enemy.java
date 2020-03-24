@@ -22,7 +22,7 @@ public class Enemy extends Shooty {
     }
 //ATTACKING
     public void aiAction(ArrayList<Particle> badparticles, Player player){
-           ai.scoutTarget(badparticles,player);
+           ai.aiBehavior(badparticles,player);
     }
 //RENDERING 
     @Override

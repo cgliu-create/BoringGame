@@ -49,11 +49,10 @@ public class EnemySeeing {
     public void calcDistBtwnEP(){
         dEP = m.distBtwnTwoPoints(cx,cy,cpx,cpy);
     }
-    public boolean checkPlayerSpotted(){
-        if(angBtwn<=45&&dEP<=300){ //within 90 degree field of vision, slighly farther than shooting range
-            return false;
-        }
-        return false;
+    public void calcSeeing(AliveObject player){
+        calcPoints(player);
+        calcAngBtwnAP();
+        calcDistBtwnEP();
     }
 //ACCESSING VALUES
     public double getAngAim() { return angAim; }

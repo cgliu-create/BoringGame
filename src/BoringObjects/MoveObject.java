@@ -27,6 +27,7 @@ public class MoveObject extends CollisObject {
     //TURNING
     public void turnRight(){ m.turnRight();}
     public void turnLeft(){ m.turnLeft();}
+    public void turn(int degree){m.setDir(m.getDir()+degree);}
 //PRINTING   
     @Override
     public String toString() {

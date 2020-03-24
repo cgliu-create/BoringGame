@@ -16,6 +16,7 @@ public class EnemyAI {
     private Enemy enemy;
     private EnemyTargeting enemyTargeting;
     private EnemyScouting enemyScouting;
+    private int scoutDistance;
     //Effect
     private ParticleEffects particleEffects = new ParticleEffects();
     //CONSTRUCTING
@@ -23,22 +24,26 @@ public class EnemyAI {
         enemy = thisGuy;
         enemyTargeting = new EnemyTargeting(thisGuy);
         enemyScouting = new EnemyScouting(thisGuy,scoutDir,scoutDistance);
+        this.scoutDistance = scoutDistance;
     }
-    public void checktargeting(ArrayList<Particle> badparticles, Player player){
-        enemyTargeting.lineUpShot();
-        if (enemyTargeting.checkEnemyInSight(player)){
-            particleEffects.Shoot(badparticles,enemy);
-        }
-    }
-    public void scoutTarget(ArrayList<Particle> badparticles, Player player){
-        if (enemyScouting.patrol(player)){
-            checktargeting(badparticles, player);
+    public void aiBehavior(ArrayList<Particle> badparticles,Player player){
+        enemyScouting.calcSeeing(player);
+        enemyTargeting.calcSeeing(player);
+        if (enemyScouting.checkAndPatrol(player)){
+            enemyTargeting.lineUpShot();
+            if (enemyTargeting.checkEnemyInSight(player)){
+                particleEffects.Shoot(badparticles,enemy);
+            }
+            if (enemyTargeting.checkOutOfRange()){
+                enemyScouting.calcPointsAndDirections(enemyTargeting.getAimDir(),scoutDistance,enemy.getXPos(),enemy.getYPos());
+                enemyScouting.checkAndPatrol(player);
+            }
         }
     }
     //RENDERING
     public void draw(Graphics window) {
-        enemyTargeting.draw(window);
-
+            enemyScouting.draw(window);
+            enemyTargeting.draw(window);
     }
 }
 
