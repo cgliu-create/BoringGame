@@ -84,4 +84,4 @@ public class EnemyScouting {
         return false;
     }
 
-}//yes
+}
