@@ -32,7 +32,9 @@ public class EnemyAI {
         if (enemyScouting.checkAndPatrol(player)){
             enemyTargeting.lineUpShot();
             if (enemyTargeting.checkEnemyInSight(player)){
-                particleEffects.Shoot(badparticles,enemy);
+                if(player.checkIfAlive()) {
+                    particleEffects.Shoot(badparticles, enemy);
+                }
             }
             if (enemyTargeting.checkOutOfRange()){
                 enemyScouting.calcPointsAndDirections(enemyTargeting.getAimDir(),scoutDistance,enemy.getXPos(),enemy.getYPos());

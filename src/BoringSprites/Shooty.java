@@ -1,10 +1,16 @@
 package BoringSprites;
 
+import BoringImages.BoringImage;
+import BoringImages.ImageGetter;
 import BoringObjects.AliveObject;
 import BoringStuff.Aiming;
 import java.awt.*;
+import java.io.IOException;
 
 public abstract class Shooty extends AliveObject {
+    //Image
+    private ImageGetter i = new ImageGetter();
+    private String img;
 //Aiming
     private Aiming a = new Aiming(this);
 //Bullet type
@@ -36,5 +42,20 @@ public abstract class Shooty extends AliveObject {
         Bullet bullet = new Bullet(x,y,50,50,35,0,Color.black,10);
         bullet.setDir(dir);
         return bullet;
+    }
+    //death
+    @Override
+    public void draw(Graphics window) throws IOException {
+        if(Math.abs(getDir())%360==0){ img = BoringImage.dead0.getImgLoc();}
+        if(Math.abs(getDir())%360==45){ img = BoringImage.dead45.getImgLoc();}
+        if(Math.abs(getDir())%360==90){ img = BoringImage.dead90.getImgLoc();}
+        if(Math.abs(getDir())%360==135){ img = BoringImage.dead135.getImgLoc();}
+        if(Math.abs(getDir())%360==180){ img = BoringImage.dead180.getImgLoc();}
+        if(Math.abs(getDir())%360==225){ img = BoringImage.dead225.getImgLoc();}
+        if(Math.abs(getDir())%360==270){ img = BoringImage.dead270.getImgLoc();}
+        if(Math.abs(getDir())%360==315){ img = BoringImage.dead315.getImgLoc();}
+        drawAim(window);
+        i.DrawImage(window, getXPos(), getYPos(), getWidth(), getHeight(), img);
+        // window.drawString(""+getDir(),600,100);
     }
 }

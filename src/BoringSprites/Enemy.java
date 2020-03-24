@@ -27,16 +27,17 @@ public class Enemy extends Shooty {
 //RENDERING 
     @Override
     public void draw(Graphics window) throws IOException {
-        if(Math.abs(getDir())%360==0){ img = BoringImage.enemy0.getImgLoc();}
-        if(Math.abs(getDir())%360==45){ img = BoringImage.enemy45.getImgLoc();}
-        if(Math.abs(getDir())%360==90){ img = BoringImage.enemy90.getImgLoc();}
-        if(Math.abs(getDir())%360==135){ img = BoringImage.enemy135.getImgLoc();}
-        if(Math.abs(getDir())%360==180){ img = BoringImage.enemy180.getImgLoc();}
-        if(Math.abs(getDir())%360==225){ img = BoringImage.enemy225.getImgLoc();}
-        if(Math.abs(getDir())%360==270){ img = BoringImage.enemy270.getImgLoc();}
-        if(Math.abs(getDir())%360==315){ img = BoringImage.enemy315.getImgLoc();}
-        i.DrawImage(window,getXPos(),getYPos(),getWidth(),getHeight(),img);
-        ai.draw(window);
-      //  window.drawString(""+getDir(),600,200);
+        if(checkIfAlive()){
+            if(Math.abs(getDir())%360==0){ img = BoringImage.enemy0.getImgLoc();}
+            if(Math.abs(getDir())%360==45){ img = BoringImage.enemy45.getImgLoc();}
+            if(Math.abs(getDir())%360==90){ img = BoringImage.enemy90.getImgLoc();}
+            if(Math.abs(getDir())%360==135){ img = BoringImage.enemy135.getImgLoc();}
+            if(Math.abs(getDir())%360==180){ img = BoringImage.enemy180.getImgLoc();}
+            if(Math.abs(getDir())%360==225){ img = BoringImage.enemy225.getImgLoc();}
+            if(Math.abs(getDir())%360==270){ img = BoringImage.enemy270.getImgLoc();}
+            if(Math.abs(getDir())%360==315){ img = BoringImage.enemy315.getImgLoc();}
+            i.DrawImage(window,getXPos(),getYPos(),getWidth(),getHeight(),img);
+            ai.draw(window);
+        } else { super.draw(window);}
     }
 }

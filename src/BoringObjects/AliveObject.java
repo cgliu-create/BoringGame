@@ -22,6 +22,16 @@ public class AliveObject extends MoveObject {
 //ACCESSING STATUS
     public int getHP() { return l.getHP(); }
     public int getMP() { return l.getMP(); }
+    //CHANGING AND CHECKING STATUS
+    public boolean checkIfAlive(){
+        return l.getHP() > 0;
+    }
+    public void changeHP(int dHP){
+        l.setHP(l.getHP() + dHP);
+    }
+    public void changeMP(int dMP){
+        l.setMP(l.getMP() + dMP);
+    }
 //PRINTING
     @Override
     public String toString() {

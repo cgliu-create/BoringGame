@@ -33,17 +33,25 @@ public class PlayerInput implements KeyListener {
     public void keyPressed(KeyEvent e) {
     //accelerate
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            if(player.getSpeed()>-4){ player.setSpeed(player.getSpeed()-2);}
+            if(player.checkIfAlive()){
+                if(player.getSpeed()>-4){ player.setSpeed(player.getSpeed()-2);}
+            }
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            if(player.getSpeed()<4){ player.setSpeed(player.getSpeed()+2);}
+            if(player.checkIfAlive()){
+                if(player.getSpeed()<4){ player.setSpeed(player.getSpeed()+2);}
+            }
         }
     //turn
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            player.turnLeft();
+            if(player.checkIfAlive()) {
+                player.turnLeft();
+            }
         }
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            player.turnRight();
+            if(player.checkIfAlive()){
+                player.turnRight();
+            }
         }
     //change bullet type
         if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
@@ -51,9 +59,11 @@ public class PlayerInput implements KeyListener {
         }
     //shoot
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            if(player.getMP()>0){
-                particleEffects.Shoot(particles, player);
-                player.setMP(player.getMP()-1);
+            if(player.checkIfAlive()) {
+                if (player.getMP() > 0) {
+                    particleEffects.Shoot(particles, player);
+                    player.setMP(player.getMP() - 1);
+                }
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_R) {

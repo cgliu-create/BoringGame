@@ -65,6 +65,7 @@ public void setTemp(int x, int y, GameObject guy){
                     pe.KaBoom(particles,p.getXPos(),p.getYPos(),Color.DARK_GRAY,10);
                     toRemove.add(p);
                     if (p instanceof Bomb) { pe.BigKaBoom(particles, p.getXPos(), p.getYPos(), p.getWidth(), p.getHeight());}
+                    if (guy instanceof AliveObject) { ((AliveObject)guy).changeHP(-1);}
                     if (guy instanceof Flag){ ((Flag) guy).setType(2);}
                 }
             }
