@@ -24,6 +24,7 @@ public class Particle extends AliveObject {
     }
 //RENDERING
     public void draw(Graphics window) throws IOException {
+        window.setColor(Color.DARK_GRAY);
         window.fillRect(getXPos(), getYPos(), getWidth(), getHeight());
     }
 }

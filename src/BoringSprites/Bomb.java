@@ -13,7 +13,7 @@ public class Bomb extends Bullet{
     private ArrayList<Particle> trail = new ArrayList<>();
 //CONSTRUCTING    
     public Bomb(int x, int y, int wd, int ht, int hp, int mp, Color c, int spd) {
-        super(x, y, wd, ht, hp, mp, c, spd);
+        super(x, y, wd, ht, hp, mp, spd);
     }
 //RENDERING
     @Override
