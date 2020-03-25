@@ -15,9 +15,10 @@ public abstract class Shooty extends AliveObject {
     private Aiming a = new Aiming(this);
 //Bullet type
     private int bulletType;
+    private boolean thisIsThePlayer;
 //CONSTRUCTING    
-    public Shooty(int x, int y, int wd, int ht, int hp, int mp) {
-        super(x, y, wd, ht, hp, mp);
+    public Shooty(int x, int y, int wd, int ht, int hp, int mp, boolean thisIsThePlayer) {
+        super(x, y, wd, ht, hp, mp); this.thisIsThePlayer = thisIsThePlayer;
     }
 //RENDERING
     public void drawAim(Graphics window){ a.draw(window);}
@@ -34,12 +35,14 @@ public abstract class Shooty extends AliveObject {
     public int getBullet() { return bulletType;}
     public void setBullet(int bulletType) { this.bulletType = bulletType;}
     public Particle getParticle(int x, int y, int dir) {
+        int hp = 35;
+        if(thisIsThePlayer){hp = 50;}
         if (bulletType == 1) {
-            Bomb bomb = new Bomb(x, y,50,50,35,0,Color.black, 5);
+            Bomb bomb = new Bomb(x, y,50,50,hp,10,Color.black, 10);
             bomb.setDir(dir);
             return bomb;
         }
-        Bullet bullet = new Bullet(x,y,50,50,35,0,Color.black,10);
+        Bullet bullet = new Bullet(x,y,50,50,hp,1,Color.black,10);
         bullet.setDir(dir);
         return bullet;
     }

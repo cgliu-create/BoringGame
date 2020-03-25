@@ -175,9 +175,17 @@ public abstract class Scene extends JPanel {
         for (int i = 0; i < getH()/50; i++) { temp.add(new Wall(0,i*50,50,50)); }
         for (int i = 0; i < getH()/50; i++) { temp.add(new Wall(getW()-50,i*50,50,50)); }
     }
-    public Enemy[] getTestEnemy(){
-        Enemy[] out = new Enemy[1];
-        out[0] = playerInput.getTestenemy();
-        return out;
+    public void resetPlayer(){
+        getPlayer().setDir(360);
+        getPlayer().setSpeed(0);
+        getPlayer().setXPos(100);
+        getPlayer().setYPos(100);
+        getPlayer().setHP(100);
+        getPlayer().setMP(100);
+    }
+    public void resetOther(){
+        for (Enemy enemy: enemies){
+            enemy.resetEnemy();
+        }
     }
 }

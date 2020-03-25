@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Scene2 extends Scene{
-
+    /*
+    level select
+     */
     private JustImage[] images = {
             new JustImage(0,0,getW(),getH()/3,BoringImage.green.getImgLoc()),
             new JustImage(0,getH()/3,getW(),getH()/3,BoringImage.brown.getImgLoc()),
@@ -30,7 +32,7 @@ public class Scene2 extends Scene{
     public void updateStatus() {
         if (flagCheck(level[0])){
             setScenenum(3);
-            level[0].setType(0);
+            level[0].setType(1);
         }
     }
 

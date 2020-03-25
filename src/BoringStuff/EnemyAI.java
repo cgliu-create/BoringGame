@@ -27,18 +27,20 @@ public class EnemyAI {
         this.scoutDistance = scoutDistance;
     }
     public void aiBehavior(ArrayList<Particle> badparticles,Player player){
-        enemyScouting.calcSeeing(player);
-        enemyTargeting.calcSeeing(player);
-        if (enemyScouting.checkAndPatrol(player)){
-            enemyTargeting.lineUpShot();
-            if (enemyTargeting.checkEnemyInSight(player)){
-                if(player.checkIfAlive()) {
-                    particleEffects.Shoot(badparticles, enemy);
+        if(enemy.checkIfAlive()) {
+            enemyScouting.calcSeeing(player);
+            enemyTargeting.calcSeeing(player);
+            if (enemyScouting.checkAndPatrol(player)) {
+                enemyTargeting.lineUpShot();
+                if (enemyTargeting.checkEnemyInSight(player)) {
+                    if (player.checkIfAlive()) {
+                        particleEffects.Shoot(badparticles, enemy);
+                    }
                 }
-            }
-            if (enemyTargeting.checkOutOfRange()){
-                enemyScouting.calcPointsAndDirections(enemyTargeting.getAimDir(),scoutDistance,enemy.getXPos(),enemy.getYPos());
-                enemyScouting.checkAndPatrol(player);
+                if (enemyTargeting.checkOutOfRange()) {
+                    enemyScouting.calcPointsAndDirections(enemyTargeting.getAimDir(), scoutDistance, enemy.getXPos(), enemy.getYPos());
+                    enemyScouting.checkAndPatrol(player);
+                }
             }
         }
     }

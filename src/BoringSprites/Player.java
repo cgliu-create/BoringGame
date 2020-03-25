@@ -11,7 +11,7 @@ public class Player extends Shooty {
     private String img;
 //CONSTRUCTING 
     public Player (int x, int y, int wd, int ht, int hp, int mp) {
-        super(x, y, wd, ht, hp, mp);
+        super(x, y, wd, ht, hp, mp, true);
     }
 //RENDERING 
     @Override

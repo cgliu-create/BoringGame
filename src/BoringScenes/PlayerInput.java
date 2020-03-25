@@ -67,18 +67,11 @@ public class PlayerInput implements KeyListener {
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_R) {
-            testenemy.turnLeft();
-        }
-        if (e.getKeyCode() == KeyEvent.VK_T) {
-            testenemy.turnRight();
+            player.changeMP(10);
         }
     }
     @Override
     public void keyReleased(KeyEvent e) {
     }
     //testing
-    private Enemy testenemy = new Enemy(400,400,50,50,100,100,45,300);
-    public Enemy getTestenemy() {
-        return testenemy;
-    }
 }

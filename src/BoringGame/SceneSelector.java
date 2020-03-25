@@ -17,7 +17,8 @@ public class SceneSelector extends JFrame {
         scenes = new Scene[]{
                 new Scene1(width, height, 1),
                 new Scene2(width, height, 2),
-                new Scene3(width, height, 3)
+                new Scene3(width, height, 3),
+                new Scene4(width, height, 4)
         };
         //default scene
         add(scenes[0]);
@@ -33,15 +34,17 @@ public class SceneSelector extends JFrame {
         if (curScene == 1){ return scenes[0];}
         if (curScene == 2){ return scenes[1];}
         if (curScene == 3){ return scenes[2];}
+        if (curScene == 4){ return scenes[3];}
         return null;
     }
 //MAKING SCENE CHANGE
     public void setScene(int scene){
         this.remove(getScene());
         removeKeyListener(getScene().getPlayerInput());
-        if (scene == 1){ this.add(scenes[0]); addKeyListener(scenes[0].getPlayerInput());}
-        if (scene == 2){ this.add(scenes[1]); addKeyListener(scenes[1].getPlayerInput());}
-        if (scene == 3){ this.add(scenes[2]); addKeyListener(scenes[2].getPlayerInput());}
+        if (scene == 1){ scenes[0].makeScene(); this.add(scenes[0]); addKeyListener(scenes[0].getPlayerInput());}
+        if (scene == 2){ scenes[1].makeScene();this.add(scenes[1]); addKeyListener(scenes[1].getPlayerInput());}
+        if (scene == 3){ scenes[2].makeScene();this.add(scenes[2]); addKeyListener(scenes[2].getPlayerInput());}
+        if (scene == 4){ scenes[3].makeScene();this.add(scenes[3]); addKeyListener(scenes[3].getPlayerInput());}
         this.repaint();
         curScene = scene;
     }

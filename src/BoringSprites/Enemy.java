@@ -15,14 +15,20 @@ public class Enemy extends Shooty {
     private String img;
 //Behavior
     private EnemyAI ai;
+    //Starting
+    private int x,y,hp,mp,scoutDir,scoutDistance;
 //CONSTRUCTING 
     public Enemy(int x, int y, int wd, int ht, int hp, int mp, int scoutDir, int scoutDistance) {
-        super(x, y, wd, ht, hp, mp);
+        super(x, y, wd, ht, hp, mp, false);
+        this.x = x; this.y = y; this.hp = hp; this.mp = mp; this.scoutDir = scoutDir; this.scoutDistance = scoutDistance;
         ai = new EnemyAI(this, scoutDir, scoutDistance);
     }
 //ATTACKING
     public void aiAction(ArrayList<Particle> badparticles, Player player){
            ai.aiBehavior(badparticles,player);
+    }
+    public void resetEnemy(){
+        setDir(scoutDir);setXPos(x);setYPos(y);setHP(hp);setMP(mp);
     }
 //RENDERING 
     @Override
