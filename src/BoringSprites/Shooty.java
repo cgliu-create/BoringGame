@@ -7,7 +7,7 @@ import BoringStuff.Aiming;
 import java.awt.*;
 import java.io.IOException;
 
-public abstract class Shooty extends AliveObject {
+public abstract class Shooty extends Particle {
     //Image
     private ImageGetter i = new ImageGetter();
     private String img;
@@ -37,6 +37,7 @@ public abstract class Shooty extends AliveObject {
     public Particle getParticle(int x, int y, int dir) {
         int hp = 35;
         if(thisIsThePlayer){hp = 50;}
+
         if (bulletType == 1) {
             Bomb bomb = new Bomb(x, y,50,50,hp,10,Color.black, 10);
             bomb.setDir(dir);
