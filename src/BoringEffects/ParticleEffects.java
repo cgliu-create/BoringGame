@@ -1,6 +1,7 @@
 package BoringEffects;
 
 import BoringSprites.Bomb;
+import BoringSprites.Grenade;
 import BoringSprites.Particle;
 import BoringSprites.Shooty;
 import java.awt.*;
@@ -16,6 +17,7 @@ public class ParticleEffects {
             if(particles.get(i).update()) {//changes particle values, removes if life = 0
                 Particle p = particles.get(i);
                 if (p instanceof Bomb) { BigKaBoom(particles, p.getXPos(), p.getYPos(), p.getWidth(), p.getHeight());}
+                if (p instanceof Grenade) { ShootAllDir(particles, (Grenade)p);}
                 toRemove.add(particles.get(i));
             }
         }//explodes regardless if timer/life runs out
@@ -65,6 +67,22 @@ public class ParticleEffects {
         int y = guy.getCenterY();
         muzzleFlash(particles, guy);
         addParticle(particles, guy.getParticle(x, y, dir)); //shoots a specific particle from center in dir
+    }
+    public void ShootThere(ArrayList<Particle> particles, Shooty guy,int dir){
+        int x = guy.getCenterX();
+        int y = guy.getCenterY();
+        muzzleFlash(particles, guy);
+        addParticle(particles, guy.getParticle(x, y, dir)); //shoots a specific particle from center in dir
+    }
+    public void ShootAllDir(ArrayList<Particle> particles, Shooty guy){
+        ShootThere(particles,guy,0);
+        ShootThere(particles,guy,45);
+        ShootThere(particles,guy,90);
+        ShootThere(particles,guy,135);
+        ShootThere(particles,guy,180);
+        ShootThere(particles,guy,225);
+        ShootThere(particles,guy,270);
+        ShootThere(particles,guy,315);
     }
     public void muzzleFlash(ArrayList<Particle> particles, Shooty guy){
         int x = guy.getXPos();

@@ -2,7 +2,6 @@ package BoringSprites;
 
 import BoringImages.BoringImage;
 import BoringImages.ImageGetter;
-import BoringObjects.AliveObject;
 import BoringStuff.Aiming;
 import java.awt.*;
 import java.io.IOException;
@@ -16,9 +15,10 @@ public abstract class Shooty extends Particle {
 //Bullet type
     private int bulletType;
     private boolean thisIsThePlayer;
-//CONSTRUCTING    
+
+    //CONSTRUCTING
     public Shooty(int x, int y, int wd, int ht, int hp, int mp, boolean thisIsThePlayer) {
-        super(x, y, wd, ht, hp, mp); this.thisIsThePlayer = thisIsThePlayer;
+        super(x, y, wd, ht, hp, mp,Color.BLACK); this.thisIsThePlayer = thisIsThePlayer;
     }
 //RENDERING
     public void drawAim(Graphics window){ a.draw(window);}
@@ -37,13 +37,25 @@ public abstract class Shooty extends Particle {
     public Particle getParticle(int x, int y, int dir) {
         int hp = 35;
         if(thisIsThePlayer){hp = 50;}
-
+        if (bulletType == 4) {
+            Bomba bomba = new Bomba(x,y,50,50,hp,10,thisIsThePlayer,10);
+            return bomba;
+        }
+        if (bulletType == 3) {
+            Mine mine = new Mine(x,y,50,50,10);
+            return mine;
+        }
+        if (bulletType == 2) {
+            Grenade grenade = new Grenade(x,y,50,50,hp,10,thisIsThePlayer,10);
+            grenade.setDir(dir);
+            return grenade;
+        }
         if (bulletType == 1) {
-            Bomb bomb = new Bomb(x, y,50,50,hp,10,Color.black, 10);
+            Bomb bomb = new Bomb(x, y,50,50,hp,10, 10);
             bomb.setDir(dir);
             return bomb;
         }
-        Bullet bullet = new Bullet(x,y,50,50,hp,1,Color.black,10);
+        Bullet bullet = new Bullet(x,y,50,50,hp,1,10);
         bullet.setDir(dir);
         return bullet;
     }

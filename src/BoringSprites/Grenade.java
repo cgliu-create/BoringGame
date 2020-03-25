@@ -2,18 +2,20 @@ package BoringSprites;
 
 import BoringImages.BoringImage;
 import BoringImages.ImageGetter;
+
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Bomb extends Bullet{
-//Image
+public class Grenade extends Shooty{
+    //Image
     private ImageGetter i = new ImageGetter();
-//Particle trail list
+    //Particle trail list
     private ArrayList<Particle> trail = new ArrayList<>();
-//CONSTRUCTING    
-    public Bomb(int x, int y, int wd, int ht, int hp, int mp, int spd) {
-        super(x, y, wd, ht, hp, mp, spd);
+    //CONSTRUCTING
+    public Grenade(int x, int y, int wd, int ht, int hp, int mp, boolean thisIsThePlayer, int spd) {
+        super(x, y, wd, ht, hp, mp, thisIsThePlayer);
+        setSpeed(spd);
     }
     //MAKING PARTICLE TRAIL
     @Override
@@ -22,12 +24,12 @@ public class Bomb extends Bullet{
             trail.add(new Particle(getXPos(),getYPos(),10,10,10,0,Color.DARK_GRAY));
         return super.update();
     }
-//RENDERING
+    //RENDERING
     @Override
     public void draw(Graphics window) throws IOException {
         for (Particle p:trail) {
             p.draw(window);
         }
-        i.DrawImage(window,getXPos()-getWidth()/2, getYPos()-getHeight()/2,getWidth(),getHeight(), BoringImage.bomb.getImgLoc());
+        i.DrawImage(window,getXPos()-getWidth()/2, getYPos()-getHeight()/2,getWidth(),getHeight(), BoringImage.grenade.getImgLoc());
     }
 }

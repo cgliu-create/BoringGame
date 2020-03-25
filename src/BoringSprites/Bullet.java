@@ -14,13 +14,13 @@ public class Bullet extends Particle{
     private ArrayList<Particle> trail = new ArrayList<>();
 //CONSTRUCTING    
     public Bullet(int x, int y, int wd, int ht, int hp, int mp, int spd) {
-        super(x, y, wd, ht, hp, mp, spd);
+        super(x, y, wd, ht, hp, mp, Color.BLACK, spd);
     }
 //MAKING PARTICLE TRAIL
     @Override
     public boolean update() {
         if( getHP()%5==0)
-            trail.add(new Particle(getXPos(),getYPos(),10,10,10,0));
+            trail.add(new Particle(getXPos(),getYPos(),10,10,10,0,Color.DARK_GRAY));
         return super.update();
     }
 //RENDERING    

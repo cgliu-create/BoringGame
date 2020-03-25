@@ -7,9 +7,7 @@ import BoringObjects.AliveObject;
 import BoringObjects.CollisObject;
 import BoringObjects.GameObject;
 import BoringObjects.MoveObject;
-import BoringSprites.Bomb;
-import BoringSprites.Flag;
-import BoringSprites.Particle;
+import BoringSprites.*;
 
 public class CollisionEffects {
 //Effects
@@ -66,6 +64,7 @@ public void setTemp(int x, int y, GameObject guy){
                     toRemove.add(p);
                     int mp = 1;
                     if (p instanceof Bomb) { pe.BigKaBoom(particles, p.getXPos(), p.getYPos(), p.getWidth(), p.getHeight()); mp = 10;}
+                    if (p instanceof Grenade) {pe.ShootAllDir(particles, (Grenade)p);}
                     if (guy instanceof AliveObject) { ((AliveObject)guy).changeHP(-mp);}
                     if (guy instanceof Flag){ ((Flag) guy).setType(2);}
                 }

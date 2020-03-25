@@ -32,8 +32,10 @@ public class Player extends Shooty {
 //CHANGING BULLET
     public void switchBullet(){
         int b = this.getBullet()+1;
-        if (b==2)
+        if (b==4) {
             setBullet(0);
+            b = 0;
+        }
         setBullet(b);
     }
 }
