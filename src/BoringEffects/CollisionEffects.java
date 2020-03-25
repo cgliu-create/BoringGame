@@ -63,8 +63,11 @@ public void setTemp(int x, int y, GameObject guy){
                     pe.KaBoom(particles,p.getXPos(),p.getYPos(),Color.DARK_GRAY,10);
                     toRemove.add(p);
                     int mp = 1;
+                    if (p instanceof LavaBall) { pe.BigKaBoom(particles, p.getCenterX(), p.getCenterY(), p.getWidth(), p.getHeight()); mp = 10;}
                     if (p instanceof Bomb) { pe.BigKaBoom(particles, p.getXPos(), p.getYPos(), p.getWidth(), p.getHeight()); mp = 10;}
-                    if (p instanceof Grenade) {pe.ShootAllDir(particles, (Grenade)p);}
+                    if (p instanceof Grenade) { pe.ShootAllDir(particles, (Grenade)p); mp = 10;}
+                    if (p instanceof Bomba) { pe.ShootAllDir(particles, (Bomba)p); mp = 10;}
+                    if (p instanceof LavaBall) { pe.BigKaBoom(particles, p.getCenterX(), p.getCenterY(), p.getWidth(), p.getHeight()); mp = 10;}
                     if (guy instanceof AliveObject) { ((AliveObject)guy).changeHP(-mp);}
                     if (guy instanceof Flag){ ((Flag) guy).setType(2);}
                 }

@@ -1,9 +1,7 @@
 package BoringEffects;
 
-import BoringSprites.Bomb;
-import BoringSprites.Grenade;
-import BoringSprites.Particle;
-import BoringSprites.Shooty;
+import BoringSprites.*;
+
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +16,8 @@ public class ParticleEffects {
                 Particle p = particles.get(i);
                 if (p instanceof Bomb) { BigKaBoom(particles, p.getXPos(), p.getYPos(), p.getWidth(), p.getHeight());}
                 if (p instanceof Grenade) { ShootAllDir(particles, (Grenade)p);}
+                if (p instanceof Bomba) { ShootAllDir(particles, (Bomba)p);}
+                if (p instanceof LavaBall) { BigKaBoom(particles, p.getCenterX(), p.getCenterY(), p.getWidth(), p.getHeight());}
                 toRemove.add(particles.get(i));
             }
         }//explodes regardless if timer/life runs out

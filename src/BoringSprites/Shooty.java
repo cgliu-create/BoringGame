@@ -37,9 +37,15 @@ public abstract class Shooty extends Particle {
     public Particle getParticle(int x, int y, int dir) {
         int hp = 35;
         if(thisIsThePlayer){hp = 50;}
-        if (bulletType == 4) {
+        if (bulletType == 5) {
             Bomba bomba = new Bomba(x,y,50,50,hp,10,thisIsThePlayer,10);
+            bomba.setDir(dir);
             return bomba;
+        }
+        if (bulletType == 4) {
+            LavaBall lavaBall = new LavaBall(x, y,100,100,hp,10, 10);
+            lavaBall.setDir(dir);
+            return lavaBall;
         }
         if (bulletType == 3) {
             Mine mine = new Mine(x,y,50,50,10);
