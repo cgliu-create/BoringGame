@@ -79,7 +79,13 @@ public abstract class Scene extends JPanel {
     public void setInteractables(MoveObject[] moveObjects){ interactables.clear(); interactables.addAll(Arrays.asList(moveObjects));}
     public void setEnvironment(ArrayList<CollisObject> enviro){ environment.clear(); environment.addAll(enviro);}
     public void setMessages(Message[] msgs){ somemessages.clear(); somemessages.addAll(Arrays.asList(msgs));}
-
+//MAKING CHANGES
+    public ArrayList<JustImage> getAdditionalImages(){return someimages;}
+    public ArrayList<Enemy> getEnemies(){return enemies;}
+    public ArrayList<MoveObject> getInteractables(){return interactables;}
+    public ArrayList<CollisObject> getEnvironment(){return environment;}
+    public ArrayList<Message> getMessages(){return somemessages;}
+    //MAKING SCENE
     public abstract void makeScene();
     //UPDATING ITEMS
     public void updateStuff(){
