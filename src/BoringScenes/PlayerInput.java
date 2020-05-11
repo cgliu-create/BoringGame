@@ -57,6 +57,24 @@ public class PlayerInput implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
             player.switchBullet();
         }
+        if (e.getKeyCode() == KeyEvent.VK_1) {
+            player.switchBullet(0);
+        }
+        if (e.getKeyCode() == KeyEvent.VK_2) {
+            player.switchBullet(1);
+        }
+        if (e.getKeyCode() == KeyEvent.VK_3) {
+            player.switchBullet(2);
+        }
+        if (e.getKeyCode() == KeyEvent.VK_4) {
+            player.switchBullet(3);
+        }
+        if (e.getKeyCode() == KeyEvent.VK_5) {
+            player.switchBullet(4);
+        }
+        if (e.getKeyCode() == KeyEvent.VK_6) {
+            player.switchBullet(5);
+        }
     //shoot
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             if(player.checkIfAlive()) {

@@ -38,4 +38,7 @@ public class Player extends Shooty {
         }
         setBullet(b);
     }
+    public void switchBullet(int b){
+        setBullet(b);
+    }
 }

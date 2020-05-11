@@ -6,9 +6,11 @@ import java.io.IOException;
 public class MoveObject extends CollisObject {
 //Qualities
     private Moving m = new Moving();
+    private int x, y;
 //CONSTRUCTING  
     public MoveObject (int x, int y, int wd, int ht) {
         super(x, y, wd, ht);
+        this.x = x; this.y = y;
         setDir(360);
     }
 //RENDERING DEFAULT    
@@ -28,6 +30,9 @@ public class MoveObject extends CollisObject {
     public void turnRight(){ m.turnRight();}
     public void turnLeft(){ m.turnLeft();}
     public void turn(int degree){m.setDir(m.getDir()+degree);}
+    public void reset(){
+        setDir(360);setXPos(x);setYPos(y);
+    }
 //PRINTING   
     @Override
     public String toString() {

@@ -2,10 +2,8 @@ package BoringScenes;
 
 import BoringImages.BoringImage;
 import BoringObjects.CollisObject;
-import BoringSprites.Enemy;
-import BoringSprites.Flag;
-import BoringSprites.Message;
-import BoringSprites.Status;
+import BoringObjects.MoveObject;
+import BoringSprites.*;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -14,6 +12,11 @@ public class Scene3 extends Scene{
     /*
     level one
      */
+    private MoveObject[] interactables ={
+            new Crate(200,200,50,50),
+            new Block(300,300,50,50),
+            new TNT(500,500,50,50)
+    };
     private Message[] messages = {
             new Status(100,100,"Player",Color.WHITE,getPlayer())
     };
@@ -52,5 +55,6 @@ public class Scene3 extends Scene{
         setMessages(messages);
         setEnemies(enemies);
         updateStuff();
+        setInteractables(interactables);
     }
 }

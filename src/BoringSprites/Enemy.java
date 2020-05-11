@@ -30,7 +30,7 @@ public class Enemy extends Shooty {
     public void resetEnemy(){
         setDir(scoutDir);setXPos(x);setYPos(y);setHP(hp);setMP(mp);
     }
-//RENDERING 
+    //RENDERING
     @Override
     public void draw(Graphics window) throws IOException {
         if(checkIfAlive()){

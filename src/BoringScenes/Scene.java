@@ -193,5 +193,8 @@ public abstract class Scene extends JPanel {
         for (Enemy enemy: enemies){
             enemy.resetEnemy();
         }
+        for (MoveObject interactable: interactables) {
+            interactable.reset();
+        }
     }
 }
